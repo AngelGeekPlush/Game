@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-up" width="23" height="13" tilewidth="512" tileheight="512" infinite="0" nextlayerid="3" nextobjectid="10">
+ <editorsettings>
+  <export target="Mapa_angelgeek_base.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="Mapa_angelgeek_base" tilewidth="512" tileheight="512" tilecount="299" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="Mapa Base/000.png" width="512" height="512"/>
+  </tile>
+  <tile id="1">
+   <image source="Mapa Base/001.png" width="512" height="512"/>
+  </tile>
+  <tile id="2">
+   <image source="Mapa Base/002.png" width="512" height="512"/>
+  </tile>
+  <tile id="3">
+   <image source="Mapa Base/003.png" width="512" height="512"/>
+  </tile>
+  <tile id="4">
+   <image source="Mapa Base/004.png" width="512" height="512"/>
+  </tile>
+  <tile id="5">
+   <image source="Mapa Base/005.png" width="512" height="512"/>
+  </tile>
+  <tile id="6">
+   <image source="Mapa Base/006.png" width="512" height="512"/>
+  </tile>
+  <tile id="7">
+   <image source="Mapa Base/007.png" width="512" height="512"/>
+  </tile>
+  <tile id="8">
+   <image source="Mapa Base/008.png" width="512" height="512"/>
+  </tile>
+  <tile id="9">
+   <image source="Mapa Base/009.png" width="512" height="512"/>
+  </tile>
+  <tile id="10">
+   <image source="Mapa Base/010.png" width="512" height="512"/>
+  </tile>
+  <tile id="11">
+   <image source="Mapa Base/011.png" width="512" height="512"/>
+  </tile>
+  <tile id="12">
+   <image source="Mapa Base/012.png" width="512" height="512"/>
+  </tile>
+  <tile id="13">
+   <image source="Mapa Base/013.png" width="512" height="512"/>
+  </tile>
+  <tile id="14">
+   <image source="Mapa Base/014.png" width="512" height="512"/>
+  </tile>
+  <tile id="15">
+   <image source="Mapa Base/015.png" width="512" height="512"/>
+  </tile>
+  <tile id="16">
+   <image source="Mapa Base/016.png" width="512" height="512"/>
+  </tile>
+  <tile id="17">
+   <image source="Mapa Base/017.png" width="512" height="512"/>
+  </tile>
+  <tile id="18">
+   <image source="Mapa Base/018.png" width="512" height="512"/>
+  </tile>
+  <tile id="19">
+   <image source="Mapa Base/019.png" width="512" height="512"/>
+  </tile>
+  <tile id="20">
+   <image source="Mapa Base/020.png" width="512" height="512"/>
+  </tile>
+  <tile id="21">
+   <image source="Mapa Base/021.png" width="512" height="512"/>
+  </tile>
+  <tile id="22">
+   <image source="Mapa Base/022.png" width="512" height="512"/>
+  </tile>
+  <tile id="23">
+   <image source="Mapa Base/023.png" width="512" height="512"/>
+  </tile>
+  <tile id="24">
+   <image source="Mapa Base/024.png" width="512" height="512"/>
+  </tile>
+  <tile id="25">
+   <image source="Mapa Base/025.png" width="512" height="512"/>
+  </tile>
+  <tile id="26">
+   <image source="Mapa Base/026.png" width="512" height="512"/>
+  </tile>
+  <tile id="27">
+   <image source="Mapa Base/027.png" width="512" height="512"/>
+  </tile>
+  <tile id="28">
+   <image source="Mapa Base/028.png" width="512" height="512"/>
+  </tile>
+  <tile id="29">
+   <image source="Mapa Base/029.png" width="512" height="512"/>
+  </tile>
+  <tile id="30">
+   <image source="Mapa Base/030.png" width="512" height="512"/>
+  </tile>
+  <tile id="31">
+   <image source="Mapa Base/031.png" width="512" height="512"/>
+  </tile>
+  <tile id="32">
+   <image source="Mapa Base/032.png" width="512" height="512"/>
+  </tile>
+  <tile id="33">
+   <image source="Mapa Base/033.png" width="512" height="512"/>
+  </tile>
+  <tile id="34">
+   <image source="Mapa Base/034.png" width="512" height="512"/>
+  </tile>
+  <tile id="35">
+   <image source="Mapa Base/035.png" width="512" height="512"/>
+  </tile>
+  <tile id="36">
+   <image source="Mapa Base/036.png" width="512" height="512"/>
+  </tile>
+  <tile id="37">
+   <image source="Mapa Base/037.png" width="512" height="512"/>
+  </tile>
+  <tile id="38">
+   <image source="Mapa Base/038.png" width="512" height="512"/>
+  </tile>
+  <tile id="39">
+   <image source="Mapa Base/039.png" width="512" height="512"/>
+  </tile>
+  <tile id="40">
+   <image source="Mapa Base/040.png" width="512" height="512"/>
+  </tile>
+  <tile id="41">
+   <image source="Mapa Base/041.png" width="512" height="512"/>
+  </tile>
+  <tile id="42">
+   <image source="Mapa Base/042.png" width="512" height="512"/>
+  </tile>
+  <tile id="43">
+   <image source="Mapa Base/043.png" width="512" height="512"/>
+  </tile>
+  <tile id="44">
+   <image source="Mapa Base/044.png" width="512" height="512"/>
+  </tile>
+  <tile id="45">
+   <image source="Mapa Base/045.png" width="512" height="512"/>
+  </tile>
+  <tile id="46">
+   <image source="Mapa Base/046.png" width="512" height="512"/>
+  </tile>
+  <tile id="47">
+   <image source="Mapa Base/047.png" width="512" height="512"/>
+  </tile>
+  <tile id="48">
+   <image source="Mapa Base/048.png" width="512" height="512"/>
+  </tile>
+  <tile id="49">
+   <image source="Mapa Base/049.png" width="512" height="512"/>
+  </tile>
+  <tile id="50">
+   <image source="Mapa Base/050.png" width="512" height="512"/>
+  </tile>
+  <tile id="51">
+   <image source="Mapa Base/051.png" width="512" height="512"/>
+  </tile>
+  <tile id="52">
+   <image source="Mapa Base/052.png" width="512" height="512"/>
+  </tile>
+  <tile id="53">
+   <image source="Mapa Base/053.png" width="512" height="512"/>
+  </tile>
+  <tile id="54">
+   <image source="Mapa Base/054.png" width="512" height="512"/>
+  </tile>
+  <tile id="55">
+   <image source="Mapa Base/055.png" width="512" height="512"/>
+  </tile>
+  <tile id="56">
+   <image source="Mapa Base/056.png" width="512" height="512"/>
+  </tile>
+  <tile id="57">
+   <image source="Mapa Base/057.png" width="512" height="512"/>
+  </tile>
+  <tile id="58">
+   <image source="Mapa Base/058.png" width="512" height="512"/>
+  </tile>
+  <tile id="59">
+   <image source="Mapa Base/059.png" width="512" height="512"/>
+  </tile>
+  <tile id="60">
+   <image source="Mapa Base/060.png" width="512" height="512"/>
+  </tile>
+  <tile id="61">
+   <image source="Mapa Base/061.png" width="512" height="512"/>
+  </tile>
+  <tile id="62">
+   <image source="Mapa Base/062.png" width="512" height="512"/>
+  </tile>
+  <tile id="63">
+   <image source="Mapa Base/063.png" width="512" height="512"/>
+  </tile>
+  <tile id="64">
+   <image source="Mapa Base/064.png" width="512" height="512"/>
+  </tile>
+  <tile id="65">
+   <image source="Mapa Base/065.png" width="512" height="512"/>
+  </tile>
+  <tile id="66">
+   <image source="Mapa Base/066.png" width="512" height="512"/>
+  </tile>
+  <tile id="67">
+   <image source="Mapa Base/067.png" width="512" height="512"/>
+  </tile>
+  <tile id="68">
+   <image source="Mapa Base/068.png" width="512" height="512"/>
+  </tile>
+  <tile id="69">
+   <image source="Mapa Base/069.png" width="512" height="512"/>
+  </tile>
+  <tile id="70">
+   <image source="Mapa Base/070.png" width="512" height="512"/>
+  </tile>
+  <tile id="71">
+   <image source="Mapa Base/071.png" width="512" height="512"/>
+  </tile>
+  <tile id="72">
+   <image source="Mapa Base/072.png" width="512" height="512"/>
+  </tile>
+  <tile id="73">
+   <image source="Mapa Base/073.png" width="512" height="512"/>
+  </tile>
+  <tile id="74">
+   <image source="Mapa Base/074.png" width="512" height="512"/>
+  </tile>
+  <tile id="75">
+   <image source="Mapa Base/075.png" width="512" height="512"/>
+  </tile>
+  <tile id="76">
+   <image source="Mapa Base/076.png" width="512" height="512"/>
+  </tile>
+  <tile id="77">
+   <image source="Mapa Base/077.png" width="512" height="512"/>
+  </tile>
+  <tile id="78">
+   <image source="Mapa Base/078.png" width="512" height="512"/>
+  </tile>
+  <tile id="79">
+   <image source="Mapa Base/079.png" width="512" height="512"/>
+  </tile>
+  <tile id="80">
+   <image source="Mapa Base/080.png" width="512" height="512"/>
+  </tile>
+  <tile id="81">
+   <image source="Mapa Base/081.png" width="512" height="512"/>
+  </tile>
+  <tile id="82">
+   <image source="Mapa Base/082.png" width="512" height="512"/>
+  </tile>
+  <tile id="83">
+   <image source="Mapa Base/083.png" width="512" height="512"/>
+  </tile>
+  <tile id="84">
+   <image source="Mapa Base/084.png" width="512" height="512"/>
+  </tile>
+  <tile id="85">
+   <image source="Mapa Base/085.png" width="512" height="512"/>
+  </tile>
+  <tile id="86">
+   <image source="Mapa Base/086.png" width="512" height="512"/>
+  </tile>
+  <tile id="87">
+   <image source="Mapa Base/087.png" width="512" height="512"/>
+  </tile>
+  <tile id="88">
+   <image source="Mapa Base/088.png" width="512" height="512"/>
+  </tile>
+  <tile id="89">
+   <image source="Mapa Base/089.png" width="512" height="512"/>
+  </tile>
+  <tile id="90">
+   <image source="Mapa Base/090.png" width="512" height="512"/>
+  </tile>
+  <tile id="91">
+   <image source="Mapa Base/091.png" width="512" height="512"/>
+  </tile>
+  <tile id="92">
+   <image source="Mapa Base/092.png" width="512" height="512"/>
+  </tile>
+  <tile id="93">
+   <image source="Mapa Base/093.png" width="512" height="512"/>
+  </tile>
+  <tile id="94">
+   <image source="Mapa Base/094.png" width="512" height="512"/>
+  </tile>
+  <tile id="95">
+   <image source="Mapa Base/095.png" width="512" height="512"/>
+  </tile>
+  <tile id="96">
+   <image source="Mapa Base/096.png" width="512" height="512"/>
+  </tile>
+  <tile id="97">
+   <image source="Mapa Base/097.png" width="512" height="512"/>
+  </tile>
+  <tile id="98">
+   <image source="Mapa Base/098.png" width="512" height="512"/>
+  </tile>
+  <tile id="99">
+   <image source="Mapa Base/099.png" width="512" height="512"/>
+  </tile>
+  <tile id="100">
+   <image source="Mapa Base/100.png" width="512" height="512"/>
+  </tile>
+  <tile id="101">
+   <image source="Mapa Base/101.png" width="512" height="512"/>
+  </tile>
+  <tile id="102">
+   <image source="Mapa Base/102.png" width="512" height="512"/>
+  </tile>
+  <tile id="103">
+   <image source="Mapa Base/103.png" width="512" height="512"/>
+  </tile>
+  <tile id="104">
+   <image source="Mapa Base/104.png" width="512" height="512"/>
+  </tile>
+  <tile id="105">
+   <image source="Mapa Base/105.png" width="512" height="512"/>
+  </tile>
+  <tile id="106">
+   <image source="Mapa Base/106.png" width="512" height="512"/>
+  </tile>
+  <tile id="107">
+   <image source="Mapa Base/107.png" width="512" height="512"/>
+  </tile>
+  <tile id="108">
+   <image source="Mapa Base/108.png" width="512" height="512"/>
+  </tile>
+  <tile id="109">
+   <image source="Mapa Base/109.png" width="512" height="512"/>
+  </tile>
+  <tile id="110">
+   <image source="Mapa Base/110.png" width="512" height="512"/>
+  </tile>
+  <tile id="111">
+   <image source="Mapa Base/111.png" width="512" height="512"/>
+  </tile>
+  <tile id="112">
+   <image source="Mapa Base/112.png" width="512" height="512"/>
+  </tile>
+  <tile id="113">
+   <image source="Mapa Base/113.png" width="512" height="512"/>
+  </tile>
+  <tile id="114">
+   <image source="Mapa Base/114.png" width="512" height="512"/>
+  </tile>
+  <tile id="115">
+   <image source="Mapa Base/115.png" width="512" height="512"/>
+  </tile>
+  <tile id="116">
+   <image source="Mapa Base/116.png" width="512" height="512"/>
+  </tile>
+  <tile id="117">
+   <image source="Mapa Base/117.png" width="512" height="512"/>
+  </tile>
+  <tile id="118">
+   <image source="Mapa Base/118.png" width="512" height="512"/>
+  </tile>
+  <tile id="119">
+   <image source="Mapa Base/119.png" width="512" height="512"/>
+  </tile>
+  <tile id="120">
+   <image source="Mapa Base/120.png" width="512" height="512"/>
+  </tile>
+  <tile id="121">
+   <image source="Mapa Base/121.png" width="512" height="512"/>
+  </tile>
+  <tile id="122">
+   <image source="Mapa Base/122.png" width="512" height="512"/>
+  </tile>
+  <tile id="123">
+   <image source="Mapa Base/123.png" width="512" height="512"/>
+  </tile>
+  <tile id="124">
+   <image source="Mapa Base/124.png" width="512" height="512"/>
+  </tile>
+  <tile id="125">
+   <image source="Mapa Base/125.png" width="512" height="512"/>
+  </tile>
+  <tile id="126">
+   <image source="Mapa Base/126.png" width="512" height="512"/>
+  </tile>
+  <tile id="127">
+   <image source="Mapa Base/127.png" width="512" height="512"/>
+  </tile>
+  <tile id="128">
+   <image source="Mapa Base/128.png" width="512" height="512"/>
+  </tile>
+  <tile id="129">
+   <image source="Mapa Base/129.png" width="512" height="512"/>
+  </tile>
+  <tile id="130">
+   <image source="Mapa Base/130.png" width="512" height="512"/>
+  </tile>
+  <tile id="131">
+   <image source="Mapa Base/131.png" width="512" height="512"/>
+  </tile>
+  <tile id="132">
+   <image source="Mapa Base/132.png" width="512" height="512"/>
+  </tile>
+  <tile id="133">
+   <image source="Mapa Base/133.png" width="512" height="512"/>
+  </tile>
+  <tile id="134">
+   <image source="Mapa Base/134.png" width="512" height="512"/>
+  </tile>
+  <tile id="135">
+   <image source="Mapa Base/135.png" width="512" height="512"/>
+  </tile>
+  <tile id="136">
+   <image source="Mapa Base/136.png" width="512" height="512"/>
+  </tile>
+  <tile id="137">
+   <image source="Mapa Base/137.png" width="512" height="512"/>
+  </tile>
+  <tile id="138">
+   <image source="Mapa Base/138.png" width="512" height="512"/>
+  </tile>
+  <tile id="139">
+   <image source="Mapa Base/139.png" width="512" height="512"/>
+  </tile>
+  <tile id="140">
+   <image source="Mapa Base/140.png" width="512" height="512"/>
+  </tile>
+  <tile id="141">
+   <image source="Mapa Base/141.png" width="512" height="512"/>
+  </tile>
+  <tile id="142">
+   <image source="Mapa Base/142.png" width="512" height="512"/>
+  </tile>
+  <tile id="143">
+   <image source="Mapa Base/143.png" width="512" height="512"/>
+  </tile>
+  <tile id="144">
+   <image source="Mapa Base/144.png" width="512" height="512"/>
+  </tile>
+  <tile id="145">
+   <image source="Mapa Base/145.png" width="512" height="512"/>
+  </tile>
+  <tile id="146">
+   <image source="Mapa Base/146.png" width="512" height="512"/>
+  </tile>
+  <tile id="147">
+   <image source="Mapa Base/147.png" width="512" height="512"/>
+  </tile>
+  <tile id="148">
+   <image source="Mapa Base/148.png" width="512" height="512"/>
+  </tile>
+  <tile id="149">
+   <image source="Mapa Base/149.png" width="512" height="512"/>
+  </tile>
+  <tile id="150">
+   <image source="Mapa Base/150.png" width="512" height="512"/>
+  </tile>
+  <tile id="151">
+   <image source="Mapa Base/151.png" width="512" height="512"/>
+  </tile>
+  <tile id="152">
+   <image source="Mapa Base/152.png" width="512" height="512"/>
+  </tile>
+  <tile id="153">
+   <image source="Mapa Base/153.png" width="512" height="512"/>
+  </tile>
+  <tile id="154">
+   <image source="Mapa Base/154.png" width="512" height="512"/>
+  </tile>
+  <tile id="155">
+   <image source="Mapa Base/155.png" width="512" height="512"/>
+  </tile>
+  <tile id="156">
+   <image source="Mapa Base/156.png" width="512" height="512"/>
+  </tile>
+  <tile id="157">
+   <image source="Mapa Base/157.png" width="512" height="512"/>
+  </tile>
+  <tile id="158">
+   <image source="Mapa Base/158.png" width="512" height="512"/>
+  </tile>
+  <tile id="159">
+   <image source="Mapa Base/159.png" width="512" height="512"/>
+  </tile>
+  <tile id="160">
+   <image source="Mapa Base/160.png" width="512" height="512"/>
+  </tile>
+  <tile id="161">
+   <image source="Mapa Base/161.png" width="512" height="512"/>
+  </tile>
+  <tile id="162">
+   <image source="Mapa Base/162.png" width="512" height="512"/>
+  </tile>
+  <tile id="163">
+   <image source="Mapa Base/163.png" width="512" height="512"/>
+  </tile>
+  <tile id="164">
+   <image source="Mapa Base/164.png" width="512" height="512"/>
+  </tile>
+  <tile id="165">
+   <image source="Mapa Base/165.png" width="512" height="512"/>
+  </tile>
+  <tile id="166">
+   <image source="Mapa Base/166.png" width="512" height="512"/>
+  </tile>
+  <tile id="167">
+   <image source="Mapa Base/167.png" width="512" height="512"/>
+  </tile>
+  <tile id="168">
+   <image source="Mapa Base/168.png" width="512" height="512"/>
+  </tile>
+  <tile id="169">
+   <image source="Mapa Base/169.png" width="512" height="512"/>
+  </tile>
+  <tile id="170">
+   <image source="Mapa Base/170.png" width="512" height="512"/>
+  </tile>
+  <tile id="171">
+   <image source="Mapa Base/171.png" width="512" height="512"/>
+  </tile>
+  <tile id="172">
+   <image source="Mapa Base/172.png" width="512" height="512"/>
+  </tile>
+  <tile id="173">
+   <image source="Mapa Base/173.png" width="512" height="512"/>
+  </tile>
+  <tile id="174">
+   <image source="Mapa Base/174.png" width="512" height="512"/>
+  </tile>
+  <tile id="175">
+   <image source="Mapa Base/175.png" width="512" height="512"/>
+  </tile>
+  <tile id="176">
+   <image source="Mapa Base/176.png" width="512" height="512"/>
+  </tile>
+  <tile id="177">
+   <image source="Mapa Base/177.png" width="512" height="512"/>
+  </tile>
+  <tile id="178">
+   <image source="Mapa Base/178.png" width="512" height="512"/>
+  </tile>
+  <tile id="179">
+   <image source="Mapa Base/179.png" width="512" height="512"/>
+  </tile>
+  <tile id="180">
+   <image source="Mapa Base/180.png" width="512" height="512"/>
+  </tile>
+  <tile id="181">
+   <image source="Mapa Base/181.png" width="512" height="512"/>
+  </tile>
+  <tile id="182">
+   <image source="Mapa Base/182.png" width="512" height="512"/>
+  </tile>
+  <tile id="183">
+   <image source="Mapa Base/183.png" width="512" height="512"/>
+  </tile>
+  <tile id="184">
+   <image source="Mapa Base/184.png" width="512" height="512"/>
+  </tile>
+  <tile id="185">
+   <image source="Mapa Base/185.png" width="512" height="512"/>
+  </tile>
+  <tile id="186">
+   <image source="Mapa Base/186.png" width="512" height="512"/>
+  </tile>
+  <tile id="187">
+   <image source="Mapa Base/187.png" width="512" height="512"/>
+  </tile>
+  <tile id="188">
+   <image source="Mapa Base/188.png" width="512" height="512"/>
+  </tile>
+  <tile id="189">
+   <image source="Mapa Base/189.png" width="512" height="512"/>
+  </tile>
+  <tile id="190">
+   <image source="Mapa Base/190.png" width="512" height="512"/>
+  </tile>
+  <tile id="191">
+   <image source="Mapa Base/191.png" width="512" height="512"/>
+  </tile>
+  <tile id="192">
+   <image source="Mapa Base/192.png" width="512" height="512"/>
+  </tile>
+  <tile id="193">
+   <image source="Mapa Base/193.png" width="512" height="512"/>
+  </tile>
+  <tile id="194">
+   <image source="Mapa Base/194.png" width="512" height="512"/>
+  </tile>
+  <tile id="195">
+   <image source="Mapa Base/195.png" width="512" height="512"/>
+  </tile>
+  <tile id="196">
+   <image source="Mapa Base/196.png" width="512" height="512"/>
+  </tile>
+  <tile id="197">
+   <image source="Mapa Base/197.png" width="512" height="512"/>
+  </tile>
+  <tile id="198">
+   <image source="Mapa Base/198.png" width="512" height="512"/>
+  </tile>
+  <tile id="199">
+   <image source="Mapa Base/199.png" width="512" height="512"/>
+  </tile>
+  <tile id="200">
+   <image source="Mapa Base/200.png" width="512" height="512"/>
+  </tile>
+  <tile id="201">
+   <image source="Mapa Base/201.png" width="512" height="512"/>
+  </tile>
+  <tile id="202">
+   <image source="Mapa Base/202.png" width="512" height="512"/>
+  </tile>
+  <tile id="203">
+   <image source="Mapa Base/203.png" width="512" height="512"/>
+  </tile>
+  <tile id="204">
+   <image source="Mapa Base/204.png" width="512" height="512"/>
+  </tile>
+  <tile id="205">
+   <image source="Mapa Base/205.png" width="512" height="512"/>
+  </tile>
+  <tile id="206">
+   <image source="Mapa Base/206.png" width="512" height="512"/>
+  </tile>
+  <tile id="207">
+   <image source="Mapa Base/207.png" width="512" height="512"/>
+  </tile>
+  <tile id="208">
+   <image source="Mapa Base/208.png" width="512" height="512"/>
+  </tile>
+  <tile id="209">
+   <image source="Mapa Base/209.png" width="512" height="512"/>
+  </tile>
+  <tile id="210">
+   <image source="Mapa Base/210.png" width="512" height="512"/>
+  </tile>
+  <tile id="211">
+   <image source="Mapa Base/211.png" width="512" height="512"/>
+  </tile>
+  <tile id="212">
+   <image source="Mapa Base/212.png" width="512" height="512"/>
+  </tile>
+  <tile id="213">
+   <image source="Mapa Base/213.png" width="512" height="512"/>
+  </tile>
+  <tile id="214">
+   <image source="Mapa Base/214.png" width="512" height="512"/>
+  </tile>
+  <tile id="215">
+   <image source="Mapa Base/215.png" width="512" height="512"/>
+  </tile>
+  <tile id="216">
+   <image source="Mapa Base/216.png" width="512" height="512"/>
+  </tile>
+  <tile id="217">
+   <image source="Mapa Base/217.png" width="512" height="512"/>
+  </tile>
+  <tile id="218">
+   <image source="Mapa Base/218.png" width="512" height="512"/>
+  </tile>
+  <tile id="219">
+   <image source="Mapa Base/219.png" width="512" height="512"/>
+  </tile>
+  <tile id="220">
+   <image source="Mapa Base/220.png" width="512" height="512"/>
+  </tile>
+  <tile id="221">
+   <image source="Mapa Base/221.png" width="512" height="512"/>
+  </tile>
+  <tile id="222">
+   <image source="Mapa Base/222.png" width="512" height="512"/>
+  </tile>
+  <tile id="223">
+   <image source="Mapa Base/223.png" width="512" height="512"/>
+  </tile>
+  <tile id="224">
+   <image source="Mapa Base/224.png" width="512" height="512"/>
+  </tile>
+  <tile id="225">
+   <image source="Mapa Base/225.png" width="512" height="512"/>
+  </tile>
+  <tile id="226">
+   <image source="Mapa Base/226.png" width="512" height="512"/>
+  </tile>
+  <tile id="227">
+   <image source="Mapa Base/227.png" width="512" height="512"/>
+  </tile>
+  <tile id="228">
+   <image source="Mapa Base/228.png" width="512" height="512"/>
+  </tile>
+  <tile id="229">
+   <image source="Mapa Base/229.png" width="512" height="512"/>
+  </tile>
+  <tile id="230">
+   <image source="Mapa Base/230.png" width="512" height="512"/>
+  </tile>
+  <tile id="231">
+   <image source="Mapa Base/231.png" width="512" height="512"/>
+  </tile>
+  <tile id="232">
+   <image source="Mapa Base/232.png" width="512" height="512"/>
+  </tile>
+  <tile id="233">
+   <image source="Mapa Base/233.png" width="512" height="512"/>
+  </tile>
+  <tile id="234">
+   <image source="Mapa Base/234.png" width="512" height="512"/>
+  </tile>
+  <tile id="235">
+   <image source="Mapa Base/235.png" width="512" height="512"/>
+  </tile>
+  <tile id="236">
+   <image source="Mapa Base/236.png" width="512" height="512"/>
+  </tile>
+  <tile id="237">
+   <image source="Mapa Base/237.png" width="512" height="512"/>
+  </tile>
+  <tile id="238">
+   <image source="Mapa Base/238.png" width="512" height="512"/>
+  </tile>
+  <tile id="239">
+   <image source="Mapa Base/239.png" width="512" height="512"/>
+  </tile>
+  <tile id="240">
+   <image source="Mapa Base/240.png" width="512" height="512"/>
+  </tile>
+  <tile id="241">
+   <image source="Mapa Base/241.png" width="512" height="512"/>
+  </tile>
+  <tile id="242">
+   <image source="Mapa Base/242.png" width="512" height="512"/>
+  </tile>
+  <tile id="243">
+   <image source="Mapa Base/243.png" width="512" height="512"/>
+  </tile>
+  <tile id="244">
+   <image source="Mapa Base/244.png" width="512" height="512"/>
+  </tile>
+  <tile id="245">
+   <image source="Mapa Base/245.png" width="512" height="512"/>
+  </tile>
+  <tile id="246">
+   <image source="Mapa Base/246.png" width="512" height="512"/>
+  </tile>
+  <tile id="247">
+   <image source="Mapa Base/247.png" width="512" height="512"/>
+  </tile>
+  <tile id="248">
+   <image source="Mapa Base/248.png" width="512" height="512"/>
+  </tile>
+  <tile id="249">
+   <image source="Mapa Base/249.png" width="512" height="512"/>
+  </tile>
+  <tile id="250">
+   <image source="Mapa Base/250.png" width="512" height="512"/>
+  </tile>
+  <tile id="251">
+   <image source="Mapa Base/251.png" width="512" height="512"/>
+  </tile>
+  <tile id="252">
+   <image source="Mapa Base/252.png" width="512" height="512"/>
+  </tile>
+  <tile id="253">
+   <image source="Mapa Base/253.png" width="512" height="512"/>
+  </tile>
+  <tile id="254">
+   <image source="Mapa Base/254.png" width="512" height="512"/>
+  </tile>
+  <tile id="255">
+   <image source="Mapa Base/255.png" width="512" height="512"/>
+  </tile>
+  <tile id="256">
+   <image source="Mapa Base/256.png" width="512" height="512"/>
+  </tile>
+  <tile id="257">
+   <image source="Mapa Base/257.png" width="512" height="512"/>
+  </tile>
+  <tile id="258">
+   <image source="Mapa Base/258.png" width="512" height="512"/>
+  </tile>
+  <tile id="259">
+   <image source="Mapa Base/259.png" width="512" height="512"/>
+  </tile>
+  <tile id="260">
+   <image source="Mapa Base/260.png" width="512" height="512"/>
+  </tile>
+  <tile id="261">
+   <image source="Mapa Base/261.png" width="512" height="512"/>
+  </tile>
+  <tile id="262">
+   <image source="Mapa Base/262.png" width="512" height="512"/>
+  </tile>
+  <tile id="263">
+   <image source="Mapa Base/263.png" width="512" height="512"/>
+  </tile>
+  <tile id="264">
+   <image source="Mapa Base/264.png" width="512" height="512"/>
+  </tile>
+  <tile id="265">
+   <image source="Mapa Base/265.png" width="512" height="512"/>
+  </tile>
+  <tile id="266">
+   <image source="Mapa Base/266.png" width="512" height="512"/>
+  </tile>
+  <tile id="267">
+   <image source="Mapa Base/267.png" width="512" height="512"/>
+  </tile>
+  <tile id="268">
+   <image source="Mapa Base/268.png" width="512" height="512"/>
+  </tile>
+  <tile id="269">
+   <image source="Mapa Base/269.png" width="512" height="512"/>
+  </tile>
+  <tile id="270">
+   <image source="Mapa Base/270.png" width="512" height="512"/>
+  </tile>
+  <tile id="271">
+   <image source="Mapa Base/271.png" width="512" height="512"/>
+  </tile>
+  <tile id="272">
+   <image source="Mapa Base/272.png" width="512" height="512"/>
+  </tile>
+  <tile id="273">
+   <image source="Mapa Base/273.png" width="512" height="512"/>
+  </tile>
+  <tile id="274">
+   <image source="Mapa Base/274.png" width="512" height="512"/>
+  </tile>
+  <tile id="275">
+   <image source="Mapa Base/275.png" width="512" height="512"/>
+  </tile>
+  <tile id="276">
+   <image source="Mapa Base/276.png" width="512" height="512"/>
+  </tile>
+  <tile id="277">
+   <image source="Mapa Base/277.png" width="512" height="512"/>
+  </tile>
+  <tile id="278">
+   <image source="Mapa Base/278.png" width="512" height="512"/>
+  </tile>
+  <tile id="279">
+   <image source="Mapa Base/279.png" width="512" height="512"/>
+  </tile>
+  <tile id="280">
+   <image source="Mapa Base/280.png" width="512" height="512"/>
+  </tile>
+  <tile id="281">
+   <image source="Mapa Base/281.png" width="512" height="512"/>
+  </tile>
+  <tile id="282">
+   <image source="Mapa Base/282.png" width="512" height="512"/>
+  </tile>
+  <tile id="283">
+   <image source="Mapa Base/283.png" width="512" height="512"/>
+  </tile>
+  <tile id="284">
+   <image source="Mapa Base/284.png" width="512" height="512"/>
+  </tile>
+  <tile id="285">
+   <image source="Mapa Base/285.png" width="512" height="512"/>
+  </tile>
+  <tile id="286">
+   <image source="Mapa Base/286.png" width="512" height="512"/>
+  </tile>
+  <tile id="287">
+   <image source="Mapa Base/287.png" width="512" height="512"/>
+  </tile>
+  <tile id="288">
+   <image source="Mapa Base/288.png" width="512" height="512"/>
+  </tile>
+  <tile id="289">
+   <image source="Mapa Base/289.png" width="512" height="512"/>
+  </tile>
+  <tile id="290">
+   <image source="Mapa Base/290.png" width="512" height="512"/>
+  </tile>
+  <tile id="291">
+   <image source="Mapa Base/291.png" width="512" height="512"/>
+  </tile>
+  <tile id="292">
+   <image source="Mapa Base/292.png" width="512" height="512"/>
+  </tile>
+  <tile id="293">
+   <image source="Mapa Base/293.png" width="512" height="512"/>
+  </tile>
+  <tile id="294">
+   <image source="Mapa Base/294.png" width="512" height="512"/>
+  </tile>
+  <tile id="295">
+   <image source="Mapa Base/295.png" width="512" height="512"/>
+  </tile>
+  <tile id="296">
+   <image source="Mapa Base/296.png" width="512" height="512"/>
+  </tile>
+  <tile id="297">
+   <image source="Mapa Base/297.png" width="512" height="512"/>
+  </tile>
+  <tile id="298">
+   <image source="Mapa Base/298.png" width="512" height="512"/>
+  </tile>
+ </tileset>
+ <layer id="1" name="Capa de patrones 1" width="23" height="13">
+  <data encoding="csv">
+1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,
+24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,
+47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,
+70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,
+93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,
+116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,
+139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,
+162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,
+185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,
+208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,
+231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,
+254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,
+277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299
+</data>
+ </layer>
+ <objectgroup id="2" name="Collisions">
+  <object id="1" x="2419" y="3668">
+   <polygon points="0,0 31,-18 45,-7 127,-60 159,-63 176,-73 6,-181 -145,-93 -131,-74 -110,-70 -94,-73"/>
+  </object>
+  <object id="2" x="2238" y="3031">
+   <polygon points="0,0 78,-54 -67,-174 -151,-128"/>
+  </object>
+  <object id="3" x="1915" y="2019">
+   <polygon points="0,0 57,50 126,2 68,-58"/>
+  </object>
+  <object id="4" x="2133" y="2036">
+   <polygon points="0,0 39,2 52,-8 8,-11"/>
+  </object>
+  <object id="5" x="2023" y="2198">
+   <polygon points="0,0 21,-27 -10,-25 -36,-1 -41,24 -20,25"/>
+  </object>
+  <object id="6" x="2100" y="2097">
+   <polygon points="0,0 37,-31 48,-29 48,-15 17,8"/>
+  </object>
+  <object id="7" x="2137" y="2195">
+   <polygon points="0,0 -12,-12 -29,1 -15,9"/>
+  </object>
+  <object id="8" x="2188" y="2157">
+   <polygon points="0,0 -13,-9 -13,-16 3,-27 14,-19 16,-11"/>
+  </object>
+  <object id="9" x="3019" y="2573">
+   <polygon points="0,0 19,-4 43,-5 54,-23 69,-30 77,-40 83,-53 99,-52 119,-58 131,-82 134,-92 144,-99 162,-133 150,-151 104,-178 38,-160 -28,-137 -47,-119 -72,-63 -82,-51 -93,-37 -86,-29 -66,-27 -50,-22 -38,-1 -23,-1 -17,8"/>
+  </object>
+ </objectgroup>
+</map>
