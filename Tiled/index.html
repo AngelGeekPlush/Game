@@ -35,11 +35,11 @@
     bottom: 1vh;          /* CLAVE: Lo pega al borde INFERIOR de la ventana. Si quieres un pequeño margen desde abajo, cámbialo a '20px' o '30px'. */
     left: 50%;          /* Coloca el inicio del elemento a la mitad del ancho de la ventana. */
     transform: translate(-50%); /* CLAVE PARA EL CENTRADO HORIZONTAL: Mueve el elemento hacia la izquierda por la mitad de su propio ancho, centrándolo perfectamente en la pantalla. */
-    
+    padding: 0;
     /* 2. Tamaño General: Ocupa la mayoría de la parte inferior de la pantalla */
-    width: 100vw;       /* OCUPA TODO EL ANCHO DE LA PANTALLA (100% del ancho del viewport). */
+       /* OCUPA TODO EL ANCHO DE LA PANTALLA (100% del ancho del viewport). */
     /* REMOVIDO: max-width: 700px; - Si quieres que ocupe todo el ancho, no hay 'max-width'. */
-    height: 65vh;       /* CLAVE: ALTURA del cuadro de diálogo, ocupando el 40% de la altura de la ventana (viewport). Puedes ajustar este valor (ej. 30vh para más bajo, 50vh para más alto) para que ocupe "la mayoría de la parte inferior" a tu gusto. */
+    /* CLAVE: ALTURA del cuadro de diálogo, ocupando el 40% de la altura de la ventana (viewport). Puedes ajustar este valor (ej. 30vh para más bajo, 50vh para más alto) para que ocupe "la mayoría de la parte inferior" a tu gusto. */
     min-height: 180px;  /* Asegura que la caja siempre tenga un alto mínimo en píxeles, para que no sea ilegible en pantallas muy pequeñas. */
     
     /* 3. Propiedades de la Imagen de Fondo (¡Aplicadas a ambos diálogos!) */
@@ -87,37 +87,31 @@
     */
      flex-direction: row; /* CLAVE: Los elementos (imagen y texto) irán uno al lado del otro, en una fila. */
      align-items: center; /* Centra verticalmente la imagen y el texto dentro de la fila. */
-     justify-content: center; /* Centra horizontalmente el grupo de imagen + texto dentro de la caja. */
-     padding: 2vh 3vw; /* AJUSTADO: Relleno interno para dar espacio al contenido.
+     justify-content:flex-start; /* Centra horizontalmente el grupo de imagen + texto dentro de la caja. */
+     padding: 2vw 2vw 2vw 4vw; /* AJUSTADO: Relleno interno para dar espacio al contenido.
                           Usamos 'vh' y 'vw' para que sea responsivo al tamaño de la pantalla.
                           Ajusta estos valores si quieres más o menos espacio. */
     box-sizing: border-box;
-    height: 50vh;
-    width: 95%;
+    height: 60vh;
+    width: 95vw;
     display: flex;       /* CLAVE: Activa Flexbox para organizar sus hijos (imagen y texto). */
     text-align: center;  /* Esto alinea el texto si no hay un <div> específico para el texto. */
-   
+  
    
 }
 
 #dialogueItemImage {
-    /* No repetimos position, top, left, transform, etc.;
-       su posicionamiento es manejado por el Flexbox de su padre (#textBoxContainer) y el padding de este. */
     
-    /* Tamaño responsivo para la imagen del ítem:
-       clamp(valor_minimo, tamaño_preferido, valor_maximo)
-       Ej: 100px mínimo, 15% del ancho del viewport preferido, 200px máximo.
-       AJUSTADO: Valores más razonables para que la imagen se vea bien y deje espacio. */
-    width: clamp(100px, 15vw, 250px); /* El ancho de la imagen */
-    height: clamp(100px, 15vw, 250px); /* El alto de la imagen (mantener igual al ancho para proporción cuadrada) */
-    margin-right: 3vw; /* CLAVE: Espacio a la derecha de la imagen, para separarla del texto. Ajusta este valor. */
-    
+    width: clamp(100px, 23vw, 300px); /* El ancho de la imagen */
+    height: clamp(100px, 23vw, 500px); /* El alto de la imagen (mantener igual al ancho para proporción cuadrada) */
+    margin-right: 0vw; /* CLAVE: Espacio a la derecha de la imagen, para separarla del texto. Ajusta este valor. */
     object-fit: contain;  /* La imagen se ajusta dentro de su espacio sin cortarse, manteniendo su proporción. */
     display: none; /* Oculto por defecto: JavaScript lo hará 'block' cuando el diálogo de ítem esté activo. */
     z-index: 12; /* Asegura que la imagen esté por encima de la imagen de fondo de la caja de diálogo. */
     border-radius: 8px; /* Bordes redondeados para la imagen. */
     image-rendering: pixelated; /* Si tus imágenes son pixel art, esto las mantiene nítidas. */
     animation: itemImagePopIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; /* Tu animación de aparición. */
+   
 }
 
 /* Mantén tu @keyframes itemImagePopIn si ya lo tienes. Si no, asegúrate de que esté. */
@@ -135,7 +129,7 @@
     color: #21190e; /* Considera cambiar a un color claro como #E0FFFF o #FFFFFF si el fondo es oscuro */
    /* Tamaño de fuente responsivo: AJUSTADO para que sea más grande y legible en una caja grande. */
    font-size: clamp(24px, 4vw, 48px);
-   padding: 5vh 1vw 0 1vw; 
+   padding: 1vh 1vw 0 1vw; 
     max-width: 100%;
    /* AJUSTADO: Relleno interno para el texto. Eliminamos padding-top/bottom aquí ya que el padding del padre y line-height lo manejan. */
     line-height: 1.3; /* Espaciado entre líneas para mejor legibilidad. */
@@ -176,8 +170,8 @@
     /*position: fixed; Mantiene la posición relativa al viewport */
     height: 50vh; /* Altura para PC, será anulada por la media query para móvil */
     width: 95%;  
-    font-size: clamp(4px, 3.5vw, 16px); /* AJUSTA: min a 8px (o menos), preferred a 2.8vw */
-    padding: 30vh 3vw;
+     font-size: clamp(24px, 4vw, 48px); /* AJUSTA: min a 8px (o menos), preferred a 2.8vw */
+    padding: 5vh 3vw;
     text-align: center;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -191,7 +185,7 @@
 /* Estilos para el TEXTO general dentro de #generalMessageBoxContainer (#generalMessageContent) */
 #generalMessageContent {
    
-    font-size: clamp(28px, 4.5vw, 56px);
+     font-size: clamp(24px, 4vw, 48px);
     color: #21190e;
     line-height: 1.4;
     text-align: center;
@@ -298,7 +292,7 @@
     bottom: 1vh; /* Se despega 5% del alto del viewport desde abajo */
     padding: 10px; /* Menor padding general */
     font-size: 0.8em;
-   background-color : rgba(5, 16, 91, 0.2); /* VERDE translúcido */
+   
    
   }
 
@@ -342,7 +336,7 @@
   padding: 1vh 2vw;
   font-size: clamp(14px, 3.5vw, 24px);
     max-width: 100%;
-    background: rgba(0, 255, 0, 0.2); /* VERDE translúcido */
+   
   }
             #dismissPrompt {
         /* Mensaje de cierre del ítem en móvil */
@@ -373,7 +367,7 @@
         text-align: center; /* Asegura que el texto esté centrado */
         justify-content: center; /* Centra el contenido verticalmente */
         align-items: center; /* Centra el contenido horizontalmente */
-        background-color: rgba(0, 255, 0, 0.2); /* VERDE translúcido */
+        
     }
            
     #generalDismissPrompt {
@@ -429,6 +423,6 @@
     <button id="closeInventoryButton">Cerrar</button>
 </div>
 
-<script type="module" src="./js/game.js?v=74"></script>
+<script type="module" src="./js/game.js?v=75"></script>
 </body>
 </html>
