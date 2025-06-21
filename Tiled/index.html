@@ -32,7 +32,7 @@
  .dialog-base-style {
     /* 1. Posicionamiento en la pantalla: Centrado en la parte inferior */
     position: fixed;    /* Fija el elemento a la ventana del navegador, para que no se mueva con el scroll. */
-    bottom: 0px;          /* CLAVE: Lo pega al borde INFERIOR de la ventana. Si quieres un pequeño margen desde abajo, cámbialo a '20px' o '30px'. */
+    bottom: 5vh;          /* CLAVE: Lo pega al borde INFERIOR de la ventana. Si quieres un pequeño margen desde abajo, cámbialo a '20px' o '30px'. */
     left: 50%;          /* Coloca el inicio del elemento a la mitad del ancho de la ventana. */
     transform: translate(-50%); /* CLAVE PARA EL CENTRADO HORIZONTAL: Mueve el elemento hacia la izquierda por la mitad de su propio ancho, centrándolo perfectamente en la pantalla. */
     
@@ -50,7 +50,7 @@
     overflow: hidden; /* Oculta cualquier contenido o fondo que se salga del borde de la caja. */
     
     /* 4. Estilos visuales generales (bordes, sombras, color de fondo de respaldo) */
-    
+    flex-direction: column;
     color: #fff; /* Color de texto predeterminado para toda la caja. */
     border: none; /* REMOVIDO: Ya que el cuadro se extiende de borde a borde, los bordes normales no se ven bien. */
     border-radius: 0; /* REMOVIDO: No hay bordes redondeados si ocupa toda la parte inferior. */
@@ -67,7 +67,7 @@
     pointer-events: none; /* Por defecto, no permite clics ni toques (JavaScript lo activará cuando el diálogo esté activo). */
     user-select: none; /* No permite seleccionar texto dentro de la caja. */
     animation: fadeIn 0.3s ease-out forwards; /* Tu animación de aparición. */
-    display: none; /* OCULTO POR DEFECTO: JavaScript controlará cuándo mostrarlo ('flex'). */
+    display: flex; /* OCULTO POR DEFECTO: JavaScript controlará cuándo mostrarlo ('flex'). */
     box-sizing: border-box; /* Crucial para que el 'padding' y 'border' se incluyan DENTRO del 'width' y 'height' del elemento. */
 }
 
@@ -110,7 +110,7 @@
     width: clamp(100px, 15vw, 200px); /* El ancho de la imagen */
     height: clamp(100px, 15vw, 200px); /* El alto de la imagen (mantener igual al ancho para proporción cuadrada) */
     width: 25vw; 
-    height: 50vh;
+    height: auto;
     margin-right: 3vw; /* CLAVE: Espacio a la derecha de la imagen, para separarla del texto. Ajusta este valor. */
     
     object-fit: fill;  /* La imagen se ajusta dentro de su espacio sin cortarse, manteniendo su proporción. */
@@ -129,65 +129,116 @@
 
    
  @media (max-width: 700px) {
-       #textBoxContainer {
-                 /* Aquí definimos cómo se organiza el contenido interno en móvil */
-        flex-direction: column; /* CLAVE: En móvil, la imagen irá ARRIBA del texto para un mejor layout vertical. */
-        padding: 2vh 2vw; /* Padding responsivo para móvil. */
-        justify-content: center; /* Centra verticalmente el contenido (imagen y texto) */
-        align-items: center; /* Centra horizontalmente el contenido (imagen y texto) */
-    }
-            #dialogueItemImage {
-        /* Tamaño de la imagen del ítem en móvil, cuando está arriba del texto. */
-        width: clamp(80px, 20vw, 120px); /* AJUSTADO: Ancho responsivo para móvil. */
-        height: clamp(80px, 20vw, 120px); /* AJUSTADO: Alto responsivo para móvil. */
-        margin-bottom: 2vh; /* CLAVE: Margen debajo de la imagen cuando está arriba del texto. */
-        margin-right: 0; /* Asegura que no haya margen a la derecha si la imagen está arriba. */
-        object-fit: fill; /* Mantiene la deformación si lo deseas para llenar el espacio. */
-    }
-            #textContent {
-        /* Estilos del texto del ítem en móvil */
-        font-size: clamp(14px, 3.5vw, 24px); /* AJUSTADO: Fuente más pequeña para móvil. */
-        padding: 0; /* Elimina padding aquí, ya que el padre tiene un padding general. */
-        text-align: center; /* AJUSTADO: Centrar texto en móvil si la imagen está arriba. */
-        max-width: 100%; /* El texto ocupa todo el ancho disponible en su columna. */
-        line-height: 1.2; /* Espaciado entre líneas para móviles. */
-    }
+
+
+  #textBoxContainer {
+    
+    display: flex;
+    flex-direction: row; /* Imagen a la izquierda, texto a la derecha */
+    align-items: flex-start; /* Alineación superior */
+    justify-content: flex-start;
+    gap: 3vw;
+    padding: 10px;
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+     box-sizing: border-box !important;
+  }
+
+    
+    #dialogueItemImage {
+     
+    display: block; /* En caso de que tu JS lo active dinámicamente */
+     width: clamp(80px, 25vw, 140px);
+    aspect-ratio: 3 / 5.3; /* Mantiene forma tipo carta, ajústalo según necesidad */
+    object-fit: contain;
+    flex-shrink: 0;
+    margin: 0;
+      height: auto;
+    
+  }
+ #textContent {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: auto;
+    box-sizing: border-box !important;
+    overflow-y: auto;
+    text-align: left;
+    font-size: clamp(14px, 3.5vw, 24px);
+    line-height: 1.4;
+     max-width: 100%;
+  width: 100%;
+  padding: 1vh 2vw;
+  font-size: clamp(14px, 3.5vw, 24px);
+    max-width: 100%;
+    background: rgba(0, 255, 0, 0.2); /* VERDE translúcido */
+  }
             #dismissPrompt {
         /* Mensaje de cierre del ítem en móvil */
         bottom: 1.5vh; /* AJUSTADO: Más cerca del borde inferior en móvil. */
         font-size: clamp(10px, 2vw, 18px); /* AJUSTADO. */
+        
     }
-            .dialog-base-style {
-               width: 98vw; /* AJUSTADO: Ligeramente más cerca de los bordes en móvil para aprovechar el espacio. */
-               height: 45vh; /* AJUSTADO: Una altura un poco más grande en móvil para que el contenido quepa mejor. */
-               bottom: 5px; /* Un pequeño margen desde el borde inferior. */
-               font-size: 0.9em; /* Fuente base un poco más pequeña. */
-               padding: 10px; /* Padding general más compacto en móvil. */
-             }
+  .dialog-base-style {
+    width: 96vw;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+     /* o el valor que necesites */
+    max-height: 80vh;
+    font-size: 0.9em;
+    padding: 10px;
+    background-size: 100% 100%;
+    background-position: center;
+     box-sizing: border-box !important;
+      justify-content: center;
+  align-items: center;
+  }
+
+         #generalMessageContent {
+        font-size: clamp(16px, 4vw, 28px); /* AJUSTADO: Fuente más pequeña para móvil, pero legible. */
+        margin-bottom: 1.5vh; /* AJUSTADO: Margen inferior para separar del mensaje de cierre. */
+        width: 100%; /* Asegura que el texto ocupe todo el ancho disponible. */
+        max-width: 100%; /* Asegura que no haya límites artificiales. */
+        text-align: center; /* Asegura que el texto esté centrado */
+    }
            #generalMessageBoxContainer {
-        /* No se necesitan cambios de flex-direction aquí, ya es 'column' en su regla principal */
-        padding: 2vh 3vw; /* Padding ajustado para móvil. */
-    }
-           #generalMessageContent {
-        font-size: clamp(16px, 4vw, 28px); /* AJUSTADO: Fuente más pequeña para móvil. */
+        /* Reafirmamos el display flex y direction column (que ya está en el estilo base) */
+        display: flex;
+        flex-direction: column; 
+        justify-content: center; /* Centra el contenido verticalmente */
+        align-items: center; /* Centra el contenido horizontalmente */
+
+        padding: 2.5vh 3vw; /* AJUSTADO: Padding responsivo para móvil. */
+        
+        /* Aseguramos que la altura se adapte al contenido si es necesario, pero sin anular la base */
+        height: auto; /* Permite que la altura de la caja se ajuste al contenido. */
+        min-height: auto;
+        max-height: auto;
     }
     #generalDismissPrompt {
         font-size: clamp(12px, 2.2vw, 20px); /* AJUSTADO. */
         margin-top: 1.5vh; /* Un poco más de margen. */
+        margin-bottom: 1.5vh;
+       
     }
     }
  
+
+
+
     #textBoxBackground {
         display: none; /* Asegura que el <img> no se vea si aún existe en HTML */
     }
+
  #textContent {
    /* Color de texto. Asegúrate de que este color sea visible sobre tu imagen de fondo. */
     color: #21190e; /* Considera cambiar a un color claro como #E0FFFF o #FFFFFF si el fondo es oscuro */
-    
+    margin-top: auto;
     /* Tamaño de fuente responsivo: AJUSTADO para que sea más grande y legible en una caja grande. */
-    font-size: clamp(24px, 4vw, 48px);
-    
-    padding: 22vh 1vw 0 1vw;/* AJUSTADO: Relleno interno para el texto. Eliminamos padding-top/bottom aquí ya que el padding del padre y line-height lo manejan. */
+   font-size: clamp(16px, 3vw, 22px);
+    max-width: 100%;
+   /* AJUSTADO: Relleno interno para el texto. Eliminamos padding-top/bottom aquí ya que el padding del padre y line-height lo manejan. */
     line-height: 1.3; /* Espaciado entre líneas para mejor legibilidad. */
     font-family: 'Press Start 2P', Arial, sans-serif; /* Tu fuente de juego. */
     text-align: left; /* CLAVE: Alinea el texto a la izquierda *dentro de su propio bloque*, lo que hace que fluya a la derecha de la imagen. */
@@ -199,14 +250,16 @@
     text-overflow: clip; /* No muestra '...' si el texto se corta. */
     box-sizing: border-box; /* Incluye padding y border en el tamaño total. */
     
-
+display: flex;
+flex-direction: column;
+justify-content: center;
     
     /* CLAVE: Define el ANCHO MÁXIMO que el texto puede ocupar.
        100% (ancho del contenedor flexible) - (ancho máx de la imagen + margen derecho de la imagen + un poco de espacio extra).
        Ej: 200px (ancho máximo de imagen) + 30px (margen derecho) = 230px. Añadimos 20px extra para seguridad. Total: 250px.
        max-width: calc(100% - 250px);
     */
-    max-width: calc(100% - 250px); /* AJUSTADO: Ancho máximo para el texto, deja espacio para la imagen. */
+    
     
     flex-grow: 1; /* CLAVE: Permite que el texto ocupe todo el espacio restante en la fila. */
 }
