@@ -43,11 +43,10 @@ export async function loadMap(path) {
         teleporterFrameWidth = teleporterSpriteSheet.width / TELEPORTER_NUM_FRAMES;
         teleporterFrameHeight = teleporterSpriteSheet.height;
        
-       
-       
-        processCollisionObjects(mapData);
+             
+         processCollisionObjects(mapData); // <--- ¡ESTA FUNCIÓN YA PROCESA TODO: COLISIONES, TELETRANSPORTADORES E INTERACCIONES!
         console.log("Polígonos de colisión cargados y procesados:", collisionPolygons.length);
-        console.log("Interacciones cargadas:", mapInteractions); // <-- AÑADE ESTA LÍNEA TEMPORAL
+        console.log("Interacciones (incluyendo tarjetas) cargadas:", Object.keys(mapInteractions).length); // <-- CAMBIA ESTE LOG ASÍ
 
 
         return mapData;
@@ -243,14 +242,14 @@ export function drawMap(ctx) {
             // Si tiene una ruta de imagen válida y la imagen está completa, dibújala
             // console.log(`[MAP - Draw] Interaction ${interaction.id}: imagePath='${interaction.imagePath}', shouldDrawImage: ${!!interaction.imagePath}, hasBeenTriggered: ${interaction.hasBeenTriggered}`); // <-- AÑADE ESTA LÍNEA
 
-            if (interaction.imagePath) { // Verificamos si imagePath existe (no vacío)
-                let interactionImage = loadedChunkImages[interaction.imagePath];
-                if (!interactionImage) {
-                    interactionImage = new Image();
-                    interactionImage.src = interaction.imagePath;
-                    loadedChunkImages[interaction.imagePath] = interactionImage;
-                    if (!interactionImage.complete) continue; 
-                }
+           if (interaction.imagePath && interaction.actionType !== 'collectItem') { // <--- ¡¡¡LÍNEA MODIFICADA!!!
+            let interactionImage = loadedChunkImages[interaction.imagePath];
+            if (!interactionImage) {
+                interactionImage = new Image();
+                interactionImage.src = interaction.imagePath;
+                loadedChunkImages[interaction.imagePath] = interactionImage;
+                if (!interactionImage.complete) continue; 
+            }
                 // Ajusta la Y para la esquina inferior, asumiendo que el objeto de Tiled es el área base
                 const adjustedDrawY = (interaction.y + interaction.height - interactionImage.height) - cameraY; 
 
@@ -277,11 +276,11 @@ export function drawMap(ctx) {
 
                     // Calculate text position to be centered on the image
                    const textX = drawX + interactionImage.width / 2; // Horizontal center of the drawn image
-        const textY = adjustedDrawY + interactionImage.height / 2; // Vertical center of the drawn image
+                   const textY = adjustedDrawY + interactionImage.height / 2; // Vertical center of the drawn image
 
-        ctx.fillText(interaction.id, textX, textY); // Dibuja el texto (ej., "Reaper", "01")
+                    ctx.fillText(interaction.id, textX, textY); // Dibuja el texto (ej., "Reaper", "01")
 
-        ctx.restore();// Restore the previous canvas state
+                     ctx.restore();// Restore the previous canvas state
             } else {
               /*   // ¡DIBUJA LA CAJA AMARILLA PROVISIONAL!
                 // Usa un color y un grosor muy visibles
@@ -402,6 +401,10 @@ function processCollisionObjects(data) {
                             hasBeenTriggered: false,
                             imagePath: interactionImagePath,
                             actionType: 'dialogue', // <-- ¡NUEVA PROPIEDAD!: Solo muestra un diálogo
+                            x: x,       // <--- ¡AÑADE ESTAS LÍNEAS!
+                            y: y,       // <--- ¡AÑADE ESTAS LÍNEAS!
+                            width: width, // <--- ¡AÑADE ESTAS LÍNEAS!
+                            height: height, // <--- ¡AÑADE ESTAS LÍNEAS!
                             polygon: [ 
                                 { x: x, y: y }, { x: x + width, y: y },
                                 { x: x + width, y: y + height }, { x: x, y: y + height }
@@ -435,6 +438,10 @@ function processCollisionObjects(data) {
                             imagePath: interactionImagePath,
                             actionType: 'collectItem', // <-- ¡NUEVA PROPIEDAD!: Muestra diálogo y luego añade item
                             itemToAdd: itemToAdd, // Guarda el nombre del item
+                            x: x,       // <--- ¡AÑADE ESTAS LÍNEAS!
+                            y: y,       // <--- ¡AÑADE ESTAS LÍNEAS!
+                            width: width, // <--- ¡AÑADE ESTAS LÍNEAS!
+                            height: height, // <--- ¡AÑADE ESTAS LÍNEAS!
                             polygon: [
                                 { x: x, y: y }, { x: x + width, y: y },
                                 { x: x + width, y: y + height }, { x: x, y: y + height }
@@ -452,65 +459,6 @@ function processCollisionObjects(data) {
 }
 // console.log("Teletransportadores procesados:", mapTeleporters); // Para depuración
 
-/**
- * Procesa los objetos de interacción del mapa de Tiled y los almacena en mapInteractions.
- * Se encarga de extraer las propiedades de posición (x, y, width, height) y
- * las propiedades personalizadas definidas en Tiled (actionType, itemToAdd, text, once, id de interacción).
- * @param {object} mapData Los datos JSON del mapa cargado.
- */
-function processInteractionObjects(mapData) {
-    mapInteractions = {}; // Reinicia el objeto por si se carga un nuevo mapa
-
-    // Busca la capa de objetos que contenga las interacciones
-    // Puedes ajustar el nombre de la capa si es diferente en tu Tiled (ej. 'Interacciones', 'Coleccionables')
-    const interactionLayer = mapData.layers.find(layer => layer.name === 'Tarjetas' && layer.type === 'objectgroup');
-
-    if (interactionLayer && interactionLayer.objects) {
-        interactionLayer.objects.forEach(tiledObject => {
-            // Creamos un objeto de interacción vacío para ir llenando
-            let interaction = {};
-
-            // Paso 1: Copiar propiedades de posición y tamaño directas del objeto de Tiled
-            interaction.x = tiledObject.x;
-            interaction.y = tiledObject.y;
-            interaction.width = tiledObject.width;
-            interaction.height = tiledObject.height;
-            
-            // Paso 2: Procesar las propiedades personalizadas definidas en Tiled
-            // Las propiedades personalizadas están en un array 'properties' dentro del objeto
-            if (tiledObject.properties) {
-                tiledObject.properties.forEach(prop => {
-                    interaction[prop.name] = prop.value;
-                });
-            }
-
-            // Paso 3: Calcular el polígono de colisión para la interacción
-            // Esto es crucial para que game.js pueda detectar la colisión con el jugador
-            // Asumimos que los objetos de Tiled son rectángulos para estas interacciones
-            interaction.polygon = [
-                { x: interaction.x, y: interaction.y },
-                { x: interaction.x + interaction.width, y: interaction.y },
-                { x: interaction.x + interaction.width, y: interaction.y + interaction.height },
-                { x: interaction.x, y: interaction.y + interaction.height }
-            ];
-
-            // Paso 4: Almacenar el objeto de interacción en mapInteractions
-            // Usamos la propiedad 'id' del objeto de Tiled como clave principal
-            // (Asegúrate de que tus objetos en Tiled tengan un ID único o una propiedad 'id' personalizada)
-            // Si la propiedad 'id' en el JSON de Tiled es la nativa del objeto, úsala directamente.
-            // Si definiste una propiedad personalizada 'id' en Tiled, usa esa.
-            if (interaction.id) { // Si tienes una propiedad personalizada 'id' definida en Tiled
-                mapInteractions[interaction.id] = interaction;
-            } else if (tiledObject.id) { // Si usas el ID nativo que Tiled asigna
-                mapInteractions[tiledObject.id] = interaction;
-            } else {
-                console.warn("Objeto de interacción en Tiled sin ID:", tiledObject);
-            }
-        });
-    } else {
-        console.warn("Capa de interacciones 'Tarjetas' no encontrada o sin objetos.");
-    }
-}
 
 
 

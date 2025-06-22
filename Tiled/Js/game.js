@@ -53,6 +53,14 @@ cardInteractionIcon.onerror = () => { // <--- AÑADIDA: Manejo de error si la im
     cardInteractionIcon.src = 'https://placehold.co/32x32/ff0000/ffffff?text=X'; // Placeholder de error
 };
 
+
+// ¡NUEVAS VARIABLES PARA LA ANIMACIÓN DEL SPRITE DE TARJETA!
+const CARD_NUM_FRAMES = 4; // Tu spritesheet tiene 4 imágenes
+const CARD_ANIMATION_SPEED = 0.15; // Tiempo en segundos por cada frame (ajusta para la velocidad)
+let cardCurrentFrame = 0; // Frame actual que se está mostrando
+let cardFrameTimer = 0; // Temporizador para el cambio de frame
+const CARD_FRAME_WIDTH = 128; // Ancho de un solo frame (512 / 4)
+const CARD_FRAME_HEIGHT = 128; // Alto de un solo frame (tu imagen es 128 de alto)
 let lastTime = 0;
 let deltaTime = 0;
 let lastChunkManageTime = 0;
@@ -103,6 +111,77 @@ const itemDefinitions = {
         dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta ReaperJr_S.webp', // <-- ¡VERIFICA ESTA RUTA DE IMAGEN PARA EL DIÁLOGO!
         
     },
+
+       'Tarjeta Bianca': {
+        name: 'Tarjeta Bianca',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Bianca_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Bianca_S.webp',
+    },
+    'Tarjeta Angelo': {
+        name: 'Tarjeta Angelo',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Angelo_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Angelo_S.webp',
+    },
+    'Tarjeta Brujita': {
+        name: 'Tarjeta Brujita',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Brujita_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Brujita_S.webp',
+    },
+    'Tarjeta Marco': {
+        name: 'Tarjeta Marco',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Marco_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Marco_S.webp',
+    },
+    'Tarjeta Hugo': {
+        name: 'Tarjeta Hugo',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Hugo_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Hugo_S.webp',
+    },
+    'Tarjeta Colmillo': {
+        name: 'Tarjeta Colmillo',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Colmillo_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Colmillo_S.webp',
+    },
+    'Tarjeta Hoku Koko': {
+        name: 'Tarjeta Hoku Koko',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Hoku Koko_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Hoku Koko_S.webp',
+    },
+    'Tarjeta Spook': {
+        name: 'Tarjeta Spook',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Spook_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Spook_S.webp',
+    },
+    'Tarjeta Frankie': {
+        name: 'Tarjeta Frankie',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Frankie_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Frankie_S.webp',
+    },
+    'Tarjeta Samhain': {
+        name: 'Tarjeta Samhain',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Samhain_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Samhain_S.webp',
+    },
+    'Tarjeta Joaquin': {
+        name: 'Tarjeta Joaquin',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Joaquin_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Joaquin_S.webp',
+    },
+    'Tarjeta Conde-nadito': {
+        name: 'Tarjeta Conde-nadito',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Condenadito_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Condenadito_S.webp',
+    },
+    'Tarjeta Conde-nado': {
+        name: 'Tarjeta Conde-nado',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Condenado_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Condenado_S.webp',
+    },
+    'Tarjeta Chamuco': {
+        name: 'Tarjeta Chamuco',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta El Chamuco_S.webp',
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta El Chamuco_S.webp',
+    },
     // Añade más ítems aquí a medida que los crees en Tiled y les asignes 'itemToAdd'
 };
 
@@ -135,7 +214,7 @@ initializeInput(canvas, currentScale);
 function gameLoop(timestamp) {
    deltaTime = (timestamp - lastTime) / 1000;
     lastTime = timestamp;
-// --- NUEVO: Actualiza el texto con efecto de máquina de escribir si está activo ---
+ // --- NUEVO: Actualiza el texto con efecto de máquina de escribir si está activo ---
     if (isTyping) { // <--- AÑADIDA: Solo llama a typeText() si el texto se está animando
         typeText(deltaTime); // <--- AÑADIDA: Llama a la función de animación de escritura
     }
@@ -216,19 +295,27 @@ function gameLoop(timestamp) {
         }
             // Lógica de interacciones (solo si no hay diálogo activo y no se ha teletransportado)
              
+             if (mapData && Object.keys(mapInteractions).length > 0) { // <--- AÑADE ESTA LÍNEA (la que no tenías)
                 const playerPolygonForInteraction = getPlayerPolygon();
-               for (const interactionId in mapInteractions) {
-            const interaction = mapInteractions[interactionId];
-            if (!interaction.once || !interaction.hasBeenTriggered) {
-                if (checkCollision(playerPolygonForInteraction, interaction.polygon)) {
-                    // ¡CLAVE!: Decide qué cuadro de diálogo mostrar según el actionType
-                    if (interaction.actionType === 'collectItem') {
-                        showItemDialogue(interaction.text, interaction); // Muestra el cuadro de ÍTEMS
-                    } else if (interaction.actionType === 'dialogue') {
-                        showGeneralDialogue(interaction.text, interaction); // Muestra el cuadro GENERAL
+                for (const interactionId in mapInteractions) {
+                    const interaction = mapInteractions[interactionId];
+
+                    // Si el objeto de interacción tiene la propiedad 'once' y ya fue disparado, lo saltamos.
+                    if (interaction.once && interaction.hasBeenTriggered) {
+                        continue; // Pasa a la siguiente interacción si ya ha sido activada y es de un solo uso
                     }
-                    // Si hay otros actionType, puedes añadir más 'else if' aquí.
-                    break; // Solo activa una interacción a la vez
+
+                    // Comprueba la colisión del jugador con el área de interacción
+                    if (checkCollision(playerPolygonForInteraction, interaction.polygon)) {
+                        // Una vez que una interacción es detectada, mostramos el diálogo adecuado.
+                        if (interaction.actionType === 'collectItem') {
+                            showItemDialogue(interaction.text, interaction);
+                        } else if (interaction.actionType === 'dialogue') {
+                            showGeneralDialogue(interaction.text, interaction);
+                        }
+                        // ¡CLAVE!: Después de activar UNA interacción, salimos del bucle 'for'.
+                        // Esto es CRUCIAL para evitar que múltiples interacciones se disparen en el mismo fotograma.
+                        break; // Solo activa una interacción a la vez
             }
         }
     }
@@ -237,7 +324,7 @@ function gameLoop(timestamp) {
 
  // Esta línea debe ir DESPUÉS de la lógica del jugador y ANTES de drawMap.
     updateTeleporterAnimation(deltaTime); // <--- ¡AÑADE ESTA LÍNEA AQUÍ!
-
+   updateCardAnimation(deltaTime); 
     // Actualizar cámara (siempre se actualiza, incluso con diálogo, para que los elementos de UI se dibujen correctamente)
     updateCamera(mapData);
 
@@ -252,7 +339,59 @@ function gameLoop(timestamp) {
     drawMap(ctx);
     drawPlayer(ctx);
     drawJoystick(ctx);
+// --- NUEVO: Dibujar iconos para puntos de interacción de tarjetas O UN RECTÁNGULO DE DEPURACIÓN ---
+// ESTA ES LA CONDICIÓN CLAVE PARA EL DIBUJO DE ICONOS: SOLO DIBUJA SI EL MAPA Y LAS INTERACCIONES YA ESTÁN CARGADOS.
+if (mapData && Object.keys(mapInteractions).length > 0) { // <--- ¡¡¡AÑADE ESTA LÍNEA CRÍTICA AQUÍ!!!
+    // ¡¡¡NUEVO LOG CRÍTICO AQUÍ!!! Muestra el estado real de mapInteractions
+   // console.log("DEBUG GAME.JS: Estado de mapInteractions justo antes de dibujar:", JSON.parse(JSON.stringify(mapInteractions)));
 
+    for (const interactionId in mapInteractions) {
+        const interaction = mapInteractions[interactionId];
+
+        // MÁS LOGS DE DEPURACIÓN para ver qué 'interaction' está procesando
+       // console.log(`DEBUG GAME.JS: Procesando icono para interactionId: ${interactionId}. Propiedades: x=${interaction.x}, y=${interaction.y}, actionType=${interaction.actionType}, hasBeenTriggered=${interaction.hasBeenTriggered}`);
+
+        // Solo dibujamos el icono/rectángulo si:
+        // 1. La acción es 'collectItem' (es una tarjeta)
+        // 2. NO ha sido disparada aún (si es 'once' y hasBeenTriggered es false)
+        // 3. Las coordenadas x e y son números válidos (¡CRÍTICO para evitar NaN!)
+        if (interaction.actionType === 'collectItem' && 
+            (!interaction.once || !interaction.hasBeenTriggered) &&
+            typeof interaction.x === 'number' && !isNaN(interaction.x) &&
+            typeof interaction.y === 'number' && !isNaN(interaction.y)
+        ) {
+            // Calculamos la posición del icono/rectángulo en la pantalla, relativa a la cámara
+            const drawX = interaction.x - cameraX;
+            const drawY = interaction.y - cameraY;
+
+            // Definimos el tamaño deseado para el icono/rectángulo.
+            // Usaremos el width/height del objeto de Tiled si son válidos, si no, un tamaño por defecto.
+            const iconWidth = interaction.width > 0 ? interaction.width : 32;
+            const iconHeight = interaction.height > 0 ? interaction.height : 32;
+
+            // PRIMERO: Dibuja un rectángulo de depuración para VER el área del objeto.
+            ctx.save(); // Guarda el estado actual del contexto del canvas
+            
+            ctx.restore(); // Restaura el estado previo del contexto
+            
+           if (cardInteractionIcon.complete && cardInteractionIcon.naturalWidth > 0) {
+    ctx.drawImage(
+        cardInteractionIcon, // La imagen del spritesheet
+        cardCurrentFrame * CARD_FRAME_WIDTH, // sourceX: X del frame actual en el spritesheet
+        0, // sourceY: Y del frame (siempre 0 porque es una sola fila)
+        CARD_FRAME_WIDTH, // sourceWidth: Ancho del frame a recortar
+        CARD_FRAME_HEIGHT, // sourceHeight: Alto del frame a recortar
+        drawX, // destX: Posición X en el canvas
+        drawY, // destY: Posición Y en el canvas
+        iconWidth, // destWidth: Ancho final para dibujar en el canvas (lo que ya calculaste)
+        iconHeight // destHeight: Alto final para dibujar en el canvas (lo que ya calculaste)
+    );
+} else {
+    console.warn("Icono de interacción de tarjeta no cargado o inválido (dentro del bucle de dibujo).", cardInteractionIcon.src);
+}
+        }
+    }
+}
     // Dibujar los polígonos de colisión para depuración
     debugDrawCollisionPolygons(ctx);
     debugDrawPlayerCollider(ctx);
@@ -263,32 +402,7 @@ function gameLoop(timestamp) {
 
 
 // --- NUEVO: Dibujar iconos para puntos de interacción de tarjetas ---
-// Iteramos sobre todos los objetos de interacción cargados desde el mapa
-for (const interactionId in mapInteractions) {
-    const interaction = mapInteractions[interactionId];
-     console.log("Procesando interacción:", interactionId, interaction.actionType, "once:", interaction.once, "hasBeenTriggered:", interaction.hasBeenTriggered, "x:", interaction.x, "y:", interaction.y);
-    // Solo dibujamos el icono si:
-    // 1. La acción es 'collectItem' (es una tarjeta u objeto coleccionable)
-    // 2. No tiene la propiedad 'once' o, si la tiene, NO ha sido disparada aún (no recolectada)
-    if (interaction.actionType === 'collectItem' && (!interaction.once || !interaction.hasBeenTriggered)) {
-        // Calculamos la posición del icono en la pantalla, relativa a la cámara
-        const drawX = interaction.x - cameraX;
-        const drawY = interaction.y - cameraY;
-        console.log(`Dibujando icono para ${interactionId}: drawX=${drawX}, drawY=${drawY}. Cámara: cameraX=${cameraX}, cameraY=${cameraY}`);
 
-        // Definimos el tamaño deseado para el icono en el mapa
-        // Puedes ajustar estos valores según el tamaño de tu sprite y cómo quieres que se vea.
-        const iconWidth = 32;  // <--- AJUSTA ESTE VALOR
-        const iconHeight = 32; // <--- AJUSTA ESTE VALOR
-
-        // Dibujamos el icono. Asegúrate de que cardInteractionIcon se haya cargado.
-        if (cardInteractionIcon.complete && cardInteractionIcon.naturalWidth > 0) {
-            ctx.drawImage(cardInteractionIcon, drawX, drawY, iconWidth, iconHeight);
-        } else {
-            console.warn("Icono de interacción de tarjeta no cargado o inválido (dentro del bucle).");
-        }
-    }
-}
     
     // ¡DESCOMENTADAS!: Dibujar los polígonos de colisión para depuración
     debugDrawCollisionPolygons(ctx); 
@@ -922,5 +1036,18 @@ function updateInventoryUI() {
             
             inventoryList.appendChild(listItem);
         });
+    }
+}
+
+/**
+ * Actualiza el frame de animación del sprite de la tarjeta.
+ * Se debe llamar en cada frame del gameLoop.
+ * @param {number} deltaTime - Tiempo transcurrido desde el último frame en segundos.
+ */
+function updateCardAnimation(deltaTime) {
+    cardFrameTimer += deltaTime;
+    if (cardFrameTimer >= CARD_ANIMATION_SPEED) {
+        cardCurrentFrame = (cardCurrentFrame + 1) % CARD_NUM_FRAMES;
+        cardFrameTimer = 0;
     }
 }

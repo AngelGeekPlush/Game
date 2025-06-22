@@ -32534,11 +32534,6 @@
                          "value":"01"
                         }, 
                         {
-                         "name":"imagePath",
-                         "type":"string",
-                         "value":""
-                        }, 
-                        {
                          "name":"once",
                          "type":"bool",
                          "value":true
@@ -32554,6 +32549,33 @@
                  "width":72.6667,
                  "x":2292.67,
                  "y":1260
+                }, 
+                {
+                 "height":131.1667,
+                 "id":1152,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"02"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Y ahora donde estoy?? que escalofrios, este sitio me da algo de miedo "
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":72.6667,
+                 "x":3796.99998333333,
+                 "y":3901.66665
                 }],
          "offsetx":-2,
          "offsety":-26,
@@ -33022,7 +33044,7 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"FRANKIE: fue creado en un laboratorio secreto por el enigm\u00e1tico Doctor Mortis, un cient\u00edfico loco que se especializaba en dar vida a lo inanimado._NEXT_ no era un monstruo com\u00fan; estaba hecho de retazos de peluches, Su cerebro, sin embargo, pertenec\u00eda a un conejo de peluche llamado Bunnie,_NEXT_ quien ten\u00eda un insaciable amor por las zanahorias."
+                         "value":"Frankie fue creado en un laboratorio secreto por el enigm\u00e1tico Doctor Mortis, un cient\u00edfico loco que se especializaba en dar vida a lo inanimado._NEXT_ no era un monstruo com\u00fan; estaba hecho de retazos de peluches, Su cerebro, sin embargo, pertenec\u00eda a un conejo de peluche llamado Bunnie,_NEXT_ quien ten\u00eda un insaciable amor por las zanahorias."
                         }],
                  "rotation":0,
                  "type":"",
@@ -33064,7 +33086,7 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"SAMHAIN: Nacido en el cultivo de calabazas del laboratorio del Dr Frankestein, cobraron vida por todos los experimentos que se hicieron y enterraban en el huerto,_NEXT_el Dr las vende como protectores de las casas y decoraci\u00f3n ya que intimidan a los extra\u00f1os,_NEXT_ su \u00fanico enemigo es el conde Nadito que el encanta su sabor y por ello genera conflictos en el Dr. Y el Conde Nado el cual le jala sus orejas"
+                         "value":"Samhain a nacido en el cultivo de calabazas del laboratorio del Dr Frankestein, cobraron vida por todos los experimentos que se hicieron y enterraban en el huerto,_NEXT_el Dr las vende como protectores de las casas y decoraci\u00f3n ya que intimidan a los extra\u00f1os,_NEXT_ su \u00fanico enemigo es el conde Nadito que el encanta su sabor y por ello genera conflictos en el Dr. Y el Conde Nado el cual le jala sus orejas"
                         }],
                  "rotation":0,
                  "type":"",
@@ -33106,7 +33128,7 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"JOAQUIN: es un talentoso arlequin que le encanta esconder los calcetines y es esl cupable que solo encuentres uno._NEXT_ Le gusta jugar bromas pero tambi\u00e9n le encanta hacer poemas de amor y escribir rimas aunque no es muy bueno."
+                         "value":"Joaquin es un talentoso arlequin que le encanta esconder los calcetines y es esl cupable que solo encuentres uno._NEXT_ Le gusta jugar bromas pero tambi\u00e9n le encanta hacer poemas de amor y escribir rimas aunque no es muy bueno."
                         }],
                  "rotation":0,
                  "type":"",
@@ -33248,7 +33270,7 @@
          "y":0
         }],
  "nextlayerid":15,
- "nextobjectid":1152,
+ "nextobjectid":1153,
  "orientation":"orthogonal",
  "renderorder":"right-up",
  "tiledversion":"1.11.2",
