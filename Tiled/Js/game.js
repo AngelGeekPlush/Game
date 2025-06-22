@@ -1012,30 +1012,30 @@ function updateInventoryUI() {
         noItemsMessage.textContent = 'Inventario vacío.';
         inventoryList.appendChild(noItemsMessage);
     } else {
-        playerInventory.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.className = 'inventory-item';
+    playerInventory.forEach(item => { // ¡Aquí 'item' ya es el objeto completo!
+        const listItem = document.createElement('li');
+        listItem.className = 'inventory-item'; // Esto está bien para el contenedor del ítem
 
-            // Si el ítem tiene una ruta de imagen, crea la etiqueta <img>
-            if (item.imagePath) {
-                const itemImage = document.createElement('img');
-                itemImage.src = item.imagePath;
-                itemImage.alt = item.name; // Texto alternativo para accesibilidad
-                itemImage.className = 'inventory-item-icon'; // Para aplicar estilos CSS
-                itemImage.onerror = () => { // Manejo de error si la imagen no carga
-                    itemImage.src = `https://placehold.co/32x32/cccccc/333333?text=N/A`;
-                    console.warn(`No se pudo cargar la imagen para el ítem '${item.name}' en la ruta: ${item.imagePath}`);
-                };
-                listItem.appendChild(itemImage);
-            }
-            
-            // Crea el texto del nombre del ítem
-            const itemText = document.createElement('span');
-            itemText.textContent = item.name;
-            listItem.appendChild(itemText);
-            
-            inventoryList.appendChild(listItem);
-        });
+        // Si el ítem tiene una ruta de imagen, crea la etiqueta <img>
+        if (item.imagePath) {
+            const itemImage = document.createElement('img');
+            itemImage.src = item.imagePath;
+            itemImage.alt = item.name;
+            itemImage.className = 'inventory-item-icon'; // Esto está bien para la imagen
+            itemImage.onerror = () => {
+                itemImage.src = `https://placehold.co/32x32/cccccc/333333?text=N/A`;
+                console.warn(`No se pudo cargar la imagen para el ítem '${item.name}' en la ruta: ${item.imagePath}`);
+            };
+            listItem.appendChild(itemImage);
+        }
+
+        // Crea el texto del nombre del ítem
+        const itemText = document.createElement('span');
+        itemText.textContent = item.name; // <--- MODIFICAR ESTA LÍNEA
+        listItem.appendChild(itemText);
+
+        inventoryList.appendChild(listItem);
+    });
     }
 }
 

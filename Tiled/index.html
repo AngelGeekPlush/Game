@@ -192,91 +192,130 @@
     margin-top: 0; /* AJUSTADO: Un margen superior para separarlo del texto principal. */
     
 }
+#inventoryPanel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw; /* Un poco más ancho para el álbum */
+    height: 80vh; /* Un poco más alto para el álbum */
+    max-width: 900px; /* Ancho máximo aumentado para el diseño de cuadrícula */
+    max-height: 800px; /* Alto máximo aumentado */
+    background-color: rgba(30, 30, 30, 0.95);
+    border: 2px solid #663399;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    color: white;
+    font-family: 'Press Start 2P', Arial, sans-serif;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 100;
+    overflow-y: auto; /* Mantenemos el scroll si hay muchos ítems */
+    gap: 15px; /* Espacio entre el título, lista y botón */
+}
 
-    #inventoryPanel {
-        position: fixed; /* Lo fija en la pantalla */
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); /* Centra el panel en la pantalla */
-        width: 80vw; /* Ancho del 80% del viewport */
-        height: 70vh; /* Alto del 70% del viewport */
-        max-width: 500px; /* Ancho máximo para pantallas grandes */
-        max-height: 700px; /* Alto máximo para pantallas grandes */
-        background-color: rgba(30, 30, 30, 0.95); /* Fondo oscuro semitransparente */
-        border: 2px solid #663399; /* Borde morado para estilo RPG */
-        border-radius: 15px; /* Bordes redondeados */
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Sombra suave */
-        color: white;
-        font-family: 'Press Start 2P', Arial, sans-serif;
-        padding: 20px;
-        display: none; /* ¡Oculto por defecto! JavaScript lo mostrará */
-        flex-direction: column; /* Organiza el contenido verticalmente */
-        justify-content: flex-start; /* Alinea el contenido al inicio */
-        align-items: center; /* Centra el contenido horizontalmente */
-        z-index: 100; /* Asegura que esté por encima de todo lo demás */
-        overflow-y: auto; /* Permite desplazamiento vertical si hay muchos ítems */
-    }
+#inventoryTitle {
+    font-size: clamp(24px, 5vw, 48px); /* Título un poco más grande */
+    color: #FFD700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-align: center; /* Asegura que el título esté centrado */
+}
 
-    #inventoryTitle {
-        font-size: clamp(20px, 4vw, 36px); /* Título responsivo */
-        color: #FFD700; /* Color dorado para el título */
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para el texto */
-    }
+/* Estilos clave para la vista de álbum: la lista de inventario */
+#inventoryList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* La lista ocupa todo el ancho disponible del panel */
+    flex-grow: 1;
+    display: grid; /* ¡Cambiamos a CSS Grid! */
+    /*
+     * Esto crea columnas de tamaño automático, mín. 100px, máx. 1fr (distribución equitativa).
+     * Puedes ajustar minmax para controlar el tamaño de los "slots" de las tarjetas.
+     * Cuantos más pequeños los minmax, más columnas cabrán.
+     */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px; /* Espacio entre cada tarjeta/ítem del inventario */
+    justify-content: center; /* Centra los ítems en la cuadrícula */
+    align-content: flex-start; /* Alinea los ítems al inicio del contenedor grid */
+    overflow-y: auto; /* Permite desplazamiento si las tarjetas exceden el alto del panel */
+    padding-bottom: 20px; /* Espacio al final de la lista antes del botón de cerrar */
+}
 
-    #inventoryList {
-        list-style: none; /* Elimina los puntos de la lista */
-        padding: 0;
-        margin: 0;
-        width: 90%; /* Ancho de la lista dentro del panel */
-        flex-grow: 1; /* Permite que la lista ocupe el espacio disponible */
-        text-align: center; /* Centra el texto de los ítems */
-    }
+/* Estilos para cada ítem individual (cada "tarjeta" en el álbum) */
+.inventory-item {
+    display: flex;
+    flex-direction: column; /* Icono arriba, nombre abajo */
+    align-items: center; /* Centra el icono y el texto */
+    justify-content: flex-start; /* Alinea el contenido hacia arriba */
+    background-color: rgba(60, 60, 60, 0.7); /* Fondo más claro para cada tarjeta */
+    border: 2px solid #9966CC; /* Borde morado más claro para las tarjetas */
+    border-radius: 10px; /* Bordes redondeados para simular tarjetas */
+    padding: 10px;
+    aspect-ratio: 1 / 1.3; /* Proporción de ancho/alto para parecer una tarjeta (ej: 1:1.3 vertical) */
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Suaviza efectos al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad de tarjeta */
+}
 
-    .inventory-item {
-        display: flex; /* Para alinear el icono y el texto */
-        align-items: center; /* Centra verticalmente el icono y el texto */
-        justify-content: center; /* Centra horizontalmente el ítem completo */
-        font-size: clamp(14px, 2.5vw, 24px); /* Tamaño del texto del ítem responsivo */
-        padding: 8px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria */
-        text-transform: capitalize; /* Capitaliza la primera letra */
-    }
+.inventory-item:hover {
+    transform: translateY(-5px); /* Efecto "levantar" al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Sombra más pronunciada */
+    cursor: pointer; /* Indica que es interactivo (si planeas agregar clics) */
+}
 
-    .inventory-item:last-child {
-        border-bottom: none; /* No hay línea en el último ítem */
-    }
+/* Quitamos el borde inferior que tenía en la vista de lista */
+.inventory-item:last-child {
+    border-bottom: none;
+}
 
-    .inventory-item-icon {
-        width: 32px; /* Tamaño del icono */
-        height: 32px;
-        margin-right: 10px; /* Espacio entre icono y texto */
-        image-rendering: pixelated; /* Si tus iconos son pixel art */
-    }
+/* Estilos para el icono dentro de la tarjeta */
+.inventory-item-icon {
+    width: 80px;   /* Tamaño del icono, ajusta según te guste */
+    height: 80px;  /* Asegura que sea un cuadrado */
+    margin-bottom: 10px; /* Espacio entre el icono y el nombre */
+    object-fit: contain; /* Asegura que la imagen se vea bien sin distorsión */
+    image-rendering: pixelated; /* Si tus iconos son pixel art */
+    border-radius: 5px; /* Ligeros bordes redondeados para el icono */
+}
 
-    #closeInventoryButton {
-        background-color: #A0522D; /* Color marrón para el botón */
-        color: white;
-        font-family: 'Press Start 2P', Arial, sans-serif;
-        font-size: clamp(12px, 2vw, 20px);
-        padding: 10px 20px;
-        border: 2px solid #CD853F; /* Borde más claro */
-        border-radius: 8px;
-        cursor: pointer;
-        margin-top: 20px;
-        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
-        transition: background-color 0.2s ease, transform 0.1s ease;
-    }
+/* Estilos para el nombre del ítem */
+.inventory-item-name {
+    font-size: clamp(10px, 1.8vw, 18px); /* Tamaño de fuente responsivo para el nombre */
+    color: #FFEB3B; /* Color amarillento para los nombres */
+    font-weight: bold;
+    word-break: break-word; /* Evita que nombres largos se salgan */
+    line-height: 1.2;
+}
 
-    #closeInventoryButton:hover {
-        background-color: #CD853F;
-        transform: translateY(-2px); /* Efecto al pasar el ratón */
-    }
+/* Tus estilos existentes para el botón de cerrar */
+#closeInventoryButton {
+    background-color: #A0522D;
+    color: white;
+    font-family: 'Press Start 2P', Arial, sans-serif;
+    font-size: clamp(12px, 2vw, 20px);
+    padding: 10px 20px;
+    border: 2px solid #CD853F;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px; /* Asegura espacio suficiente debajo de la lista de ítems */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
 
-    #closeInventoryButton:active {
-        background-color: #8B4513;
-        transform: translateY(0); /* Efecto al presionar */
-    }
+#closeInventoryButton:hover {
+    background-color: #CD853F;
+    transform: translateY(-2px);
+}
+
+#closeInventoryButton:active {
+    background-color: #8B4513;
+    transform: translateY(0);
+}
     .mobile-ui-button {
     position: fixed;
     bottom: 80px;
@@ -450,14 +489,19 @@
     <div id="generalDismissPrompt">.</div>
 </div>
 
-<!-- El panel de inventario y el script del juego deben ir DESPUÉS de estos dos divs de diálogo -->
 <div id="inventoryPanel">
-    <h2 id="inventoryTitle">Inventario</h2>
+    <h2 id="inventoryTitle">Tu Colección de Tarjetas</h2>
     <ul id="inventoryList">
-        <!-- Los ítems se insertarán aquí con JavaScript -->
+        <!-- Los ítems del inventario se agregarán aquí dinámicamente con JavaScript -->
+        <!-- Ejemplo de un ítem: -->
+        <!--
+        <li class="inventory-item">
+            <img src="./Tarjetas/Sweet Nightmare/Tarjeta Bianca_S.webp" alt="Tarjeta Bianca" class="inventory-item-icon">
+            <span class="inventory-item-name">Bianca</span>
+        </li>
+        -->
     </ul>
-    <button id="closeInventoryButton">Cerrar</button>
-</div>
+    <button id="closeInventoryButton">Cerrar</button></div>
 
   <button id="mobileInventoryButton" class="mobile-ui-button">
         <img src="./img/Bolso Inventario.webp" alt="Inventario" class="mobile-inventory-icon"> <!-- <--- ¡NUEVA LÍNEA! -->
