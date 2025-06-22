@@ -452,7 +452,65 @@ function processCollisionObjects(data) {
 }
 // console.log("Teletransportadores procesados:", mapTeleporters); // Para depuración
 
+/**
+ * Procesa los objetos de interacción del mapa de Tiled y los almacena en mapInteractions.
+ * Se encarga de extraer las propiedades de posición (x, y, width, height) y
+ * las propiedades personalizadas definidas en Tiled (actionType, itemToAdd, text, once, id de interacción).
+ * @param {object} mapData Los datos JSON del mapa cargado.
+ */
+function processInteractionObjects(mapData) {
+    mapInteractions = {}; // Reinicia el objeto por si se carga un nuevo mapa
 
+    // Busca la capa de objetos que contenga las interacciones
+    // Puedes ajustar el nombre de la capa si es diferente en tu Tiled (ej. 'Interacciones', 'Coleccionables')
+    const interactionLayer = mapData.layers.find(layer => layer.name === 'Tarjetas' && layer.type === 'objectgroup');
+
+    if (interactionLayer && interactionLayer.objects) {
+        interactionLayer.objects.forEach(tiledObject => {
+            // Creamos un objeto de interacción vacío para ir llenando
+            let interaction = {};
+
+            // Paso 1: Copiar propiedades de posición y tamaño directas del objeto de Tiled
+            interaction.x = tiledObject.x;
+            interaction.y = tiledObject.y;
+            interaction.width = tiledObject.width;
+            interaction.height = tiledObject.height;
+            
+            // Paso 2: Procesar las propiedades personalizadas definidas en Tiled
+            // Las propiedades personalizadas están en un array 'properties' dentro del objeto
+            if (tiledObject.properties) {
+                tiledObject.properties.forEach(prop => {
+                    interaction[prop.name] = prop.value;
+                });
+            }
+
+            // Paso 3: Calcular el polígono de colisión para la interacción
+            // Esto es crucial para que game.js pueda detectar la colisión con el jugador
+            // Asumimos que los objetos de Tiled son rectángulos para estas interacciones
+            interaction.polygon = [
+                { x: interaction.x, y: interaction.y },
+                { x: interaction.x + interaction.width, y: interaction.y },
+                { x: interaction.x + interaction.width, y: interaction.y + interaction.height },
+                { x: interaction.x, y: interaction.y + interaction.height }
+            ];
+
+            // Paso 4: Almacenar el objeto de interacción en mapInteractions
+            // Usamos la propiedad 'id' del objeto de Tiled como clave principal
+            // (Asegúrate de que tus objetos en Tiled tengan un ID único o una propiedad 'id' personalizada)
+            // Si la propiedad 'id' en el JSON de Tiled es la nativa del objeto, úsala directamente.
+            // Si definiste una propiedad personalizada 'id' en Tiled, usa esa.
+            if (interaction.id) { // Si tienes una propiedad personalizada 'id' definida en Tiled
+                mapInteractions[interaction.id] = interaction;
+            } else if (tiledObject.id) { // Si usas el ID nativo que Tiled asigna
+                mapInteractions[tiledObject.id] = interaction;
+            } else {
+                console.warn("Objeto de interacción en Tiled sin ID:", tiledObject);
+            }
+        });
+    } else {
+        console.warn("Capa de interacciones 'Tarjetas' no encontrada o sin objetos.");
+    }
+}
 
 
 

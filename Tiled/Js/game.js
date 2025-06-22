@@ -39,6 +39,20 @@ const generalDismissPrompt = document.getElementById('generalDismissPrompt'); //
 const inventoryPanel = document.getElementById('inventoryPanel');
 const inventoryList = document.getElementById('inventoryList');
 const closeInventoryButton = document.getElementById('closeInventoryButton');
+const mobileInventoryButton = document.getElementById('mobileInventoryButton');
+
+let cardInteractionIcon = new Image(); // <--- AÑADIDA: Declaramos un nuevo objeto Image para nuestro icono
+cardInteractionIcon.onload = () => { // <--- AÑADIDA: Para confirmar carga exitosa
+    console.log("Icono de interacción de tarjeta cargado exitosamente:", cardInteractionIcon.src);
+};
+
+cardInteractionIcon.src = './img/Tarjeta Sprite.webp'; // <--- AÑADIDA: Ruta a tu icono. ¡CAMBIA ESTA RUTA SI ES NECESARIO!
+cardInteractionIcon.onerror = () => { // <--- AÑADIDA: Manejo de error si la imagen no carga
+    console.error("Error al cargar la imagen del icono de interacción de tarjeta:", cardInteractionIcon.src);
+    // Puedes usar un icono de fallback o simplemente no mostrar nada
+    cardInteractionIcon.src = 'https://placehold.co/32x32/ff0000/ffffff?text=X'; // Placeholder de error
+};
+
 let lastTime = 0;
 let deltaTime = 0;
 let lastChunkManageTime = 0;
@@ -62,18 +76,32 @@ let activeInteractionObject = null;
 let dialogueOpenTime = 0; // Tiempo en que el diálogo se abrió
 let isGamePaused = false; // <-- ¡ASEGÚRATE DE QUE ESTA LÍNEA EXISTA!
 let isInventoryOpen = false; // Esta también debería estar si no la tienes
+let dialoguePages = [];             // Almacena las diferentes "páginas" de texto del diálogo actual
+let currentPageIndex = 0;           // Índice de la página de texto actual que se está mostrando
+let isTyping = false;               // Bandera booleana que indica si el texto se está "escribiendo" (animando) en ese momento
+let typingTimer = 0;                // Un contador para controlar el ritmo de la animación de escritura (en milisegundos)
+let currentTypingIndex = 0;         // El índice del carácter actual que se está mostrando en la animación
+const TYPING_SPEED_MS = 30;         // Define la velocidad de escritura (milisegundos por carácter). Puedes ajustar este valor.
+const DIALOGUE_PAGE_DELIMITER = '_NEXT_'; // Un delimitador especial que usarás en tu texto de Tiled para indicar un salto de página.
+                                        // Asegúrate de que este delimitador no aparezca de forma natural en tu texto.
+
 
 const itemDefinitions = {
     'Tarjeta Reaper': {
         name: 'Tarjeta Reaper',
-        imagePath: './img/inventory_items/reaper_card_icon.webp', // <--- ¡VERIFICA ESTA RUTA!
-        dialogueImagePath: './img/inventory_items/reaper_card_icon.webp',
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta Reaper_S.webp', // <--- ¡VERIFICA ESTA RUTA!
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta Reaper_S.webp',
        
     },
-    'Llave Vieja': {
-        name: 'Llave Vieja',
-        imagePath: './img/inventory_items/old_key_icon.png', // <--- ¡VERIFICA ESTA RUTA!
-        description: "Una llave oxidada que parece abrir algo antiguo."
+   'Tarjeta ReaperJr': { // <--- ¡LA CLAVE DEBE COINCIDIR EXACTAMENTE CON "itemToAdd" DE TILED!
+        name: 'Tarjeta Reaper Jr.', // Nombre que se mostrará en el inventario y diálogo
+        // imagePath es la ruta para el ICONO en el INVENTARIO.
+        imagePath: './Tarjetas/Sweet Nightmare/Tarjeta ReaperJr_S.webp', // <-- ¡VERIFICA ESTA RUTA DE ICONO PARA INVENTARIO!
+        // dialogueImagePath es la ruta para la IMAGEN GRANDE en el DIÁLOGO DE ÍTEMS.
+        // La que proporcionaste en Tiled: "Tarjetas/Sweet Nightmare/Tarjeta ReaperJr_S.webp"
+        // Asegúrate que esta ruta sea correcta desde la raíz de tu proyecto.
+        dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta ReaperJr_S.webp', // <-- ¡VERIFICA ESTA RUTA DE IMAGEN PARA EL DIÁLOGO!
+        
     },
     // Añade más ítems aquí a medida que los crees en Tiled y les asignes 'itemToAdd'
 };
@@ -107,7 +135,10 @@ initializeInput(canvas, currentScale);
 function gameLoop(timestamp) {
    deltaTime = (timestamp - lastTime) / 1000;
     lastTime = timestamp;
-
+// --- NUEVO: Actualiza el texto con efecto de máquina de escribir si está activo ---
+    if (isTyping) { // <--- AÑADIDA: Solo llama a typeText() si el texto se está animando
+        typeText(deltaTime); // <--- AÑADIDA: Llama a la función de animación de escritura
+    }
     // Actualiza la bandera de si el diálogo está activo
    
 
@@ -131,8 +162,7 @@ function gameLoop(timestamp) {
         }
     }
 
-    // --- Lógica de movimiento del jugador, teletransporte y colisiones ---
-    // ¡ENVUELVE ESTA LÓGICA CON UN 'if (!isDialogueActive)'!
+   
     if (!isDialogueActive) { // <--- ¡AÑADE ESTA CONDICIÓN PARA PAUSAR EL JUEGO DURANTE EL DIÁLOGO!
         const mapDimensions = getMapDimensions();
         let prevPlayerWorldX = playerWorldX;
@@ -184,10 +214,10 @@ function gameLoop(timestamp) {
                 setPlayerWorldPosition(prevPlayerWorldX, prevPlayerWorldY, mapDimensions.widthPixels, mapDimensions.heightPixels);
             }
         }
-        // Lógica de interacciones (solo si no hay diálogo activo y no se ha teletransportado)
-if (!isDialogueActive && !isGamePaused) {
-        const playerPolygonForInteraction = getPlayerPolygon();
-        for (const interactionId in mapInteractions) {
+            // Lógica de interacciones (solo si no hay diálogo activo y no se ha teletransportado)
+             
+                const playerPolygonForInteraction = getPlayerPolygon();
+               for (const interactionId in mapInteractions) {
             const interaction = mapInteractions[interactionId];
             if (!interaction.once || !interaction.hasBeenTriggered) {
                 if (checkCollision(playerPolygonForInteraction, interaction.polygon)) {
@@ -201,10 +231,11 @@ if (!isDialogueActive && !isGamePaused) {
                     break; // Solo activa una interacción a la vez
             }
         }
-    }}
-} // <--- ¡CIERRE DE LA NUEVA CONDICIÓN!
+    }
+    
+ } // <--- ¡CIERRE DE LA NUEVA CONDICIÓN!
 
-// Esta línea debe ir DESPUÉS de la lógica del jugador y ANTES de drawMap.
+ // Esta línea debe ir DESPUÉS de la lógica del jugador y ANTES de drawMap.
     updateTeleporterAnimation(deltaTime); // <--- ¡AÑADE ESTA LÍNEA AQUÍ!
 
     // Actualizar cámara (siempre se actualiza, incluso con diálogo, para que los elementos de UI se dibujen correctamente)
@@ -217,6 +248,7 @@ if (!isDialogueActive && !isGamePaused) {
     }
 
     // --- Dibujo (Siempre se dibuja) ---
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar canvas
     drawMap(ctx);
     drawPlayer(ctx);
     drawJoystick(ctx);
@@ -226,7 +258,37 @@ if (!isDialogueActive && !isGamePaused) {
     debugDrawPlayerCollider(ctx);
 
     // ¡SECCIÓN MODIFICADA!: Dibujar el Cuadro de Texto de Diálogo Estilo RPG
- 
+ // --- Dibujo ---
+
+
+
+// --- NUEVO: Dibujar iconos para puntos de interacción de tarjetas ---
+// Iteramos sobre todos los objetos de interacción cargados desde el mapa
+for (const interactionId in mapInteractions) {
+    const interaction = mapInteractions[interactionId];
+     console.log("Procesando interacción:", interactionId, interaction.actionType, "once:", interaction.once, "hasBeenTriggered:", interaction.hasBeenTriggered, "x:", interaction.x, "y:", interaction.y);
+    // Solo dibujamos el icono si:
+    // 1. La acción es 'collectItem' (es una tarjeta u objeto coleccionable)
+    // 2. No tiene la propiedad 'once' o, si la tiene, NO ha sido disparada aún (no recolectada)
+    if (interaction.actionType === 'collectItem' && (!interaction.once || !interaction.hasBeenTriggered)) {
+        // Calculamos la posición del icono en la pantalla, relativa a la cámara
+        const drawX = interaction.x - cameraX;
+        const drawY = interaction.y - cameraY;
+        console.log(`Dibujando icono para ${interactionId}: drawX=${drawX}, drawY=${drawY}. Cámara: cameraX=${cameraX}, cameraY=${cameraY}`);
+
+        // Definimos el tamaño deseado para el icono en el mapa
+        // Puedes ajustar estos valores según el tamaño de tu sprite y cómo quieres que se vea.
+        const iconWidth = 32;  // <--- AJUSTA ESTE VALOR
+        const iconHeight = 32; // <--- AJUSTA ESTE VALOR
+
+        // Dibujamos el icono. Asegúrate de que cardInteractionIcon se haya cargado.
+        if (cardInteractionIcon.complete && cardInteractionIcon.naturalWidth > 0) {
+            ctx.drawImage(cardInteractionIcon, drawX, drawY, iconWidth, iconHeight);
+        } else {
+            console.warn("Icono de interacción de tarjeta no cargado o inválido (dentro del bucle).");
+        }
+    }
+}
     
     // ¡DESCOMENTADAS!: Dibujar los polígonos de colisión para depuración
     debugDrawCollisionPolygons(ctx); 
@@ -248,7 +310,11 @@ function startGameLoop() {
 function handleDismissClick(event) {
     const currentTime = performance.now() / 1000;
     console.log("handleDismissClick: Clic/Toque detectado. isDialogueActive:", isDialogueActive, "Cooldown activo (desde último dismiss):", (currentTime - lastDismissActionTime <= DISMISS_COOLDOWN_SECONDS), "Cooldown activo (desde apertura):", (currentTime - dialogueOpenTime <= DISMISS_COOLDOWN_SECONDS)); 
-    
+    // --- NUEVO: Si el texto se está escribiendo, lo completa instantáneamente ---
+    if (isTyping) {
+        completeTypingInstantly(); // Llama a la función para terminar la escritura de golpe
+        return; // Detiene la ejecución aquí. No avanzar la página aún, solo completar la escritura.
+    }
     // ¡¡¡CORRECCIÓN CLAVE!!!: Cierra si el diálogo está activo Y ha pasado el cooldown desde que se abrió
     // Y ha pasado el cooldown desde el último intento de dismiss (para evitar spam de cierres)
     if (isDialogueActive && 
@@ -256,7 +322,7 @@ function handleDismissClick(event) {
         (currentTime - lastDismissActionTime > DISMISS_COOLDOWN_SECONDS) // Y desde el último intento de cierre
     ) {
         console.log("handleDismissClick: Condición de cierre CUMPLIDA. Cerrando diálogo.");
-        hideTextBox();
+        advanceDialoguePage(); // <--- ¡CAMBIA 'hideTextBox();' POR ESTO!
         lastDismissActionTime = currentTime; // Reinicia el tiempo de la última acción de cierre
         event.preventDefault(); 
     }
@@ -340,10 +406,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
 
+if (mobileInventoryButton) {
+    mobileInventoryButton.addEventListener('click', toggleInventory); // Para clic normal
+    mobileInventoryButton.addEventListener('touchstart', (e) => { // Para toque en pantalla táctil
+        e.preventDefault(); // Previene el comportamiento por defecto (ej. scroll)
+        toggleInventory();
+    });
+}
+
         // Opcional pero recomendado para evitar clicks/toques no deseados en el inventario:
         if (inventoryPanel) {
             inventoryPanel.addEventListener('touchstart', (e) => e.stopPropagation());
-            inventoryPanel.addEventListener('mousedown', (e) => e.stopPropagation());
+            inventoryPanel.addEventListener('mousedown', (e) => e.stopPropagation());       
         }
 
         // Actualiza la interfaz del inventario al inicio para mostrar "Inventario vacío."
@@ -358,14 +432,168 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
+ * Inicia el efecto de máquina de escribir para la página de diálogo actual.
+ * @param {HTMLElement} targetElement El elemento HTML donde se mostrará el texto (itemTextContent o generalMessageContent).
+ * @param {HTMLElement} dismissPromptElement El elemento HTML del prompt de "continuar".
+ * @param {string} text La página de texto a animar.
+ */
+function startTypingEffect(targetElement, dismissPromptElement, text) {
+    isTyping = true; // Establece la bandera a true para indicar que la animación está activa
+    currentTypingIndex = 0; // Reinicia el índice de caracteres a 0
+    typingTimer = 0; // Reinicia el temporizador de escritura
+    targetElement.innerHTML = ''; // Limpia el contenido del elemento antes de empezar a escribir
+    
+    // Detiene la animación del prompt y lo oculta mientras el texto se está escribiendo
+    dismissPromptElement.style.animation = 'none'; 
+    dismissPromptElement.style.opacity = '0'; 
+
+    // Se guarda la página actual en una variable temporal accesible desde typeText
+    // Esto es útil porque typeText se llama desde gameLoop y no recibe argumentos directamente.
+    targetElement.dataset.currentPageText = text; 
+    targetElement.dataset.targetElementId = targetElement.id; // Guarda el ID para saber qué elemento actualizar
+}
+
+/**
+ * Función que se ejecuta en cada fotograma del gameLoop para animar el texto.
+ * Añade caracteres al texto visible uno por uno, creando el efecto de escritura.
+ * @param {number} deltaTime Tiempo transcurrido desde el último fotograma en segundos.
+ */
+function typeText(deltaTime) {
+    if (!isTyping) return; // Si no hay animación activa, no hacemos nada
+
+    typingTimer += deltaTime * 1000; // Acumula el tiempo transcurrido en milisegundos
+
+    let targetElement;
+    let dismissPromptElement;
+    let currentPageText;
+
+    // Determina qué diálogo está activo para actualizar el contenido y el prompt
+    // Se basa en el estilo 'display' de los contenedores principales del diálogo
+    if (itemTextBoxContainer.style.display === 'flex') {
+        targetElement = itemTextContent;
+        dismissPromptElement = itemDismissPrompt;
+    } else if (generalMessageBoxContainer.style.display === 'flex') {
+        targetElement = generalMessageContent;
+        dismissPromptElement = generalDismissPrompt;
+    } else {
+        isTyping = false; // Si ninguno está visible, detenemos la escritura
+        return;
+    }
+
+    // Obtiene el texto de la página actual que fue guardado en startTypingEffect
+    currentPageText = targetElement.dataset.currentPageText;
+
+    if (!currentPageText) { // Si por alguna razón no hay texto, detenemos la escritura
+        isTyping = false;
+        return;
+    }
+
+    // Calcula cuántos caracteres deberían haberse añadido dado el tiempo transcurrido y la velocidad de escritura
+    const charactersToAdd = Math.floor(typingTimer / TYPING_SPEED_MS);
+
+    // Si el número de caracteres a añadir es mayor que el que ya hemos añadido
+    if (charactersToAdd > currentTypingIndex) {
+        // Calcula cuántos caracteres adicionales se deben mostrar en este fotograma
+        const remainingChars = currentPageText.length - currentTypingIndex;
+        const charsThisFrame = Math.min(charactersToAdd - currentTypingIndex, remainingChars);
+
+        if (charsThisFrame > 0) {
+            // Añade los nuevos caracteres al HTML del elemento de destino
+            targetElement.innerHTML += currentPageText.substring(currentTypingIndex, currentTypingIndex + charsThisFrame);
+            currentTypingIndex += charsThisFrame; // Actualiza el índice de caracteres ya mostrados
+        }
+
+        // Si todos los caracteres de la página actual se han mostrado
+        if (currentTypingIndex >= currentPageText.length) {
+            isTyping = false; // La animación ha terminado
+            typingTimer = 0; // Reinicia el temporizador
+            // Reactiva la animación del prompt y lo hace visible
+            dismissPromptElement.style.animation = 'pulse 1.5s infinite alternate'; 
+            dismissPromptElement.style.opacity = '1'; 
+        }
+    }
+}
+
+
+
+/**
+ * Avanza a la siguiente página de diálogo o cierra el diálogo si no hay más páginas.
+ * Esta función es llamada cuando el jugador "descarta" la página actual (clic/tecla).
+ */
+function advanceDialoguePage() {
+    currentPageIndex++; // Incrementa el índice para ir a la siguiente página
+
+    if (currentPageIndex < dialoguePages.length) {
+        // Si hay más páginas, inicia el efecto de escritura para la siguiente.
+        // Primero, determina qué cuadro de diálogo está actualmente visible para actualizarlo.
+        const activeDialogContainer = itemTextBoxContainer.style.display === 'flex' ? itemTextBoxContainer : generalMessageBoxContainer;
+        const activeTextContent = itemTextBoxContainer.style.display === 'flex' ? itemTextContent : generalMessageContent;
+        const activeDismissPrompt = itemTextBoxContainer.style.display === 'flex' ? itemDismissPrompt : generalDismissPrompt;
+        
+        // Inicia el efecto de escritura con el texto de la nueva página.
+        startTypingEffect(activeTextContent, activeDismissPrompt, dialoguePages[currentPageIndex]);
+    } else {
+        // Si no hay más páginas, significa que hemos llegado al final del diálogo.
+        // Cierra completamente el cuadro de diálogo.
+        hideTextBox();
+    }
+}
+
+/**
+ * Completa instantáneamente la escritura del texto actual de la página.
+ * Esta función se llama cuando el jugador intenta "avanzar" mientras el texto aún se está escribiendo.
+ */
+function completeTypingInstantly() {
+    let targetElement;
+    let dismissPromptElement;
+
+    // Determina qué cuadro de diálogo está activo para actualizar su contenido y prompt.
+    if (itemTextBoxContainer.style.display === 'flex') {
+        targetElement = itemTextContent;
+        dismissPromptElement = itemDismissPrompt;
+    } else if (generalMessageBoxContainer.style.display === 'flex') {
+        targetElement = generalMessageContent;
+        dismissPromptElement = generalDismissPrompt;
+    } else {
+        return; // No hay diálogo activo para completar, salimos.
+    }
+
+    // Muestra todo el texto de la página actual de golpe, sin animación.
+    targetElement.innerHTML = targetElement.dataset.currentPageText; 
+    // Actualiza el índice de escritura al final del texto.
+    currentTypingIndex = targetElement.dataset.currentPageText.length;
+    // Desactiva la bandera de escritura, ya que el texto está completo.
+    isTyping = false;
+    typingTimer = 0; // Reinicia el temporizador de escritura.
+
+    // Reactiva la animación del prompt y asegura que esté visible, ya que la escritura terminó.
+    dismissPromptElement.style.animation = 'pulse 1.5s infinite alternate'; 
+    dismissPromptElement.style.opacity = '1'; 
+}
+
+
+
+/**
  * Muestra el cuadro de diálogo ESPECÍFICO DE ÍTEMS con texto y la imagen del ítem.
  * Esta función usa el 'textBoxContainer' original.
  * @param {string} text El texto principal a mostrar (generalmente del Tiled).
  * @param {object | null} interactionObject El objeto de interacción que activó el diálogo.
  */
+
+
+
 export function showItemDialogue(text, interactionObject = null) { // <--- ¡NOMBRE DE LA FUNCIÓN CAMBIADO!
     // Si ya hay un diálogo activo, no hacemos nada para evitar superposiciones.
     if (isDialogueActive) return;
+
+    // --- NUEVO: Reinicia y prepara el estado del diálogo ---
+    dialoguePages = text.split(DIALOGUE_PAGE_DELIMITER); // <--- MODIFICADO: Divide el texto de Tiled en páginas
+    currentPageIndex = 0;                               // <--- NUEVA: Reinicia el índice de página
+    isDialogueActive = true;                            // <--- ASEGURADO: La bandera de diálogo activo
+    isGamePaused = true;                                // <--- ASEGURADO: Pausa el juego
+    activeInteractionObject = interactionObject;
+    dialogueOpenTime = performance.now() / 1000;
+
 
     // --- CLAVE: Aseguramos que el cuadro de diálogo GENERAL esté oculto ---
     // Si el cuadro general estuviera visible por alguna razón, lo escondemos.
@@ -417,14 +645,11 @@ export function showItemDialogue(text, interactionObject = null) { // <--- ¡NOM
                     dialogueItemImage.src = `https://placehold.co/80x80/FF0000/FFFFFF?text=ERROR`;
                 };
             }
-
-            // Si el ítem tiene una descripción en 'itemDefinitions', la añade al texto principal.
-            // Si no quieres que la descripción aparezca en el diálogo, puedes eliminar este 'if'.
-            let fullText = text; // El texto inicial que viene de Tiled.
-            if (itemData.description) {
-                fullText += "<br><br>" + itemData.description;
-            }
-            itemTextContent.innerHTML = fullText; // Actualiza el contenido de texto con la descripción añadida.
+             
+           
+            // --- NUEVO/MODIFICADO: Usa la descripción del itemDefinition o el texto de Tiled para la primera página ---
+            const fullTextForFirstPage = itemData.description ? itemData.description : dialoguePages[0];
+            dialoguePages[0] = fullTextForFirstPage; // <--- MODIFICADO: Sobrescribe la primera página con la descripción
         } else {
             console.warn(`showItemDialogue: Item '${interactionObject.itemToAdd}' no encontrado en itemDefinitions.`);
         }
@@ -439,8 +664,14 @@ export function showItemDialogue(text, interactionObject = null) { // <--- ¡NOM
 
     // Deshabilita la interacción con el canvas principal del juego mientras el diálogo está abierto.
     const canvas = document.getElementById('gameCanvas'); // Aseguramos que 'canvas' sea accesible.
-    if (canvas) canvas.style.pointerEvents = 'none';
+    // --- NUEVO: Inicia el efecto de escritura para la primera página ---
+    startTypingEffect(itemTextContent, itemDismissPrompt, dialoguePages[currentPageIndex]); // <--- NUEVA LÍNEA
+    console.log("Diálogo de ítem mostrado. Páginas:", dialoguePages);
 
+    if (canvas) canvas.style.pointerEvents = 'none';
+    if (mobileInventoryButton) { // <-- ¡NUEVA LÍNEA!
+        mobileInventoryButton.style.display = 'none'; // <-- ¡NUEVA LÍNEA!
+    }
     // Pausa el juego y activa la bandera de diálogo.
     isGamePaused = true;
     isDialogueActive = true;
@@ -457,7 +688,14 @@ export function showItemDialogue(text, interactionObject = null) { // <--- ¡NOM
 export function showGeneralDialogue(text, interactionObject = null) {
     // Si ya hay un diálogo activo (ya sea de ítem o general), no hacemos nada.
     if (isDialogueActive) return;
-
+    
+    // --- NUEVO: Reinicia y prepara el estado del diálogo ---
+    dialoguePages = text.split(DIALOGUE_PAGE_DELIMITER); // <--- MODIFICADO: Divide el texto de Tiled en páginas
+    currentPageIndex = 0;                               // <--- NUEVA: Reinicia el índice de página
+    isDialogueActive = true;                            // <--- ASEGURADO: La bandera de diálogo activo
+    isGamePaused = true;                                // <--- ASEGURADO: Pausa el juego
+    activeInteractionObject = interactionObject;
+    dialogueOpenTime = performance.now() / 1000;
     // --- CLAVE: Aseguramos que el cuadro de diálogo de ÍTEMS esté oculto ---
     // Si el cuadro de ítems estuviera visible por alguna razón, lo escondemos.
     itemTextBoxContainer.style.display = 'none';
@@ -479,8 +717,13 @@ export function showGeneralDialogue(text, interactionObject = null) {
 
     // Deshabilita la interacción con el canvas principal del juego mientras el diálogo está abierto.
     const canvas = document.getElementById('gameCanvas'); // Aseguramos que 'canvas' sea accesible.
+    // --- NUEVO: Inicia el efecto de escritura para la primera página ---
+    startTypingEffect(generalMessageContent, generalDismissPrompt, dialoguePages[currentPageIndex]); // <--- NUEVA LÍNEA
+    console.log("Mensaje general mostrado. Páginas:", dialoguePages);
     if (canvas) canvas.style.pointerEvents = 'none';
-
+     if (mobileInventoryButton) { // <-- ¡NUEVA LÍNEA!
+        mobileInventoryButton.style.display = 'none'; // <-- ¡NUEVA LÍNEA!
+    }
     // Pausa el juego y activa la bandera de diálogo.
     isGamePaused = true;
     isDialogueActive = true;
@@ -494,6 +737,12 @@ export function showGeneralDialogue(text, interactionObject = null) {
  * Oculta cualquier cuadro de diálogo activo (de ítems o general) y reanuda el juego.
  */
 export function hideTextBox() {
+
+    // --- NUEVO: Detiene cualquier animación de escritura que esté en curso ---
+    isTyping = false;        // <--- AÑADIDA: Detiene la bandera de escritura
+    currentTypingIndex = 0;  // <--- AÑADIDA: Reinicia el índice de caracteres
+    typingTimer = 0;         // <--- AÑADIDA: Reinicia el temporizador de escritura
+
     // --- CLAVE: Oculta AMBOS contenedores de diálogo al cerrar ---
     // Esto asegura que no quede ningún cuadro de diálogo visible por error.
     itemTextBoxContainer.style.display = 'none'; // Oculta el contenedor de diálogo de ítems.
@@ -504,11 +753,25 @@ export function hideTextBox() {
     
     // Re-habilita la interacción con el canvas del juego SOLO si el inventario NO está abierto.
     // Esto evita que puedas mover al jugador si el inventario sigue en pantalla.
-    const canvas = document.getElementById('gameCanvas'); // Aseguramos que 'canvas' sea accesible.
-    if (canvas && !isInventoryOpen) { // Condición importante: ¡solo si el inventario no está abierto!
+ const canvas = document.getElementById('gameCanvas');
+    if (canvas && !isInventoryOpen) {
       canvas.style.pointerEvents = 'auto'; // Re-habilita interacción con el juego.
+      // MUESTRA el botón de inventario móvil (si está en un dispositivo móvil)
+      if (mobileInventoryButton) { // <-- ¡NUEVA LÍNEA!
+          // Necesitas una forma de saber si está en móvil para mostrarlo solo ahí.
+          // Una forma simple es que el CSS ya lo maneje, entonces solo tienes que setear display='flex'.
+          mobileInventoryButton.style.display = 'flex'; // <-- ¡NUEVA LÍNEA!
+      }
+    } else if (canvas && isInventoryOpen) { // Si el inventario SÍ está abierto, el canvas debe permanecer deshabilitado.
+        canvas.style.pointerEvents = 'none';
+        // Y el botón de inventario móvil debe permanecer oculto (ya que el inventario está abierto)
+        if (mobileInventoryButton) { // <-- ¡NUEVA LÍNEA!
+             mobileInventoryButton.style.display = 'none'; // <-- ¡NUEVA LÍNEA!
+        }
     }
-
+   
+     
+    
     // Reinicia las banderas de estado del juego.
     isGamePaused = false;
     isDialogueActive = false;
@@ -542,13 +805,22 @@ export function hideTextBox() {
         // Limpia el objeto de interacción activa para el siguiente ciclo.
         activeInteractionObject = null;
     }
+    // --- NUEVO: Reinicia las variables de paginación del diálogo ---
+    dialoguePages = [];      // <--- AÑADIDA: Limpia el array de páginas del diálogo
+    currentPageIndex = 0;    // <--- AÑADIDA: Reinicia el índice de la página actual
+
 }
 
 
 function handleDismissKey(event) {
     const currentTime = performance.now() / 1000;
     //console.log("handleDismissKey: Tecla presionada.", event.key, "isDialogueActive:", isDialogueActive, "Cooldown activo (desde último dismiss):", (currentTime - lastDismissActionTime <= DISMISS_COOLDOWN_SECONDS), "Cooldown activo (desde apertura):", (currentTime - dialogueOpenTime <= DISMISS_COOLDOWN_SECONDS)); 
-    
+    if (event.key === DIALOGUE_DISMISS_KEY) { // <--- Asegura que solo funcione con la tecla configurada (Enter)
+        // --- NUEVO: Si el texto se está escribiendo, lo completa instantáneamente ---
+        if (isTyping) {
+            completeTypingInstantly(); // Llama a la función para terminar la escritura de golpe
+            return; // Detiene la ejecución aquí. No avanzar la página aún, solo completar la escritura.
+        }}
     // ¡¡¡MODIFICACIÓN CRUCIAL AQUÍ!!!: Solo procede si la tecla es DIALOGUE_DISMISS_KEY
     if (event.key === DIALOGUE_DISMISS_KEY && // <--- ¡AÑADE ESTA CONDICIÓN!
         isDialogueActive && 
@@ -556,7 +828,7 @@ function handleDismissKey(event) {
         (currentTime - lastDismissActionTime > DISMISS_COOLDOWN_SECONDS) 
     ) {
       //  console.log("handleDismissKey: Condición de cierre CUMPLIDA. Cerrando diálogo.");
-        hideTextBox();
+         advanceDialoguePage(); // <--- ¡CAMBIA 'hideTextBox();' POR ESTO!
         lastDismissActionTime = currentTime; 
         event.preventDefault(); 
     }
@@ -584,6 +856,32 @@ export function addItemToInventory(itemName) {
         console.warn(`Intento de añadir item '${itemName}' no definido en itemDefinitions. Asegúrate de que el 'itemToAdd' de Tiled coincide con una clave en itemDefinitions.`);
     }
 }
+
+function toggleInventory() {
+    // Si el inventario está abierto, ciérralo
+    if (inventoryPanel.style.display === 'flex') {
+        inventoryPanel.style.display = 'none';
+        // Re-habilita la interacción con el juego SOLO si NO hay un diálogo activo
+        if (!isDialogueActive) { // <--- CLAVE: Solo re-habilitar si no hay diálogo
+            canvas.style.pointerEvents = 'auto';
+        }
+        isInventoryOpen = false; // Actualiza el estado
+        console.log("Inventario oculto.");
+    } else {
+        // Si el inventario está cerrado, ábrelo
+        // Oculta cualquier diálogo antes de mostrar el inventario
+        hideTextBox(); 
+        
+        updateInventoryUI();
+        inventoryPanel.style.display = 'flex';
+        canvas.style.pointerEvents = 'none';
+        isInventoryOpen = true;
+        console.log("Inventario mostrado.");
+    }
+}
+
+
+
 function updateInventoryUI() {
     // Asegúrate de que inventoryList está referenciado globalmente (const inventoryList = document.getElementById('inventoryList');)
     const inventoryList = document.getElementById('inventoryList'); 

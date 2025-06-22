@@ -142,20 +142,13 @@
     overflow: hidden; /* Oculta el contenido que se desborda. */
     text-overflow: clip; /* No muestra '...' si el texto se corta. */
     box-sizing: border-box; /* Incluye padding y border en el tamaño total. */
-     flex-grow: 1;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     height: auto;
-    
-    /* CLAVE: Define el ANCHO MÁXIMO que el texto puede ocupar.
-       100% (ancho del contenedor flexible) - (ancho máx de la imagen + margen derecho de la imagen + un poco de espacio extra).
-       Ej: 200px (ancho máximo de imagen) + 30px (margen derecho) = 230px. Añadimos 20px extra para seguridad. Total: 250px.
-       max-width: calc(100% - 250px);
-    */
-    
-    
     flex-grow: 1; /* CLAVE: Permite que el texto ocupe todo el espacio restante en la fila. */
+    
 }
 
   
@@ -284,7 +277,34 @@
         background-color: #8B4513;
         transform: translateY(0); /* Efecto al presionar */
     }
-     
+    .mobile-ui-button {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: rgba(77, 75, 75, 0.5);
+    color: white; /* Esto ya no es necesario si usas una imagen */
+    border: 2px solid #2e2d2d;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: none; /* OCULTO por defecto en PC */
+    justify-content: center; /* <-- ¡AÑADE ESTO! Centra contenido horizontalmente */
+    align-items: center;   /* <-- ¡AÑADE ESTO! Centra contenido verticalmente */
+    font-size: 2.2em; /* <-- ¡ELIMINA O COMENTA ESTA LÍNEA! Ya no es un emoji */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-ui-button .mobile-inventory-icon {
+    width: 80%; /* La imagen ocupará el 80% del ancho del botón */
+    height: 80%; /* La imagen ocupará el 80% del alto del botón */
+    object-fit: contain; /* Asegura que la imagen se vea completa sin recortarse */
+   
+}
+
  @media (max-width: 700px) {
  .dialog-base-style {
     width: 96vw; /* Ocupa 96% del ancho del viewport */
@@ -389,6 +409,22 @@
             padding: 8px 15px;
         }
 
+   .mobile-ui-button {
+        display: flex; /* Muestra el botón solo en móvil */
+        bottom: 80px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        font-size: 2em; /* <-- ¡ELIMINA O COMENTA ESTA LÍNEA! */
+    } 
+
+    .mobile-ui-button .mobile-inventory-icon {
+        width: 80%; /* Asegura el tamaño de la imagen en móvil */
+        height: 80%;
+        object-fit: contain;
+      
+    }
+
     }
  
 
@@ -422,6 +458,10 @@
     </ul>
     <button id="closeInventoryButton">Cerrar</button>
 </div>
+
+  <button id="mobileInventoryButton" class="mobile-ui-button">
+        <img src="./img/Bolso Inventario.webp" alt="Inventario" class="mobile-inventory-icon"> <!-- <--- ¡NUEVA LÍNEA! -->
+    </button>
 
 <script type="module" src="./js/game.js?v=75"></script>
 </body>

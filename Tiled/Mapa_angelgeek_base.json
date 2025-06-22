@@ -1958,8 +1958,8 @@
                          "y":-21.3333
                         }, 
                         {
-                         "x":141.333,
-                         "y":-3.33333
+                         "x":127.999666666667,
+                         "y":-4.66666333333296
                         }, 
                         {
                          "x":78,
@@ -2050,8 +2050,8 @@
                  "name":"",
                  "polygon":[
                         {
-                         "x":0,
-                         "y":0
+                         "x":11.5,
+                         "y":20
                         }, 
                         {
                          "x":34.5,
@@ -2066,20 +2066,8 @@
                          "y":146.5
                         }, 
                         {
-                         "x":-68.5,
-                         "y":47
-                        }, 
-                        {
-                         "x":-67.5,
-                         "y":25.5
-                        }, 
-                        {
-                         "x":-44,
-                         "y":2.5
-                        }, 
-                        {
-                         "x":-23.5,
-                         "y":-3.5
+                         "x":-46,
+                         "y":60
                         }],
                  "rotation":0,
                  "type":"",
@@ -2095,36 +2083,20 @@
                  "name":"",
                  "polygon":[
                         {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":-30,
-                         "y":-2
-                        }, 
-                        {
-                         "x":-109.5,
-                         "y":9
-                        }, 
-                        {
-                         "x":-121.5,
-                         "y":16.5
-                        }, 
-                        {
-                         "x":-118.5,
-                         "y":46.5
-                        }, 
-                        {
-                         "x":-107.5,
-                         "y":76
+                         "x":23,
+                         "y":36
                         }, 
                         {
                          "x":-58,
-                         "y":95
+                         "y":105.5
                         }, 
                         {
-                         "x":26.5,
-                         "y":34
+                         "x":-64.5,
+                         "y":73.5
+                        }, 
+                        {
+                         "x":15,
+                         "y":12.5
                         }],
                  "rotation":0,
                  "type":"",
@@ -3900,8 +3872,8 @@
                          "y":1.16667
                         }, 
                         {
-                         "x":28.6667,
-                         "y":2.83333
+                         "x":50.0000333333337,
+                         "y":5.49999666666645
                         }],
                  "rotation":0,
                  "type":"",
@@ -3916,10 +3888,6 @@
                  "name":"",
                  "polygon":[
                         {
-                         "x":-26,
-                         "y":-3.5
-                        }, 
-                        {
                          "x":-72,
                          "y":-10
                         }, 
@@ -3928,12 +3896,12 @@
                          "y":0
                         }, 
                         {
-                         "x":-46,
-                         "y":12
+                         "x":-76.6666666666665,
+                         "y":9.33333333333303
                         }, 
                         {
-                         "x":-8.83333,
-                         "y":10.8333
+                         "x":-19.4999966666664,
+                         "y":13.4999666666663
                         }],
                  "rotation":0,
                  "type":"",
@@ -32132,6 +32100,34 @@
                  "width":0,
                  "x":4872,
                  "y":4600
+                }, 
+                {
+                 "height":0,
+                 "id":1138,
+                 "name":"",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":-31,
+                         "y":-16
+                        }, 
+                        {
+                         "x":-27,
+                         "y":-36
+                        }, 
+                        {
+                         "x":3,
+                         "y":-5.5
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3099.5,
+                 "y":2395
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -32336,8 +32332,8 @@
                  "type":"",
                  "visible":true,
                  "width":50,
-                 "x":4743,
-                 "y":2379.5
+                 "x":4717,
+                 "y":2373.5
                 }, 
                 {
                  "height":65,
@@ -32585,12 +32581,54 @@
                         {
                          "name":"id",
                          "type":"string",
+                         "value":"ReaperJr"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta ReaperJr_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta ReaperJr"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"El heredero del toque est\u00e1 tomando clases para empezar a recolectar almas, pero por ahora solo puede de los mini porque est\u00e1 chiquito"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2257.33333333333,
+                 "y":1342.00333333333
+                }, 
+                {
+                 "height":45,
+                 "id":1136,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
                          "value":"Reaper"
                         }, 
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"./Tarjetas/Sweet Nightmare/Tarjeta Reaper_S.webp"
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Reaper_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -32605,14 +32643,603 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"texto para tarjeta texto para tarjetatexto para tarjeta texto para tarjeta texto para tarjeta "
+                         "value":"Reaper es la parca de este mundo, el se encarga de recolectar las almas de los muertos de este mundo,_NEXT_ pero no todo es tristeza ya que al morir las almas reencarnan en la tierra en forma de peluches,_NEXT_ dando una nueva vida y oportunidad de llevar felicidad a las personas."
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":2358,
-                 "y":1622.67
+                 "x":2362.16666666667,
+                 "y":1620.83333333333
+                }, 
+                {
+                 "height":45,
+                 "id":1137,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Bianca"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Bianca_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Bianca"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Es la mayor de los tres hermanos a ella le encanta comer fresas silvestres que crecen en el bosque cerca de las cuevas, _NEXT_ tiene un pelaje blanco con finas patas que se mueven con gracia, _NEXT_ Sus telara\u00f1as son obras de arte macabras, capturando no solo cuerpos, sino tambi\u00e9n sue\u00f1os y esperanzas. _NEXT_ Sus abrazos son suaves y envolventes, llenos de creatividad y ternura, ideales para aquellos que necesitan inspiraci\u00f3n o consuelo."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":3012.66666666667,
+                 "y":2256.83333333333
+                }, 
+                {
+                 "height":45,
+                 "id":1139,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Angelo"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Angelo_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Angelo"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Es el hermano del medio el mas inteligente de los tres, es el l\u00edder de el grupo y el principal causante del trafico de abrazos de Sweet Nightmare _NEXT_ con un color gris\u00e1ceo se confunde con las sombras y las piedras del bosque, su presencia es intimidante asegur\u00e1ndose de que cada abrazo sea pagado con algo mas que simple gratitud: _NEXT_ un secreto, una promesa, o incluso una parte del alma, los abrazos de Angelo son profundos y reconfortantes, como un refugio en tiempos de tormenta."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2962.5,
+                 "y":2400.5
+                }, 
+                {
+                 "height":45,
+                 "id":1140,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Brujita"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Brujita_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Brujita"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"El mes de octubre es el mes donde el poder del dulce se apodera de esta poderosa bruja,_NEXT_ ella cegada por el mismo lanza un poderoso hechizo que hace que tengas unas ganas de comer dulces hasta que te duela la panza y secretamente tambi\u00e9n es la causante que en este mes se regalen dulces."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":3133,
+                 "y":2523
+                }, 
+                {
+                 "height":45,
+                 "id":1141,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Marco"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Marco_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Marco"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Es el hermano menor es una ara\u00f1a saltarina y \u00e1gil con un pelaje negro como la noche,_NEXT_ sus ojos brillan con un fuego inquietante y sus movimientos son tan r\u00e1pidos que es casi imperceptible para la vista en las sombras de la oscuridad,_NEXT_ marco es especialista en encontrar a los solitarios y desesperados, cuyo deseo por un abrazo es tan profundo que har\u00edan cualquier cosa por obtenerlos,_NEXT_ siempre est\u00e1 lista para saltar de una rama a otra, llevando consigo la calidez de un abrazo que ilumina los rostros de quienes lo reciban"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":3094.5,
+                 "y":2309.5
+                }, 
+                {
+                 "height":45,
+                 "id":1142,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Hugo"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Hugo_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Hugo"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"El es Hugo el verdugo, encargado de los recortes de personal, ama su trabajo pero detesta quitar las manchas de su uniforme, su frase favorita es no pierdas la cabeza, solo tienes una."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":3802.83333333333,
+                 "y":2978.83333333333
+                }, 
+                {
+                 "height":45,
+                 "id":1143,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Colmillo"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Colmillo_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Colmillo"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Juan* siguiendo sus modas raras, en una hermosa noche se alej\u00f3 a un bosque cercano a la villa sweet nigthmare a tomar un ba\u00f1o de luna,_NEXT_ sin darse cuenta que entre las sombras era acechado por un Pincher con una maldici\u00f3n un poco curiosa. _NEXT_ tarde empez\u00f3 a sentir calor, su piel adolorida y un fuerte dolor en todo su cuerpo mientras se transformaba ve\u00eda como su piel se llen\u00f3 de pelo,_NEXT_ poco a poco se transform\u00f3 en Colmillo un hombre lobo peque\u00f1o, este ten\u00eda una fuerte alegr\u00eda a la plata y era desconfiado de los desconocidos pero alegre y cari\u00f1oso en el fondo,_NEXT_ despu\u00e9s de eso Juan* cada luna llena como la de hoy se transforma en Colmillo y sale a buscar v\u00edctimas as\u00ed que ten cuidado puedes ser el pr\u00f3ximo _NEXT_ *Los nombres han sido alterados para proteger la identidad del protagonista"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2790.83333333333,
+                 "y":2113.5
+                }, 
+                {
+                 "height":45,
+                 "id":1144,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Hoku Koko"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Hoku Koko_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Hoku Koko"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Hoku y Koko son una linda pareja de murcielagos que les gusta salir a pasear muy en la noche _NEXT_ ya que el silencio de la ciudad se calma y no hay tantas personas que los interrumpan en sus citas bajo la suave luz de la luna llena"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2497.5,
+                 "y":2462.83333333333
+                },
+            
+                {
+                 "height":45,
+                 "id":1145,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Spook"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Spook_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Spook"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Es el fantasma de un gran mago del pasado, en general es muy amable y dulce pero tiene una peque\u00f1a sombra perversa que lo sigue a donde vaya, el cual asusta a los visitantes del cementerio."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":1998.83333333333,
+                 "y":2030.83333333333
+                }, 
+                {
+                 "height":45,
+                 "id":1146,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Frankie"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Frankie_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Frankie"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"FRANKIE: fue creado en un laboratorio secreto por el enigm\u00e1tico Doctor Mortis, un cient\u00edfico loco que se especializaba en dar vida a lo inanimado._NEXT_ no era un monstruo com\u00fan; estaba hecho de retazos de peluches, Su cerebro, sin embargo, pertenec\u00eda a un conejo de peluche llamado Bunnie,_NEXT_ quien ten\u00eda un insaciable amor por las zanahorias."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2084.16666666667,
+                 "y":2941.5
+                }, 
+                {
+                 "height":45,
+                 "id":1147,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Samhain"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Samhain_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Samhain"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"SAMHAIN: Nacido en el cultivo de calabazas del laboratorio del Dr Frankestein, cobraron vida por todos los experimentos que se hicieron y enterraban en el huerto,_NEXT_el Dr las vende como protectores de las casas y decoraci\u00f3n ya que intimidan a los extra\u00f1os,_NEXT_ su \u00fanico enemigo es el conde Nadito que el encanta su sabor y por ello genera conflictos en el Dr. Y el Conde Nado el cual le jala sus orejas"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2242.83333333333,
+                 "y":3101.5
+                }, 
+                {
+                 "height":45,
+                 "id":1148,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Joaquin"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Joaquin_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Joaquin"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"JOAQUIN: es un talentoso arlequin que le encanta esconder los calcetines y es esl cupable que solo encuentres uno._NEXT_ Le gusta jugar bromas pero tambi\u00e9n le encanta hacer poemas de amor y escribir rimas aunque no es muy bueno."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2148.16666666667,
+                 "y":3344.16666666667
+                }, 
+                {
+                 "height":45,
+                 "id":1149,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Conde-nadito"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Condenadito_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Conde-nadito"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"El Conde Nado ha descubierto la forma de engendrar Conde Naditos, son peque\u00f1os t\u00edmidos pero encontrar\u00e1n la forma de que los ames,_NEXT_ as\u00ed les tom\u00e9 toda la eternidad, le encanta las calabazas ya que su sabor les produce una peque\u00f1a obsesi\u00f3n"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2209.5,
+                 "y":3544.16666666667
+                }, 
+                {
+                 "height":45,
+                 "id":1150,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Conde-nado"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta Condenado_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Conde-nado"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"El conde Nado es el primo lejano del conde Dr\u00e1cula es vegetariano porque un murci\u00e9lago de la fruta lo mordi\u00f3."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":2521.5,
+                 "y":3638.83333333333
+                }, 
+                {
+                 "height":45,
+                 "id":1151,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"El Chamuco"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Nightmare\/Tarjeta El Chamuco_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Chamuco"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"No se sabe cu\u00e1ndo apareci\u00f3, pero seg\u00fan cuentan los habitantes es un ser de buen car\u00e1cter y que te cumple todos tus deseos,_NEXT_ pero hay que tener cuidado ya que debes leer las letras peque\u00f1as y siempre tendr\u00e1 un costo haberle pedido algo_NEXT_ y si no le pagas te atormentar\u00e1 todos los d\u00edas hasta que cumplas con el contrato."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":3001.5,
+                 "y":4012.16666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -32621,7 +33248,7 @@
          "y":0
         }],
  "nextlayerid":15,
- "nextobjectid":1136,
+ "nextobjectid":1152,
  "orientation":"orthogonal",
  "renderorder":"right-up",
  "tiledversion":"1.11.2",
