@@ -40,7 +40,9 @@ const inventoryPanel = document.getElementById('inventoryPanel');
 const inventoryList = document.getElementById('inventoryList');
 const closeInventoryButton = document.getElementById('closeInventoryButton');
 const mobileInventoryButton = document.getElementById('mobileInventoryButton');
-
+// --- NUEVAS REFERENCIAS PARA LA PANTALLA DE INICIO ---
+const startScreen = document.getElementById('startScreen'); // Referencia al div de la pantalla de inicio completa
+const startButton = document.getElementById('startButton'); // Referencia al botón "Iniciar Juego"
 let cardInteractionIcon = new Image(); // <--- AÑADIDA: Declaramos un nuevo objeto Image para nuestro icono
 cardInteractionIcon.onload = () => { // <--- AÑADIDA: Para confirmar carga exitosa
     console.log("Icono de interacción de tarjeta cargado exitosamente:", cardInteractionIcon.src);
@@ -538,7 +540,33 @@ if (mobileInventoryButton) {
         updateInventoryUI();
 
         // Inicia el bucle principal del juego
+       // startGameLoop();
+
+if (startButton) { // Asegúrate de que la referencia al botón exista
+        startButton.addEventListener('click', () => {
+            // Al hacer clic, oculta la pantalla de inicio
+            if (startScreen) { // Asegúrate de que la referencia a la pantalla de inicio exista
+                startScreen.classList.add('hidden'); // Aplica la clase 'hidden' para ocultarla con la transición CSS
+            }
+            // Y luego, inicia el juego
+            startGameLoop(); // ¡Ahora el juego se inicia con el clic!
+        });
+        // También añade un listener para toques en pantallas táctiles
+        startButton.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Evita el comportamiento por defecto del navegador para toques
+            if (startScreen) {
+                startScreen.classList.add('hidden');
+            }
+            startGameLoop();
+        });
+    } else {
+        // En caso de que, por alguna razón, el botón no se encuentre, mostramos un error
+        console.error("El botón de inicio (startButton) no fue encontrado. El juego no se iniciará con un clic.");
+        // Y para depuración, puedes hacer que el juego inicie automáticamente si el botón no se encuentra.
+        // Puedes borrar esta línea una vez que todo funcione bien y el botón siempre se encuentre.
         startGameLoop();
+    }
+
 
     } catch (error) {
         console.error("Fallo crítico al iniciar el juego:", error);
@@ -1012,30 +1040,30 @@ function updateInventoryUI() {
         noItemsMessage.textContent = 'Inventario vacío.';
         inventoryList.appendChild(noItemsMessage);
     } else {
-    playerInventory.forEach(item => { // ¡Aquí 'item' ya es el objeto completo!
-        const listItem = document.createElement('li');
-        listItem.className = 'inventory-item'; // Esto está bien para el contenedor del ítem
+        playerInventory.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.className = 'inventory-item';
 
-        // Si el ítem tiene una ruta de imagen, crea la etiqueta <img>
-        if (item.imagePath) {
-            const itemImage = document.createElement('img');
-            itemImage.src = item.imagePath;
-            itemImage.alt = item.name;
-            itemImage.className = 'inventory-item-icon'; // Esto está bien para la imagen
-            itemImage.onerror = () => {
-                itemImage.src = `https://placehold.co/32x32/cccccc/333333?text=N/A`;
-                console.warn(`No se pudo cargar la imagen para el ítem '${item.name}' en la ruta: ${item.imagePath}`);
-            };
-            listItem.appendChild(itemImage);
-        }
-
-        // Crea el texto del nombre del ítem
-        const itemText = document.createElement('span');
-        itemText.textContent = item.name; // <--- MODIFICAR ESTA LÍNEA
-        listItem.appendChild(itemText);
-
-        inventoryList.appendChild(listItem);
-    });
+            // Si el ítem tiene una ruta de imagen, crea la etiqueta <img>
+            if (item.imagePath) {
+                const itemImage = document.createElement('img');
+                itemImage.src = item.imagePath;
+                itemImage.alt = item.name; // Texto alternativo para accesibilidad
+                itemImage.className = 'inventory-item-icon'; // Para aplicar estilos CSS
+                itemImage.onerror = () => { // Manejo de error si la imagen no carga
+                    itemImage.src = `https://placehold.co/32x32/cccccc/333333?text=N/A`;
+                    console.warn(`No se pudo cargar la imagen para el ítem '${item.name}' en la ruta: ${item.imagePath}`);
+                };
+                listItem.appendChild(itemImage);
+            }
+            
+            // Crea el texto del nombre del ítem
+            const itemText = document.createElement('span');
+            itemText.textContent = item.name;
+            listItem.appendChild(itemText);
+            
+            inventoryList.appendChild(listItem);
+        });
     }
 }
 

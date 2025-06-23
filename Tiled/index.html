@@ -465,11 +465,91 @@
     }
 
     }
- 
+ #startScreen {
+    position: fixed; /* Lo fija en la pantalla, ignorando el scroll */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa el 100% del ancho del viewport */
+    height: 100vh; /* Ocupa el 100% del alto del viewport */
+    display: flex; /* Para organizar los elementos internos (título, subtítulo, botón) */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    background-color: #1a1a1a; /* Color de fondo de fallback si la imagen no carga */
+    /*
+     * ¡IMAGEN DE FONDO!
+     * --- CAMBIA ESTA RUTA ---
+     * Reemplaza 'url(../img/StartScreenBackground.webp)' por la RUTA REAL a tu imagen de inicio.
+     * Asegúrate de que la ruta sea correcta y relativa desde la ubicación de este archivo CSS.
+     * Por ejemplo, si tu style.css está en 'css/' y tu imagen en 'img/', entonces es '../img/nombre-de-tu-imagen.webp'.
+     */
+    background-image: url('../img/StartScreenBackground.webp'); /* <-- ¡¡¡CAMBIA ESTA RUTA POR LA DE TU IMAGEN!!! */
+    background-size: cover; /* Cubre toda el área del contenedor */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    z-index: 2000; /* Asegura que esté por encima de TODO lo demás en la página */
+    color: white; /* Color del texto general */
+    font-family: 'Press Start 2P', Arial, sans-serif; /* Fuente estilo pixel-art (asegúrate de que esta fuente esté cargada en tu HTML/CSS si no es una fuente web estándar) */
+    transition: opacity 1s ease-out; /* Transición suave cuando la pantalla desaparezca (lo usaremos con JavaScript) */
+}
+
+/* Esta clase 'hidden' es crucial. JavaScript la añadirá para ocultar la pantalla. */
+#startScreen.hidden {
+    opacity: 0; /* Hace la pantalla completamente transparente */
+    pointer-events: none; /* Deshabilita la interacción con el mouse una vez oculta */
+}
+
+#gameTitle {
+    font-size: clamp(3em, 8vw, 6em); /* Título responsivo y grande */
+    color: #FFD700; /* Color dorado */
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8); /* Sombra para resaltar */
+    margin-bottom: 20px;
+    user-select: none; /* Evita que el texto se pueda seleccionar con el mouse */
+}
+
+#gameSubtitle {
+    font-size: clamp(1em, 2.5vw, 2em); /* Subtítulo responsivo */
+    color: #E0E0E0; /* Gris claro */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    margin-bottom: 40px;
+    user-select: none;
+}
+
+#startButton {
+    background-color: #663399; /* Color morado estilo RPG */
+    color: white;
+    font-size: clamp(1.2em, 3vw, 2.5em); /* Tamaño responsivo del botón */
+    padding: 15px 30px;
+    border: 3px solid #9966CC; /* Borde más claro */
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer; /* Indica que es un elemento interactivo */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6); /* Sombra para dar profundidad */
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    user-select: none;
+    -webkit-tap-highlight-color: transparent; /* Elimina el resaltado azul en móvil */
+}
+
+#startButton:hover {
+    background-color: #9966CC; /* Cambia de color al pasar el ratón */
+    transform: translateY(-3px); /* Efecto de "levantar" */
+    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.8); /* Sombra más pronunciada */
+}
+
+#startButton:active {
+    background-color: #4C2673; /* Color al hacer clic */
+    transform: translateY(0); /* Vuelve a su posición original */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Sombra más pequeña */
+}
 
 </style>
 </head>
 <body>
+
+    <div id="startScreen">
+    <h1 id="gameTitle">Angel Geek</h1>
+    <p id="gameSubtitle">Conociendo un nuevo mundo</p>
+    <button id="startButton">Iniciar Juego</button>
+</div>
     <canvas id="gameCanvas"></canvas>
 
 <!-- ¡ESTRUCTURA HTML CORREGIDA PARA LOS DIÁLOGOS! -->
@@ -507,6 +587,6 @@
         <img src="./img/Bolso Inventario.webp" alt="Inventario" class="mobile-inventory-icon"> <!-- <--- ¡NUEVA LÍNEA! -->
     </button>
 
-<script type="module" src="./js/game.js?v=89"></script>
+<script type="module" src="./js/game.js?v=90    "></script>
 </body>
 </html>

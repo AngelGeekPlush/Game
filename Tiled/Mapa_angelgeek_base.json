@@ -1958,8 +1958,8 @@
                          "y":-21.3333
                         }, 
                         {
-                         "x":127.999666666667,
-                         "y":-4.66666333333296
+                         "x":128,
+                         "y":-4.66666
                         }, 
                         {
                          "x":78,
@@ -3872,8 +3872,8 @@
                          "y":1.16667
                         }, 
                         {
-                         "x":50.0000333333337,
-                         "y":5.49999666666645
+                         "x":50,
+                         "y":5.5
                         }],
                  "rotation":0,
                  "type":"",
@@ -3896,12 +3896,12 @@
                          "y":0
                         }, 
                         {
-                         "x":-76.6666666666665,
-                         "y":9.33333333333303
+                         "x":-76.6667,
+                         "y":9.33333
                         }, 
                         {
-                         "x":-19.4999966666664,
-                         "y":13.4999666666663
+                         "x":-19.5,
+                         "y":13.5
                         }],
                  "rotation":0,
                  "type":"",
@@ -32155,7 +32155,7 @@
          "offsety":2,
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -32238,7 +32238,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -32551,7 +32551,7 @@
                  "y":1260
                 }, 
                 {
-                 "height":131.1667,
+                 "height":131.167,
                  "id":1152,
                  "name":"",
                  "properties":[
@@ -32574,8 +32574,35 @@
                  "type":"",
                  "visible":true,
                  "width":72.6667,
-                 "x":3796.99998333333,
-                 "y":3901.66665
+                 "x":3797,
+                 "y":3901.67
+                }, 
+                {
+                 "height":131.167,
+                 "id":1154,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"03"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"\u00d1ammmmm... esta isla huele delicioso, me da hambrita"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":72.6667,
+                 "x":3622.66665,
+                 "y":1745.4165
                 }],
          "offsetx":-2,
          "offsety":-26,
@@ -32629,8 +32656,8 @@
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":2257.33333333333,
-                 "y":1342.00333333333
+                 "x":2257.33,
+                 "y":1342
                 }, 
                 {
                  "height":45,
@@ -32671,8 +32698,8 @@
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":2362.16666666667,
-                 "y":1620.83333333333
+                 "x":2362.17,
+                 "y":1620.83
                 }, 
                 {
                  "height":45,
@@ -32713,8 +32740,8 @@
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":3012.66666666667,
-                 "y":2256.83333333333
+                 "x":3012.67,
+                 "y":2256.83
                 }, 
                 {
                  "height":45,
@@ -32749,7 +32776,7 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"Es el hermano del medio el mas inteligente de los tres, es el l\u00edder de el grupo y el principal causante del trafico de abrazos de Sweet Nightmare _NEXT_ con un color gris\u00e1ceo se confunde con las sombras y las piedras del bosque, su presencia es intimidante asegur\u00e1ndose de que cada abrazo sea pagado con algo mas que simple gratitud: _NEXT_ un secreto, una promesa, o incluso una parte del alma, los abrazos de Angelo son profundos y reconfortantes, como un refugio en tiempos de tormenta."
+                         "value":"Es el hermano del medio el mas inteligente de los tres, es el l\u00edder de el grupo y el principal causante del trafico de abrazos de Sweet Nightmare _NEXT_ con un color gris\u00e1ceo se confunde con las sombras y las piedras del bosque, su presencia es intimidante _NEXT_ se asegurara de que cada abrazo sea pagado con algo mas que simple gratitud: _NEXT_ un secreto, una promesa, o incluso una parte del alma, los abrazos de Angelo son profundos y reconfortantes, como un refugio en tiempos de tormenta."
                         }],
                  "rotation":0,
                  "type":"",
@@ -32791,7 +32818,7 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"El mes de octubre es el mes donde el poder del dulce se apodera de esta poderosa bruja,_NEXT_ ella cegada por el mismo lanza un poderoso hechizo que hace que tengas unas ganas de comer dulces hasta que te duela la panza y secretamente tambi\u00e9n es la causante que en este mes se regalen dulces."
+                         "value":"El mes de octubre es el mes donde el poder del dulce se apodera de esta poderosa bruja _NEXT_ ella cegada por el mismo lanza un poderoso hechizo que hace que tengas unas ganas de comer dulces hasta que te duela la panza _NEXT_ secretamente tambi\u00e9n es la causante que en este mes se regalen dulces."
                         }],
                  "rotation":0,
                  "type":"",
@@ -32875,14 +32902,14 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"El es Hugo el verdugo, encargado de los recortes de personal, ama su trabajo pero detesta quitar las manchas de su uniforme, su frase favorita es no pierdas la cabeza, solo tienes una."
+                         "value":"El es Hugo el verdugo, encargado de los recortes de personal, ama su trabajo pero detesta quitar las manchas de su uniforme _NEXT_ su frase favorita es \"no pierdas la cabeza, solo tienes una\""
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":3802.83333333333,
-                 "y":2978.83333333333
+                 "x":3802.83,
+                 "y":2978.83
                 }, 
                 {
                  "height":45,
@@ -32917,13 +32944,13 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"Juan* siguiendo sus modas raras, en una hermosa noche se alej\u00f3 a un bosque cercano a la villa sweet nigthmare a tomar un ba\u00f1o de luna,_NEXT_ sin darse cuenta que entre las sombras era acechado por un Pincher con una maldici\u00f3n un poco curiosa. _NEXT_ tarde empez\u00f3 a sentir calor, su piel adolorida y un fuerte dolor en todo su cuerpo mientras se transformaba ve\u00eda como su piel se llen\u00f3 de pelo,_NEXT_ poco a poco se transform\u00f3 en Colmillo un hombre lobo peque\u00f1o, este ten\u00eda una fuerte alegr\u00eda a la plata y era desconfiado de los desconocidos pero alegre y cari\u00f1oso en el fondo,_NEXT_ despu\u00e9s de eso Juan* cada luna llena como la de hoy se transforma en Colmillo y sale a buscar v\u00edctimas as\u00ed que ten cuidado puedes ser el pr\u00f3ximo _NEXT_ *Los nombres han sido alterados para proteger la identidad del protagonista"
+                         "value":"Juan* siguiendo sus modas raras, en una hermosa noche se alej\u00f3 a un bosque cercano a la villa sweet nigthmare a tomar un ba\u00f1o de luna,_NEXT_ sin darse cuenta que entre las sombras era acechado por un Pincher con una maldici\u00f3n un poco curiosa. _NEXT_ tarde empez\u00f3 a sentir calor, su piel adolorida y un fuerte dolor en todo su cuerpo mientras se transformaba ve\u00eda como su piel se llen\u00f3 de pelo,_NEXT_ poco a poco se transform\u00f3 en Colmillo un hombre lobo peque\u00f1o, este ten\u00eda una fuerte alergia a la plata $_NEXT_ era desconfiado de los desconocidos pero alegre y cari\u00f1oso en el fondo,despu\u00e9s de eso Juan* cada luna llena como la de hoy se transforma en Colmillo_NEXT_ sale a buscar v\u00edctimas as\u00ed que ten cuidado puedes ser el pr\u00f3ximo _NEXT_ *Los nombres han sido alterados para proteger la identidad del protagonista"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":2790.83333333333,
+                 "x":2790.83,
                  "y":2113.5
                 }, 
                 {
@@ -32966,7 +32993,7 @@
                  "visible":true,
                  "width":45,
                  "x":2497.5,
-                 "y":2462.83333333333
+                 "y":2462.83
                 },
             
                 {
@@ -33002,14 +33029,14 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"Es el fantasma de un gran mago del pasado, en general es muy amable y dulce pero tiene una peque\u00f1a sombra perversa que lo sigue a donde vaya, el cual asusta a los visitantes del cementerio."
+                         "value":"Es el fantasma de un gran mago del pasado, en general es muy amable y dulce pero..._NEXT_ tiene una peque\u00f1a sombra perversa que lo sigue a donde vaya, el cual asusta a los visitantes del cementerio."
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":1998.83333333333,
-                 "y":2030.83333333333
+                 "x":1998.83,
+                 "y":2030.83
                 }, 
                 {
                  "height":45,
@@ -33050,7 +33077,7 @@
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":2084.16666666667,
+                 "x":2084.17,
                  "y":2941.5
                 }, 
                 {
@@ -33092,7 +33119,7 @@
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":2242.83333333333,
+                 "x":2242.83,
                  "y":3101.5
                 }, 
                 {
@@ -33128,14 +33155,14 @@
                         {
                          "name":"text",
                          "type":"string",
-                         "value":"Joaquin es un talentoso arlequin que le encanta esconder los calcetines y es esl cupable que solo encuentres uno._NEXT_ Le gusta jugar bromas pero tambi\u00e9n le encanta hacer poemas de amor y escribir rimas aunque no es muy bueno."
+                         "value":"Joaquin es un talentoso arlequin que le encanta esconder los calcetines y es el cupable que solo encuentres uno._NEXT_ Le gusta jugar bromas pero tambi\u00e9n le encanta hacer poemas de amor y escribir rimas aunque no es muy bueno."
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":2148.16666666667,
-                 "y":3344.16666666667
+                 "x":2148.17,
+                 "y":3344.17
                 }, 
                 {
                  "height":45,
@@ -33177,7 +33204,7 @@
                  "visible":true,
                  "width":45,
                  "x":2209.5,
-                 "y":3544.16666666667
+                 "y":3544.17
                 }, 
                 {
                  "height":45,
@@ -33219,7 +33246,7 @@
                  "visible":true,
                  "width":45,
                  "x":2521.5,
-                 "y":3638.83333333333
+                 "y":3638.83
                 }, 
                 {
                  "height":45,
@@ -33261,7 +33288,723 @@
                  "visible":true,
                  "width":45,
                  "x":3001.5,
-                 "y":4012.16666666667
+                 "y":4012.17
+                }, 
+                {
+                 "height":45,
+                 "id":1155,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Lola"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Lola_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Lola"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":4126.04545454545,
+                 "y":1295.16666666667
+                }, 
+                {
+                 "height":45,
+                 "id":1156,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Sandwich"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Sandwich_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Sandwich"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":3808.5,
+                 "y":1411.5
+                },
+            
+                {
+                 "height":45,
+                 "id":1157,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Ryan"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Ryan_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Ryan"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Ryan la pi\u00f1a es cool como ninguna otra, siente una gran atracci\u00f3n hacia la pizza pero es incapaz de decirlo_NEXT_ya que para muchos no es natural, le encanta el surf y odia los chistes de pi\u00f1as coladas"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":4652.5,
+                 "y":501.5
+                }, 
+                {
+                 "height":45,
+                 "id":1158,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"HotDog"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta HotDog_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta HotDog"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":4400.5,
+                 "y":1533.5
+                }, 
+                {
+                 "height":45,
+                 "id":1159,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Jean"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Jean_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Jean"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":4764.5,
+                 "y":1255.5
+                }, 
+                {
+                 "height":45,
+                 "id":1160,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"BigMike"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta BigMike_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta BigMike"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":4659.5,
+                 "y":1349.5
+                }, 
+                {
+                 "height":45,
+                 "id":1161,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Bernardo Nancy"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta BernardoNancy_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta BernardoNancy"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":4881.5,
+                 "y":1178.5
+                }, 
+                {
+                 "height":45,
+                 "id":1162,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Zanahoria"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Zanahoria_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Zanahoria"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":5026.5,
+                 "y":1404.5
+                }, 
+                {
+                 "height":45,
+                 "id":1163,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Aguacate"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Aguacate_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Aguacate"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":4825.5,
+                 "y":1489.5
+                }, 
+                {
+                 "height":45,
+                 "id":1164,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Margarita"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Margarita_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Margarita"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":5236.5,
+                 "y":1305.5
+                }, 
+                {
+                 "height":45,
+                 "id":1165,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Jack"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Jack_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Jack"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Jack era un trozo de pizza que fue olvidado por accidente en la caja, d\u00eda a d\u00eda se fue da\u00f1ando y perdiendo la conciencia hasta volverse un zombie_NEXT_ahora va da\u00f1ando al resto de las comidas en venganza por ser olvidado."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":5097.5,
+                 "y":1231.5
+                },
+            
+                {
+                 "height":45,
+                 "id":1166,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Chocolatina"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Chocolatina_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Chocolatina"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"En alg\u00fan lugar de Villa Comid\u00edn, unos incre\u00edbles y exquisitos granos de cacao, conocidos por ser demasiado secos y amargos pero grandes exploradores, emprendieron uno de sus viajes._NEXT_ Durante su traves\u00eda, se encontraron con Lola, una dulce y tierna caja de leche. Juntos descubrieron que pod\u00edan crear algo suave y delicioso_NEXT_ \u00a1Choco! Una gran chocolatina con una cubierta brillante destinada a conquistar los paladares m\u00e1s golosos y atraerlos con su irresistible aroma."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":5363.5,
+                 "y":1176.5
+                }, 
+                {
+                 "height":45,
+                 "id":1167,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"CarneManga"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta CarneManga_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Carne Manga"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"En un mercado muy peculiar de villa comidin, hab\u00eda una carne manga tan tierna que era famosa por su jugosidad y su peculiaridad_NEXT_ \u00a1se pod\u00eda sacar el hueso con carita feliz! Los chefs del lugar siempre contaban la leyenda de c\u00f3mo esa carne hab\u00eda sido bendecida por una vieja bruja del bosque_NEXT_quien le hab\u00eda otorgado esa cualidad especial para traer alegr\u00eda a quienes la preparaban y la disfrutaban.Cada d\u00eda_NEXT_los clientes del mercado se maravillaban al ver c\u00f3mo los chefs expertos en esta carne realizaban el ritual de extraer el hueso con sonrisa, asegurando que la carne fuera perfecta para la preparaci\u00f3n._NEXT_ Era un espect\u00e1culo que no solo alimentaba los est\u00f3magos, sino tambi\u00e9n el esp\u00edritu de quienes lo presenciaban. _NEXT_ As\u00ed, la carne manga con su hueso de carita feliz se convirti\u00f3 en la estrella indiscutible del mercado, uniendo a la gente en torno a su deliciosa y encantadora singularidad."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":5501.5,
+                 "y":1487.5
+                }, 
+                {
+                 "height":45,
+                 "id":1168,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Chocofresa"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Chocofresa_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Chocofresa"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":5545.5,
+                 "y":1192.5
+                }, 
+                {
+                 "height":45,
+                 "id":1169,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Yemin-Eggtor"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Yemin-Eggtor_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Yemin-Eggtor"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":5286.5,
+                 "y":1444.5
+                }, 
+                {
+                 "height":45,
+                 "id":1170,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Cafesito"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Cafesito_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Cafesito"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Historia en construcci\u00f3n , disculpa las molestias (\u2060\u0665\u2060\u21bc\u2060_\u2060\u21bc\u2060)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":5122.5,
+                 "y":1677.5
+                }, 
+                {
+                 "height":45,
+                 "id":1171,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"actionType",
+                         "type":"string",
+                         "value":"collectItem"
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"Sandy"
+                        }, 
+                        {
+                         "name":"imagePath",
+                         "type":"string",
+                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Sandy_S.webp"
+                        }, 
+                        {
+                         "name":"itemToAdd",
+                         "type":"string",
+                         "value":"Tarjeta Sandy"
+                        }, 
+                        {
+                         "name":"once",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"text",
+                         "type":"string",
+                         "value":"Sandy la sandia es una de las hijas de la gran sandia, ella siempre vive alegre y le encanta comer Hamburguesas."
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45,
+                 "x":4822.5,
+                 "y":2140.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -33270,7 +34013,7 @@
          "y":0
         }],
  "nextlayerid":15,
- "nextobjectid":1153,
+ "nextobjectid":1172,
  "orientation":"orthogonal",
  "renderorder":"right-up",
  "tiledversion":"1.11.2",
