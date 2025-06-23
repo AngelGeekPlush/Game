@@ -32601,8 +32601,8 @@
                  "type":"",
                  "visible":true,
                  "width":72.6667,
-                 "x":3622.66665,
-                 "y":1745.4165
+                 "x":3622.67,
+                 "y":1745.42
                 }],
          "offsetx":-2,
          "offsety":-26,
@@ -33308,7 +33308,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Lola_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Lola_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33329,8 +33329,8 @@
                  "type":"",
                  "visible":true,
                  "width":45,
-                 "x":4126.04545454545,
-                 "y":1295.16666666667
+                 "x":4126.05,
+                 "y":1295.17
                 }, 
                 {
                  "height":45,
@@ -33350,7 +33350,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Sandwich_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Sandwich_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33435,7 +33435,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta HotDog_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta HotDog_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33477,7 +33477,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Jean_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Jean_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33519,7 +33519,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta BigMike_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta BigMike_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33561,7 +33561,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta BernardoNancy_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta BernardoNancy_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33603,7 +33603,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Zanahoria_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Zanahoria_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33645,7 +33645,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Aguacate_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Aguacate_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33687,7 +33687,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Margarita_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Margarita_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33729,7 +33729,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Jack_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Jack_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33772,7 +33772,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Chocolatina_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Chocolatina_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33814,7 +33814,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta CarneManga_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta CarneManga_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33856,7 +33856,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Chocofresa_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Chocofresa_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33898,7 +33898,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Yemin-Eggtor_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Yemin-Eggtor_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33940,7 +33940,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Cafesito_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Cafesito_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",
@@ -33982,7 +33982,7 @@
                         {
                          "name":"imagePath",
                          "type":"string",
-                         "value":"Tarjetas\/Sweet Comidin\/Tarjeta Sandy_S.webp"
+                         "value":"Tarjetas\/Comidin\/Tarjeta Sandy_S.webp"
                         }, 
                         {
                          "name":"itemToAdd",

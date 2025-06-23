@@ -184,6 +184,110 @@ const itemDefinitions = {
         imagePath: './Tarjetas/Sweet Nightmare/Tarjeta El Chamuco_S.webp',
         dialogueImagePath: './Tarjetas/Sweet Nightmare/Tarjeta El Chamuco_S.webp',
     },
+    'Tarjeta Lola': {
+        name: 'Tarjeta Lola',
+        imagePath: './Tarjetas/Comidin/Tarjeta Lola_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Lola_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)" // Se mantiene la descripción proporcionada
+    },
+    'Tarjeta Sandwich': {
+        name: 'Tarjeta Sandwich',
+        imagePath: './Tarjetas/Comidin/Tarjeta Sandwich_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Sandwich_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Ryan': {
+        name: 'Tarjeta Ryan',
+        imagePath: './Tarjetas/Comidin/Tarjeta Ryan_S.webp', // Asegúrate de que esta ruta sea correcta
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Ryan_S.webp', // Asegúrate de que esta ruta sea correcta
+        text: "Ryan la piña es cool como ninguna otra, siente una gran atracción hacia la pizza pero es incapaz de decirlo_NEXT_ya que para muchos no es natural, le encanta el surf y odia los chistes de piñas coladas"
+    },
+    'Tarjeta HotDog': {
+        name: 'Tarjeta HotDog',
+        imagePath: './Tarjetas/Comidin/Tarjeta HotDog_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta HotDog_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Jean': {
+        name: 'Tarjeta Jean',
+        imagePath: './Tarjetas/Comidin/Tarjeta Jean_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Jean_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta BigMike': {
+        name: 'Tarjeta BigMike',
+        imagePath: './Tarjetas/Comidin/Tarjeta BigMike_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta BigMike_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta BernardoNancy': {
+        name: 'Tarjeta BernardoNancy',
+        imagePath: './Tarjetas/Comidin/Tarjeta BernardoNancy_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta BernardoNancy_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Zanahoria': {
+        name: 'Tarjeta Zanahoria',
+        imagePath: './Tarjetas/Comidin/Tarjeta Zanahoria_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Zanahoria_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Aguacate': {
+        name: 'Tarjeta Aguacate',
+        imagePath: './Tarjetas/Comidin/Tarjeta Aguacate_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Aguacate_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Margarita': {
+        name: 'Tarjeta Margarita',
+        imagePath: './Tarjetas/Comidin/Tarjeta Margarita_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Margarita_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Jack': {
+        name: 'Tarjeta Jack',
+        imagePath: './Tarjetas/Comidin/Tarjeta Jack_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Jack_S.webp',
+        text: "Jack era un trozo de pizza que fue olvidado por accidente en la caja, día a día se fue dañando y perdiendo la conciencia hasta volverse un zombie_NEXT_ahora va dañando al resto de las comidas en venganza por ser olvidado."
+    },
+    'Tarjeta Chocolatina': {
+        name: 'Tarjeta Chocolatina',
+        imagePath: './Tarjetas/Comidin/Tarjeta Chocolatina_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Chocolatina_S.webp',
+        text: "En algún lugar de Villa Comidín, unos increíbles y exquisitos granos de cacao, conocidos por ser demasiado secos y amargos pero grandes exploradores, emprendieron uno de sus viajes._NEXT_ Durante su travesía, se encontraron con Lola, una dulce y tierna caja de leche. Juntos descubrieron que podían crear algo suave y delicioso_NEXT_ ¡Choco! Una gran chocolatina con una cubierta brillante destinada a conquistar los paladares más golosos y atraerlos con su irresistible aroma."
+    },
+    'Tarjeta Carne Manga': { // Fíjate en el espacio en el nombre si así lo tienes en Tiled
+        name: 'Tarjeta Carne Manga',
+        imagePath: './Tarjetas/Comidin/Tarjeta CarneManga_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta CarneManga_S.webp',
+        text: "En un mercado muy peculiar de villa comidin, había una carne manga tan tierna que era famosa por su jugosidad y su peculiaridad_NEXT_ ¡se podía sacar el hueso con carita feliz! Los chefs del lugar siempre contaban la leyenda de cómo esa carne había sido bendecida por una vieja bruja del bosque_NEXT_quien le había otorgado esa cualidad especial para traer alegría a quienes la preparaban y la disfrutaban.Cada día_NEXT_los clientes del mercado se maravillaban al ver cómo los chefs expertos en esta carne realizaban el ritual de extraer el hueso con sonrisa, asegurando que la carne fuera perfecta para la preparación._NEXT_ Era un espectáculo que no solo alimentaba los estómagos, sino también el espíritu de quienes lo presenciaban. _NEXT_ Así, la carne manga con su hueso de carita feliz se convirtió en la estrella indiscutible del mercado, uniendo a la gente en torno a su deliciosa y encantadora singularidad."
+    },
+    'Tarjeta Chocofresa': {
+        name: 'Tarjeta Chocofresa',
+        imagePath: './Tarjetas/Comidin/Tarjeta Chocofresa_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Chocofresa_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Yemin-Eggtor': {
+        name: 'Tarjeta Yemin-Eggtor',
+        imagePath: './Tarjetas/Comidin/Tarjeta Yemin-Eggtor_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Yemin-Eggtor_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Cafesito': {
+        name: 'Tarjeta Cafesito',
+        imagePath: './Tarjetas/Comidin/Tarjeta Cafesito_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Cafesito_S.webp',
+        text: "Historia en construcción , disculpa las molestias (٥̲̅_̅٥̲̅)"
+    },
+    'Tarjeta Sandy': {
+        name: 'Tarjeta Sandy',
+        imagePath: './Tarjetas/Comidin/Tarjeta Sandy_S.webp',
+        dialogueImagePath: './Tarjetas/Comidin/Tarjeta Sandy_S.webp',
+        text: "Sandy la sandia es una de las hijas de la gran sandia, ella siempre vive alegre y le encanta comer Hamburguesas."
+    },
+   
+   
     // Añade más ítems aquí a medida que los crees en Tiled y les asignes 'itemToAdd'
 };
 
@@ -395,8 +499,8 @@ if (mapData && Object.keys(mapInteractions).length > 0) { // <--- ¡¡¡AÑADE E
     }
 }
     // Dibujar los polígonos de colisión para depuración
-    debugDrawCollisionPolygons(ctx);
-    debugDrawPlayerCollider(ctx);
+    //debugDrawCollisionPolygons(ctx);
+   // debugDrawPlayerCollider(ctx);
 
     // ¡SECCIÓN MODIFICADA!: Dibujar el Cuadro de Texto de Diálogo Estilo RPG
  // --- Dibujo ---
@@ -407,8 +511,8 @@ if (mapData && Object.keys(mapInteractions).length > 0) { // <--- ¡¡¡AÑADE E
 
     
     // ¡DESCOMENTADAS!: Dibujar los polígonos de colisión para depuración
-    debugDrawCollisionPolygons(ctx); 
-    debugDrawPlayerCollider(ctx); // Asegúrate de que esta función exista y esté exportada en player.js
+  //  debugDrawCollisionPolygons(ctx); 
+  //  debugDrawPlayerCollider(ctx); // Asegúrate de que esta función exista y esté exportada en player.js
 
     requestAnimationFrame(gameLoop);
 

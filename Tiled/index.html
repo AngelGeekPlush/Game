@@ -463,7 +463,12 @@
         object-fit: contain;
       
     }
+  #startButton {
+        width: 168px;   /* Ancho deseado del botón */
+        height: 93px;
 
+
+  }
     }
  #startScreen {
     position: fixed; /* Lo fija en la pantalla, ignorando el scroll */
@@ -475,15 +480,15 @@
     flex-direction: column; /* Apila los elementos verticalmente */
     justify-content: center; /* Centra los elementos verticalmente */
     align-items: center; /* Centra los elementos horizontalmente */
-    background-color: #1a1a1a; /* Color de fondo de fallback si la imagen no carga */
-    /*
+    align-content: flex-start;
+      /*
      * ¡IMAGEN DE FONDO!
      * --- CAMBIA ESTA RUTA ---
      * Reemplaza 'url(../img/StartScreenBackground.webp)' por la RUTA REAL a tu imagen de inicio.
      * Asegúrate de que la ruta sea correcta y relativa desde la ubicación de este archivo CSS.
      * Por ejemplo, si tu style.css está en 'css/' y tu imagen en 'img/', entonces es '../img/nombre-de-tu-imagen.webp'.
      */
-    background-image: url('../img/StartScreenBackground.webp'); /* <-- ¡¡¡CAMBIA ESTA RUTA POR LA DE TU IMAGEN!!! */
+    background-image: url('./img/Mapa Home.webp'); /* <-- ¡¡¡CAMBIA ESTA RUTA POR LA DE TU IMAGEN!!! */
     background-size: cover; /* Cubre toda el área del contenedor */
     background-position: center; /* Centra la imagen de fondo */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
@@ -500,46 +505,96 @@
 }
 
 #gameTitle {
+   
     font-size: clamp(3em, 8vw, 6em); /* Título responsivo y grande */
     color: #FFD700; /* Color dorado */
     text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8); /* Sombra para resaltar */
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     user-select: none; /* Evita que el texto se pueda seleccionar con el mouse */
 }
 
 #gameSubtitle {
+
+    
     font-size: clamp(1em, 2.5vw, 2em); /* Subtítulo responsivo */
     color: #E0E0E0; /* Gris claro */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    margin-bottom: 40px;
+    margin-bottom: 110px;
     user-select: none;
 }
 
-#startButton {
-    background-color: #663399; /* Color morado estilo RPG */
-    color: white;
-    font-size: clamp(1.2em, 3vw, 2.5em); /* Tamaño responsivo del botón */
-    padding: 15px 30px;
-    border: 3px solid #9966CC; /* Borde más claro */
-    border-radius: 10px; /* Bordes redondeados */
-    cursor: pointer; /* Indica que es un elemento interactivo */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6); /* Sombra para dar profundidad */
-    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; /* Transiciones suaves */
-    user-select: none;
-    -webkit-tap-highlight-color: transparent; /* Elimina el resaltado azul en móvil */
-}
+  #startButton {
+        /* Tamaño fijo para el botón, ajusta estos valores según el tamaño de tus imágenes de botón */
+        width: 339px;   /* Ancho deseado del botón */
+        height: 186px;   /* Alto deseado del botón */
+       
+        /* Oculta el texto original del botón, ya que usaremos una imagen */
+        
 
-#startButton:hover {
-    background-color: #9966CC; /* Cambia de color al pasar el ratón */
-    transform: translateY(-3px); /* Efecto de "levantar" */
-    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.8); /* Sombra más pronunciada */
-}
+        /* Propiedades de la imagen de fondo para el estado NORMAL */
+        background-image: url('./img/Boton%20Play_01.webp'); /* <-- RUTA PARA EL BOTÓN NORMAL (¡verifica!) */
+        background-size: contain; /* Ajusta la imagen dentro del botón sin cortarla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+        margin-top: 50px;
+        /* Otras propiedades visuales del botón */
+        background-color: transparent; /* Fondo transparente para que solo se vea la imagen */
+        border: none; /* Elimina cualquier borde si lo tenías */
+        border-radius: 0; /* Elimina cualquier redondeo si lo tenías (la imagen definirá la forma) */
+        cursor: pointer;
+        box-shadow: none; /* Elimina la sombra si la imagen ya tiene su propia sombra */
+    
+        /* Transición para suavizar el cambio de imagen y otros efectos */
+        transition: background-image 0.3s ease-in-out, transform 0.1s ease-out;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
 
-#startButton:active {
-    background-color: #4C2673; /* Color al hacer clic */
-    transform: translateY(0); /* Vuelve a su posición original */
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); /* Sombra más pequeña */
-}
+    #startButton:hover {
+        /* Propiedad de la imagen de fondo para el estado HOVER */
+        background-image: url('./img/Boton%20Play_02.webp'); /* <-- RUTA PARA EL BOTÓN HOVER (¡verifica!) */
+        transform: translateY(-3px); /* Efecto de "levantar" */
+        /* Si quieres una sombra en hover, añade: */
+        /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); */
+    }
+
+    #startButton:active {
+        /* Propiedad de la imagen de fondo para el estado ACTIVE (al hacer clic) */
+       background-image: url('./img/Boton%20Play_03.webp'); /* <-- ¡VOLVEMOS A USAR Boton Play_03.webp para el clic/tap! */
+        /* Puedes ajustar el transform si quieres que se vea más "hundido" al hacer clic: */
+        transform: translateY(1px); /* Un pequeño hundimiento al hacer clic/tocar */
+        /* ... el resto de las propiedades para :active ... */
+    }
+
+    #instructionsPanel {
+        margin-top: 1px; /* Espacio superior para separarlo del botón */
+        padding: 20px 30px;
+       
+        border-radius: 10px; /* Bordes redondeados */
+        text-align: center;
+        max-width: 80%; /* Ancho máximo para que no sea demasiado largo en pantallas grandes */
+        font-family: 'Press Start 2P', Arial, sans-serif;
+        font-size: clamp(0.7em, 1.8vw, 1.2em); /* Tamaño de fuente responsivo */
+        line-height: 1; /* Espaciado entre líneas para mejor lectura */
+        margin-bottom: 0;
+        user-select: none;
+    }
+
+    #instructionsPanel p {
+        margin-bottom: 8px; /* Espacio entre cada línea de instrucción */
+        color: #E0E0E0; /* Color de texto claro */
+    }
+
+    #instructionsPanel p:last-child {
+        margin-bottom: 0; /* Sin margen inferior en la última línea */
+    }
+
+    /* Estilo para resaltar las teclas */
+    .key-highlight {
+        color: #FFD700; /* Color dorado para las teclas */
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    }
 
 </style>
 </head>
@@ -548,7 +603,15 @@
     <div id="startScreen">
     <h1 id="gameTitle">Angel Geek</h1>
     <p id="gameSubtitle">Conociendo un nuevo mundo</p>
-    <button id="startButton">Iniciar Juego</button>
+    <button id="startButton"></button>
+<!-- NUEVO: Panel de Instrucciones -->
+    <div id="instructionsPanel">
+        <p><strong>Recolecta las tarjetas y conoce las historias de las adorables criaturas del nuevo mundo</strong></p>
+        <p><strong>Movimiento:</strong> Teclas <span class="key-highlight">W A S D</span> / <span class="key-highlight">Flechas</span></p>
+        <p><strong>Inventario:</strong> Presiona <span class="key-highlight">I</span></p>
+        <p><strong>Diálogo:</strong> Presiona <span class="key-highlight">Enter</span> / <span class="key-highlight">Clic</span></p>
+    </div>
+
 </div>
     <canvas id="gameCanvas"></canvas>
 
