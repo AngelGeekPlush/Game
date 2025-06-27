@@ -49,7 +49,7 @@ const startScreen = document.getElementById('startScreen'); // Referencia al div
 const startButton = document.getElementById('startButton'); // Referencia al botón "Iniciar Juego"
 let cardInteractionIcon = new Image(); // <--- AÑADIDA: Declaramos un nuevo objeto Image para nuestro icono
 cardInteractionIcon.onload = () => { // <--- AÑADIDA: Para confirmar carga exitosa
-    console.log("Icono de interacción de tarjeta cargado exitosamente:", cardInteractionIcon.src);
+ //   console.log("Icono de interacción de tarjeta cargado exitosamente:", cardInteractionIcon.src);
 };
 
 cardInteractionIcon.src = './img/Tarjeta Sprite.webp'; // <--- AÑADIDA: Ruta a tu icono. ¡CAMBIA ESTA RUTA SI ES NECESARIO!
@@ -101,7 +101,7 @@ const DIALOGUE_PAGE_DELIMITER = '_NEXT_'; // Un delimitador especial que usarás
 const backgroundMusic = new Audio('./Audio/map.mp3'); // URL de ejemplo
 backgroundMusic.volume = 0.3; // Volumen bajo para que no opaque otros sonidos
 backgroundMusic.loop = true; // Hace que la música se repita continuamente
-
+const loadingScreen = document.getElementById('loadingScreen');
 const itemDefinitions = {
     'Tarjeta Reaper': {
         name: 'Tarjeta Reaper',
@@ -656,32 +656,45 @@ if (mobileInventoryButton) {
         // Inicia el bucle principal del juego
        // startGameLoop();
 
-if (startButton) { // Asegúrate de que la referencia al botón exista
-        startButton.addEventListener('click', () => {
-            // Al hacer clic, oculta la pantalla de inicio
-            if (startScreen) { // Asegúrate de que la referencia a la pantalla de inicio exista
-                startScreen.classList.add('hidden'); // Aplica la clase 'hidden' para ocultarla con la transición CSS
+if (startButton) {
+    // Función común para manejar el inicio del juego
+    const handleStartGame = () => {
+        // --- ¡CAMBIO CLAVE AQUÍ! ---
+        // Añade la clase que oculta el botón de forma instantánea y forzada
+        startButton.classList.add('start-button-clicked'); 
+        // --- FIN DEL CAMBIO CLAVE ---
+
+        if (startScreen) {
+            startScreen.classList.add('hidden'); // Inicia la transición de opacidad y visibilidad
+
+            // Muestra la pantalla de carga inmediatamente después de ocultar la pantalla de inicio
+            if (loadingScreen) {
+                loadingScreen.classList.remove('hidden');
             }
-            // Y luego, inicia el juego
-            startGameLoop(); // ¡Ahora el juego se inicia con el clic!
-             backgroundMusic.play().catch(e => console.warn("La música de fondo no pudo iniciarse automáticamente al hacer clic en 'Iniciar Juego'.", e));100;
-        });
-        // También añade un listener para toques en pantallas táctiles
-        startButton.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // Evita el comportamiento por defecto del navegador para toques
-            if (startScreen) {
-                startScreen.classList.add('hidden');
+
+            // Llama a la función que cargará los recursos y luego iniciará el juego
+            loadGameResources(); 
+
+        } else {
+            // Si startScreen no existe, muestra la pantalla de carga y carga los recursos directamente
+            if (loadingScreen) {
+                loadingScreen.classList.remove('hidden');
             }
-            startGameLoop();
-             backgroundMusic.play().catch(e => console.warn("La música de fondo no pudo iniciarse automáticamente al hacer clic en 'Iniciar Juego'.", e));
-        });
-    } else {
-        // En caso de que, por alguna razón, el botón no se encuentre, mostramos un error
-        console.error("El botón de inicio (startButton) no fue encontrado. El juego no se iniciará con un clic.");
-        // Y para depuración, puedes hacer que el juego inicie automáticamente si el botón no se encuentra.
-        // Puedes borrar esta línea una vez que todo funcione bien y el botón siempre se encuentre.
-        startGameLoop();
-    }
+            loadGameResources();
+        }
+    };
+
+    startButton.addEventListener('click', handleStartGame);
+
+    startButton.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Evita el comportamiento por defecto del navegador para toques
+        handleStartGame();
+    });
+} else {
+    console.error("El botón de inicio (startButton) no fue encontrado. El juego no se iniciará con un clic.");
+    // Si quieres que el juego inicie automáticamente si el botón no se encuentra (para depuración)
+    // startGameLoop();
+}
 
 
     } catch (error) {
@@ -1305,3 +1318,67 @@ function drawMinimap(playerX, playerY) {
     // Dibuja el rectángulo del borde alrededor de todo el minimapa
     minimapCtx.strokeRect(0, 0, minimapCanvas.width, minimapCanvas.height);
 }
+async function loadGameResources() {
+    console.log("[GAME LOAD] Iniciando carga de recursos del juego...");
+    try {
+        // 1. Cargar el JSON del mapa (usando la ruta que ya corregimos)
+        // Esto es CRÍTICO para que el juego no se rompa al iniciar
+        const mapData = await fetch('./Mapa_angelgeek_base.json').then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status} for map JSON`);
+            }
+            return response.json();
+        });
+        console.log("[GAME LOAD] Mapa JSON cargado:", mapData.name);
+
+        // 2. Aquí puedes añadir la carga de OTROS recursos críticos que tu juego necesite
+        // ANTES de que startGameLoop() comience.
+        // Por ejemplo, si tienes imágenes de tilesets o sprites que no se cargan automáticamente
+        // con el mapa, o que tu startGameLoop() espera que estén listos.
+        // Puedes usar Promise.all para cargar varios recursos en paralelo:
+        /*
+        const [playerSprite, enemySprite] = await Promise.all([
+            loadImage('./img/player_sprite.png'), // Asume que tienes una función loadImage
+            loadImage('./img/enemy_sprite.png')
+        ]);
+        console.log("[GAME LOAD] Sprites cargados.");
+        */
+
+        // SIMULACIÓN DE TIEMPO DE CARGA (ELIMINA ESTA LÍNEA EN PRODUCCIÓN)
+        // Esto es solo para que puedas ver la pantalla de carga por un momento.
+        // Cuando tus recursos reales tarden en cargar, esta línea no será necesaria.
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Espera 2 segundos
+
+        console.log("[GAME LOAD] Todos los recursos críticos cargados. Iniciando juego.");
+
+        // 3. Ocultar la pantalla de carga
+        if (loadingScreen) {
+            loadingScreen.classList.add('hidden'); // Aplica la clase 'hidden' para ocultarla
+        }
+
+        // 4. Iniciar el juego principal y la música
+        // ¡IMPORTANTE! Aquí es donde llamas a tus funciones que realmente inician el juego.
+        startGameLoop(); // Llama a tu función principal de inicio del juego
+        backgroundMusic.play().catch(e => console.warn("La música de fondo no pudo iniciarse automáticamente al cargar el juego.", e));
+
+    } catch (error) {
+        console.error("[GAME LOAD ERROR] Error al cargar recursos:", error);
+        // Si hay un error, puedes mostrar un mensaje en la pantalla de carga
+        if (loadingScreen) {
+            loadingScreen.querySelector('.loading-content p').textContent = "Error al cargar. Recarga la página.";
+            loadingScreen.querySelector('.spinner').style.display = 'none'; // Oculta el spinner
+        }
+    }
+}
+
+// Si no tienes una función `loadImage` para cargar imágenes, aquí tienes una básica:
+/*
+function loadImage(url) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+        img.src = url;
+    });
+}
+*/

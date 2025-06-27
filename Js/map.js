@@ -58,7 +58,7 @@ export async function loadMap(path) {
         //console.log("Información de tiles preparada.");
         // --- INICIO DE ADICIÓN CLAVE: Precargar SOLO las imágenes de la capa "Mapa_angelgeek_base" para el minimapa ---
 const minimapTileLoadPromises = []; // Nuevo arreglo de promesas solo para el minimapa
-console.log("[MAP DEBUG] Contenido de mapData.layers antes de buscar capa base:", mapData.layers);
+//console.log("[MAP DEBUG] Contenido de mapData.layers antes de buscar capa base:", mapData.layers);
 const baseLayerForMinimap = mapData.layers.find(l => l.name === 'Capa de patrones 1' && l.type === 'tilelayer');
 
 if (baseLayerForMinimap) {
@@ -93,7 +93,7 @@ if (baseLayerForMinimap) {
 }
 
 await Promise.all(minimapTileLoadPromises); // Espera a que SOLO las imágenes específicas del minimapa intenten cargar
-console.log(`[MAP DEBUG] Se han precargado ${Object.keys(minimapLoadedTileImages).length} imágenes para la capa base del minimapa.`);
+//console.log(`[MAP DEBUG] Se han precargado ${Object.keys(minimapLoadedTileImages).length} imágenes para la capa base del minimapa.`);
 // --- FIN DE ADICIÓN CLAVE ---
 
           // ¡MODIFICADO!: Cargar el sprite sheet de teletransportación
@@ -105,8 +105,8 @@ console.log(`[MAP DEBUG] Se han precargado ${Object.keys(minimapLoadedTileImages
        
              
          processCollisionObjects(mapData); // <--- ¡ESTA FUNCIÓN YA PROCESA TODO: COLISIONES, TELETRANSPORTADORES E INTERACCIONES!
-        console.log("Polígonos de colisión cargados y procesados:", collisionPolygons.length);
-        console.log("Interacciones (incluyendo tarjetas) cargadas:", Object.keys(mapInteractions).length); // <-- CAMBIA ESTE LOG ASÍ
+        //console.log("Polígonos de colisión cargados y procesados:", collisionPolygons.length);
+       // console.log("Interacciones (incluyendo tarjetas) cargadas:", Object.keys(mapInteractions).length); // <-- CAMBIA ESTE LOG ASÍ
 
 
         return mapData;
