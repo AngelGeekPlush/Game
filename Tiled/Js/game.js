@@ -94,7 +94,7 @@ let currentTypingIndex = 0;         // El índice del carácter actual que se es
 const TYPING_SPEED_MS = 30;         // Define la velocidad de escritura (milisegundos por carácter). Puedes ajustar este valor.
 const DIALOGUE_PAGE_DELIMITER = '_NEXT_'; // Un delimitador especial que usarás en tu texto de Tiled para indicar un salto de página.
                                         // Asegúrate de que este delimitador no aparezca de forma natural en tu texto.
-const backgroundMusic = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'); // URL de ejemplo
+const backgroundMusic = new Audio('./Audio/map.mp3'); // URL de ejemplo
 backgroundMusic.volume = 0.3; // Volumen bajo para que no opaque otros sonidos
 backgroundMusic.loop = true; // Hace que la música se repita continuamente
 
