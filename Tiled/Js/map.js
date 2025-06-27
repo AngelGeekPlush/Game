@@ -6,6 +6,7 @@ import { loadImage } from './utils.js'; //
 
 export let mapData;
 export const loadedChunkImages = {};
+export const minimapLoadedTileImages = {}; 
 export let collisionPolygons = []; // Array para almacenar los polígonos de colisión del mapa
 export let mapTeleporters = {}; // ¡NUEVA LÍNEA! Objeto para almacenar los teletransportadores por su ID
 export let mapInteractions = {}; 
@@ -32,9 +33,68 @@ export async function loadMap(path) {
         const response = await fetch(path);
         const json = await response.json();
         mapData = json;
+        mapData.mapPath = path;
+        // --- INICIO DE MODIFICACIÓN: Cargar las imágenes completas de los Tilesets ---
+       // --- INICIO DE MODIFICACIÓN: Cargar las imágenes completas de los Tilesets ---
+
+                const tilesetImagePromises = mapData.tilesets.map(async (tileset) => {
+                    if (tileset.image) {
+                        tileset._imageObject = await loadImage(tileset.image); // Ya tienes esta línea
+
+                        // --- INICIO DE MODIFICACIÓN: Nuevo log de depuración ---
+                        if (tileset._imageObject && tileset._imageObject.complete) {
+                            console.log(`[MAP DEBUG] Tileset '${tileset.name}' cargado OK. Ruta: '${tileset.image}'. Dimensiones: ${tileset._imageObject.naturalWidth}x${tileset._imageObject.naturalHeight}`);
+                        } else {
+                            console.error(`[MAP DEBUG] ERROR al cargar Tileset '${tileset.name}'. Ruta: '${tileset.image}'. Imagen no completa o nula.`);
+                        }
+                        // --- FIN DE MODIFICACIÓN ---
+                    }
+                });
+
+           await Promise.all(tilesetImagePromises); // <-- ¡ESTA LÍNEA ES FUNDAMENTAL!
+        // --- FIN DE MODIFICACIÓN ---
        // console.log("Datos del mapa JSON cargados. Preparando información de tiles...");
         prepareTileData(mapData); 
         //console.log("Información de tiles preparada.");
+        // --- INICIO DE ADICIÓN CLAVE: Precargar SOLO las imágenes de la capa "Mapa_angelgeek_base" para el minimapa ---
+const minimapTileLoadPromises = []; // Nuevo arreglo de promesas solo para el minimapa
+console.log("[MAP DEBUG] Contenido de mapData.layers antes de buscar capa base:", mapData.layers);
+const baseLayerForMinimap = mapData.layers.find(l => l.name === 'Capa de patrones 1' && l.type === 'tilelayer');
+
+if (baseLayerForMinimap) {
+    for (const globalId of baseLayerForMinimap.data) { // Itera sobre los ID de los tiles de esa capa
+        if (globalId > 0) { // Si el ID del tile es válido (no es un tile vacío)
+            const tileInfo = mapData.tileInfo[globalId];
+            if (tileInfo && tileInfo.imagePath) {
+                // Solo carga la imagen si aún no está en caché para el minimapa
+                if (!minimapLoadedTileImages[globalId]) {
+                    const img = new Image();
+                    img.src = tileInfo.imagePath; // Usa la ruta que prepareTileData ha corregido
+
+                    minimapTileLoadPromises.push(new Promise((resolve) => {
+                        img.onload = () => {
+                            minimapLoadedTileImages[globalId] = img; // Guarda la imagen cargada
+                            resolve(); // Resuelve si carga bien
+                        };
+                        img.onerror = () => {
+                            // Este log ahora es solo un warning y no detiene la carga completa
+                            console.warn(`[MAP DEBUG] WARNING: No se pudo precargar imagen de tile para capa base del minimapa (ID ${globalId}): ${tileInfo.imagePath}. Esto no detiene el juego.`);
+                            resolve(); // Resolvemos la promesa de todas formas para no detener Promise.all
+                        };
+                    }));
+                }
+            } else {
+                console.warn(`[MAP DEBUG] WARNING: Información de tile o imagePath no encontrados para globalId ${globalId} de capa base de minimapa.`);
+            }
+        }
+    }
+} else {
+    console.warn("[MAP DEBUG] Capa 'Capa de patrones 1' no encontrada o no es de tipo tilelayer. El minimapa no mostrará el mapa base.");
+}
+
+await Promise.all(minimapTileLoadPromises); // Espera a que SOLO las imágenes específicas del minimapa intenten cargar
+console.log(`[MAP DEBUG] Se han precargado ${Object.keys(minimapLoadedTileImages).length} imágenes para la capa base del minimapa.`);
+// --- FIN DE ADICIÓN CLAVE ---
 
           // ¡MODIFICADO!: Cargar el sprite sheet de teletransportación
         // Asegúrate de que './img/Teletransportacion.png' sea la ruta correcta a tu archivo.
@@ -71,7 +131,7 @@ function prepareTileData(data) {
                     // ¡CORREGIDO AQUÍ!: Ajusta la ruta de la imagen del tile
                     // Asume que las imágenes de los tiles están en tu_proyecto/img/Mapa Base wp/
                     // Y que tileDef.image es solo el nombre del archivo (ej. "00.webp")
-                    imagePath: `./${tileDef.image}`, 
+                    imagePath: mapData.mapPath.substring(0, mapData.mapPath.lastIndexOf('/') + 1) + tileDef.image,
                     width: tileDef.width,
                     height: tileDef.height
                 };

@@ -14,7 +14,7 @@ import { initializeInput, updateInputScale, keysPressed, joystick, drawJoystick 
 import { loadPlayerSprites, updatePlayer, drawPlayer, playerWorldX, playerWorldY, frameWidth, frameHeight, setInitialPlayerWorldPosition, getPlayerPolygon, debugDrawPlayerCollider, setPlayerWorldPosition } from './player.js';
 import { updateCamera, cameraX, cameraY } from './camera.js';
 // Todas las importaciones de map.js en UNA sola línea
-import { loadMap, manageVisibleChunks, drawMap, getMapDimensions, mapData, collisionPolygons, getRelevantCollisionPolygons, debugDrawCollisionPolygons, mapTeleporters, updateTeleporterAnimation, mapInteractions, markInteractionObjectAsTriggered } from './map.js'; // <--- ¡AÑADE markInteractionObjectAsTriggered AQUÍ!
+import { loadMap, manageVisibleChunks, drawMap, getMapDimensions, mapData, collisionPolygons, getRelevantCollisionPolygons, debugDrawCollisionPolygons, mapTeleporters, updateTeleporterAnimation, mapInteractions, markInteractionObjectAsTriggered,minimapLoadedTileImages  } from './map.js'; // <--- ¡AÑADE markInteractionObjectAsTriggered AQUÍ!
 import { checkCollision } from './collisions.js';
 
 export const playerInventory = []; // <-- ¡NUEVA VARIABLE GLOBAL!: Array para guardar los items
@@ -23,6 +23,10 @@ export const playerInventory = []; // <-- ¡NUEVA VARIABLE GLOBAL!: Array para g
 // Variables globales del juego (las que tenías en el HTML, ahora en game.js)
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+
+
+const minimapCanvas = document.getElementById('minimapCanvas');
+const minimapCtx = minimapCanvas.getContext('2d');
 let currentScale = 1;
 // --- REFERENCIAS ACTUALIZADAS Y NUEVAS PARA LOS CUADROS DE DIÁLOGO ---
 // Este es el cuadro de diálogo de ÍTEMS (usa el ID HTML original 'textBoxContainer')
@@ -322,6 +326,8 @@ initializeInput(canvas, currentScale);
 function gameLoop(timestamp) {
    deltaTime = (timestamp - lastTime) / 1000;
     lastTime = timestamp;
+
+   
  // --- NUEVO: Actualiza el texto con efecto de máquina de escribir si está activo ---
     if (isTyping) { // <--- AÑADIDA: Solo llama a typeText() si el texto se está animando
         typeText(deltaTime); // <--- AÑADIDA: Llama a la función de animación de escritura
@@ -338,7 +344,7 @@ function gameLoop(timestamp) {
         // Si el diálogo está activo, queremos PAUSAR el juego (movimiento del personaje, teletransporte)
         // Esto se logra encerrando la lógica de movimiento en un 'if (!isDialogueActive)'.
     }
-
+  
 
     // ¡NUEVA SECCIÓN DE COOLDOWN PARA TELETRANSPORTE (Mantenemos si es necesario)!
     if (!canTeleport) {
@@ -447,6 +453,8 @@ function gameLoop(timestamp) {
     drawMap(ctx);
     drawPlayer(ctx);
     drawJoystick(ctx);
+
+      drawMinimap(playerWorldX, playerWorldY);
 // --- NUEVO: Dibujar iconos para puntos de interacción de tarjetas O UN RECTÁNGULO DE DEPURACIÓN ---
 // ESTA ES LA CONDICIÓN CLAVE PARA EL DIBUJO DE ICONOS: SOLO DIBUJA SI EL MAPA Y LAS INTERACCIONES YA ESTÁN CARGADOS.
 if (mapData && Object.keys(mapInteractions).length > 0) { // <--- ¡¡¡AÑADE ESTA LÍNEA CRÍTICA AQUÍ!!!
@@ -1186,4 +1194,114 @@ function updateCardAnimation(deltaTime) {
         cardCurrentFrame = (cardCurrentFrame + 1) % CARD_NUM_FRAMES;
         cardFrameTimer = 0;
     }
+}
+
+function drawMinimap(playerX, playerY) {
+    // Limpia todo el canvas del minimapa en cada frame
+    minimapCtx.clearRect(0, 0, minimapCanvas.width, minimapCanvas.height);
+
+    // --- Comprobación inicial: Asegurarse de que los datos del mapa estén cargados ---
+    // Si mapData (o sus partes esenciales) no está disponible, dibuja un fondo simple y sale.
+    if (!mapData || !mapData.layers || mapData.layers.length === 0 || !mapData.tilesets || mapData.tilesets.length === 0) {
+        // Dibuja un fondo gris si el mapa aún no se ha cargado
+        minimapCtx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+        minimapCtx.fillRect(0, 0, minimapCanvas.width, minimapCanvas.height);
+        // Dibuja el borde blanco
+        minimapCtx.strokeStyle = 'white';
+        minimapCtx.lineWidth = 1;
+        minimapCtx.strokeRect(0, 0, minimapCanvas.width, minimapCanvas.height);
+        return; // Sale de la función, no hay mapa para dibujar todavía
+    }
+
+    // --- Cálculos de escala y posición para el minimapa ---
+    // Calcula las dimensiones totales del mapa en píxeles
+    const mapWidthPixels = mapData.width * mapData.tilewidth;
+    const mapHeightPixels = mapData.height * mapData.tileheight;
+
+    // Calcula una escala para que el mapa completo quepa dentro del minimapa.
+    // El '0.8' es un factor para dejar un pequeño margen y que no ocupe el 100% exacto del cuadro.
+    // Puedes ajustar este valor (ej. a 1.0 para llenar más, o 0.5 para hacerlo más pequeño).
+    const minimapMapScale = Math.min(
+        minimapCanvas.width / mapWidthPixels,
+        minimapCanvas.height / mapHeightPixels
+    ) ;
+
+    // Calcula el desfase (offset) para centrar el mapa escalado dentro del minimapa
+    const offsetX = (minimapCanvas.width - (mapWidthPixels * minimapMapScale)) / 2;
+    const offsetY = (minimapCanvas.height - (mapHeightPixels * minimapMapScale)) / 2;
+
+    // --- Dibujo de la capa "Capa de patrones 1" en el minimapa ---
+    mapData.layers.forEach(layer => {
+        // SOLO dibuja la capa si es de tipo 'tilelayer', es visible,
+        // Y SU NOMBRE ES EXACTAMENTE 'Capa de patrones 1'.
+        if (layer.type === 'tilelayer' && layer.visible && layer.name === 'Capa de patrones 1') {
+            // Itera sobre cada tile en esta capa específica
+            for (let y = 0; y < layer.height; y++) {
+                for (let x = 0; x < layer.width; x++) {
+                    const tileId = layer.data[y * layer.width + x];
+                    if (tileId > 0) { // Si el ID del tile es válido (no es un tile vacío)
+                        let tileset = null;
+                        // Encuentra el tileset correcto al que pertenece este tileId
+                        for (let i = mapData.tilesets.length - 1; i >= 0; i--) {
+                            if (tileId >= mapData.tilesets[i].firstgid) {
+                                tileset = mapData.tilesets[i];
+                                break;
+                            }
+                        }
+
+                        if (tileset) {
+                            // Calcula las coordenadas del tile dentro de su tileset,
+                            // aunque para "Collection of Images" se usa 0,0 directamente.
+                            const localTileId = tileId - tileset.firstgid;
+                            const cols = tileset.columns || 1; // Asume 1 columna si es una colección de imágenes
+                            const sx = (localTileId % cols) * tileset.tilewidth;
+                            const sy = Math.floor(localTileId / cols) * tileset.tileheight;
+
+                            // Obtiene la imagen del tile desde la caché precargada del minimapa.
+                            // Esto es clave para las "Collection of Images".
+                            const tileImage = minimapLoadedTileImages[tileId];
+
+                            // Solo dibuja si la imagen se cargó correctamente y es válida
+                            if (tileImage && tileImage.complete && tileImage.naturalWidth > 0) {
+                                minimapCtx.drawImage(
+                                    tileImage,           // La imagen ya cargada del tile individual
+                                    0, 0,                // sx, sy: Siempre 0,0 porque 'tileImage' ya es solo ese tile
+                                    tileset.tilewidth,   // sWidth: Ancho original del tile en su fuente
+                                    tileset.tileheight,  // sHeight: Alto original del tile en su fuente
+                                    // Coordenadas de destino en el minimapa, escaladas y centradas
+                                    offsetX + x * (tileset.tilewidth * minimapMapScale),
+                                    offsetY + y * (tileset.tileheight * minimapMapScale),
+                                    // Dimensiones de destino en el minimapa
+                                    tileset.tilewidth * minimapMapScale,
+                                    tileset.tileheight * minimapMapScale
+                                );
+                            } else {
+                                // Este warning aparecerá si alguna imagen de la capa base no se cargó.
+                                // Si esto ocurre, la ruta en map.js (prepareTileData) sigue siendo el problema.
+                                // console.warn(`[MINIMAP DEBUG] NO se pudo dibujar tile ${tileId}. Imagen no cargada o inválida.`);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // --- Dibujo de la representación del jugador en el minimapa ---
+    // Establece el color para el punto del jugador (rojo)
+    minimapCtx.fillStyle = 'red';
+    // Dibuja un pequeño rectángulo que representa al jugador, escalado y posicionado
+    minimapCtx.fillRect(
+        offsetX + playerX * minimapMapScale, // Posición X del jugador escalada en el minimapa
+        offsetY + playerY * minimapMapScale, // Posición Y del jugador escalada en el minimapa
+        5, // Tamaño del "punto" del jugador (ancho)
+        5  // Tamaño del "punto" del jugador (alto)
+    );
+
+    // --- Dibujo del borde del minimapa ---
+    // Establece el estilo para el borde (blanco, grosor 1px)
+    minimapCtx.strokeStyle = 'white';
+    minimapCtx.lineWidth = 1;
+    // Dibuja el rectángulo del borde alrededor de todo el minimapa
+    minimapCtx.strokeRect(0, 0, minimapCanvas.width, minimapCanvas.height);
 }
