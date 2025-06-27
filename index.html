@@ -356,6 +356,7 @@
 
 
 #startScreen {
+   
     margin: 0;
     position: fixed; /* Lo fija en la pantalla, ignorando el scroll */
     top: 0; /* Asegúrate de que top y left estén aquí, si no, añádelos */
@@ -392,22 +393,18 @@
         height: 186px;   /* Alto deseado del botón */
         margin: 0;
         /* Oculta el texto original del botón, ya que usaremos una imagen */
-        
-        justify-content: flex-end;
-         align-items: flex-end;
+       
+       
         /* Propiedades de la imagen de fondo para el estado NORMAL */
         background-image: url('./img/Boton%20Play_01.webp'); /* <-- RUTA PARA EL BOTÓN NORMAL (¡verifica!) */
         background-size: contain; /* Ajusta la imagen dentro del botón sin cortarla */
         background-position: center; /* Centra la imagen */
         background-repeat: no-repeat; /* Evita que la imagen se repita */
-        /* Otras propiedades visuales del botón */
         background-color: transparent; /* Fondo transparente para que solo se vea la imagen */
         border: none; /* Elimina cualquier borde si lo tenías */
         border-radius: 0; /* Elimina cualquier redondeo si lo tenías (la imagen definirá la forma) */
         cursor: pointer;
-        box-shadow: none; /* Elimina la sombra si la imagen ya tiene su propia sombra */
-    
-        /* Transición para suavizar el cambio de imagen y otros efectos */
+        box-shadow: none; 
         transition: background-image 0.3s ease-in-out, transform 0.1s ease-out;
         user-select: none;
         -webkit-tap-highlight-color: transparent;
@@ -428,7 +425,7 @@
         transform: translateY(1px); /* Un pequeño hundimiento al hacer clic/tocar */
         /* ... el resto de las propiedades para :active ... */
     }
-.start-button-clicked {
+   .start-button-clicked {
     opacity: 0 !important; /* Fuerza la opacidad a 0 inmediatamente */
     pointer-events: none !important; /* Deshabilita clics/toques */
     background-image: none !important; /* Elimina cualquier imagen de fondo */
@@ -451,7 +448,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
     z-index: 100; /* Asegura que esté por encima de otros elementos */
     user-select: none;
-     z-index: 2000; 
+    z-index: 2000;
+ 
     }
 
     #instructionsPanel p {
@@ -477,7 +475,12 @@
         font-size: clamp(0.7em, 1.8vw, 1.2em); /* Tamaño de fuente responsivo */
         margin: 0;
         user-select: none;
+       color: #E0E0E0; /* NUEVO: Asegura un color de texto visible */
+    line-height: 1.3; /* NUEVO: Espaciado legible entre líneas */
+    text-align: center;
     }
+
+
 
 #loadingScreen {
     position: fixed;
@@ -515,13 +518,14 @@
     height: 300px; /* Mantiene la proporción */
 
     background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro para el portal */
-
+    border-top-color: #00FFFF; /* O el color que elijas */
+    border-right-color: #00FFFF; /* O el color que elijas */
     animation: pulseGlow 2s infinite alternate; /* Solo la animación de brillo para el marco */
     margin: 0 auto 20px auto;
 
-    box-shadow: 0 0 15px rgba(160, 245, 255, 0.7), /* Brillo exterior del portal */
-                0 0 30px rgba(142, 251, 255, 0.4),
-                inset 0 0 10px rgba(0, 255, 242, 0.5); /* Sombra interior para profundidad */
+    box-shadow: 0 0 25px #00FFFF,         /* Primer brillo: Cian puro, más grande */
+        0 0 50px #00E0FF,         /* Segundo brillo: Cian ligeramente azulado, más extendido */
+        inset 0 0 20px #00F7FF; 
 }
 
 @keyframes spin {
@@ -530,15 +534,17 @@
 }
 /* NUEVO: Animación para el efecto de brillo pulsante del portal */
 @keyframes pulseGlow {
-    0% {
-        box-shadow: 0 0 10px rgba(126, 255, 253, 0.852),
-                    0 0 20px rgba(0, 255, 238, 0.4),
-                    inset 0 0 10px rgba(0, 255, 247, 0.5);
+  0% {
+        box-shadow:
+            0 0 20px rgba(0, 255, 255, 0.9),  /* Cian puro, opacidad muy alta, más extendido */
+            0 0 40px rgba(0, 224, 255, 0.6),  /* Cian azulado, opacidad media, más extendido */
+            inset 0 0 20px rgba(0, 247, 255, 0.7); /* Cian verdoso, opacidad alta, más intenso */
     }
     100% {
-        box-shadow: 0 0 15px rgba(0, 234, 255, 0.9), /* Brillo más intenso */
-                    0 0 30px rgba(0, 204, 255, 0.6), /* Brillo exterior más intenso */
-                    inset 0 0 15px rgba(0, 204, 255, 0.7); /* Sombra interior más pronunciada */
+        box-shadow:
+            0 0 35px rgba(0, 255, 255, 1),   /* Cian puro, opacidad total, mucho más grande e intenso */
+            0 0 70px rgba(0, 224, 255, 0.8),  /* Cian azulado, más extendido, más fuerte */
+            inset 0 0 35px rgba(0, 247, 255, 0.9); /* Cian verdoso, muy intenso y extendido */
     }
 }
 
@@ -612,12 +618,17 @@
          }
 
      #startScreen{ 
-     background-image: url('./img/Home Image Mobile.webp');
-      padding-bottom: 10vh; /* Revisa si es 5vh u otro valor */
-      width: 100vw; /* Ocupa el 100% del ancho del viewport */
-      height: 100vh; /* Ocupa el 100% del alto del viewport */
+      background-image: url('./img/Home Image Mobile.webp');
+      padding-bottom: 0; /* Revisa si es 5vh u otro valor */
       background-size: 100% auto;
-      background-position: center;
+      background-position:center top;
+      gap: 0px;
+      justify-content: center;
+     padding-top: 25vh; /* NUEVO: Empuja el contenido hacia abajo desde el top */
+        padding-bottom: 25vh;
+
+
+
      }
   
 
@@ -755,12 +766,14 @@
      <div id="instructionGame">
      <p><strong>Recolecta las tarjetas y conoce las historias de las adorables criaturas del nuevo mundo</strong></p>
      </div>
+     
+    </div>
 <div id="instructionsPanel">
         <p><strong>Movimiento:</strong> Teclas <span class="key-highlight">W A S D</span> / <span class="key-highlight">Flechas</span></p>
         <p><strong>Diálogo:</strong> Presiona <span class="key-highlight">Enter</span> / <span class="key-highlight">Clic</span></p>
         <p><strong>Inventario:</strong> Presiona <span class="key-highlight">i</span></p>
     </div>
-    </div>
+
 <div id="loadingScreen" class="hidden">
     <div class="loading-content">
         <div class="spinner"></div>
@@ -768,7 +781,7 @@
     </div>
 </div>
     
-    <canvas id="gameCanvas"></canvas>
+ <canvas id="gameCanvas"></canvas>
 <canvas id="minimapCanvas" width="160" height="90" style="position: fixed; top: 10px; right: 10px; border: 2px solid #21190e;  z-index: 20;"></canvas>
 <!-- Ambos contenedores de diálogo son ahora HERMANOS directos del <body>, NO ANIDADOS.
      Ambos tendrán la clase 'dialog-base-style' para los estilos comunes. -->
