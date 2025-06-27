@@ -1,4 +1,4 @@
-// js/game.js
+// Js/game.js
 
 // Importa todo lo necesario de los otros módulos
 import {
