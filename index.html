@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Angel Geek</title>
+
+    <!-- PRECARGA DE RECURSOS CRÍTICOS PARA LA PANTALLA DE INICIO Y EL JUEGO -->
+    <!-- Precarga la imagen de fondo de escritorio (se usará primero) -->
+    <link rel="preload" href="./img/Mapa Home.webp" as="image">
+    <!-- Precarga la imagen de fondo de móvil (se usará si la pantalla es pequeña) -->
+    <link rel="preload" href="./img/Home Image Mobile.webp" as="image" media="(max-width: 700px)">
+    <!-- Precarga el script principal del juego -->
+    <link rel="preload" href="./Js/game.js" as="script">
+    <!-- Precarga el JSON del mapa (si no es excesivamente grande, si lo es, podría ralentizar) -->
+    <link rel="preload" href="./Tiled/Mapa_angelgeek_base.json" as="fetch" crossorigin="anonymous">
     <style>
     html, body {
         margin: 0;
@@ -473,6 +483,11 @@
 
   @media (max-width: 700px) {
 
+#instructionsPanel {
+
+  display: none;
+ 
+  }
 
      #startScreen{ 
      background-image: url('./img/Home Image Mobile.webp');
@@ -482,12 +497,7 @@
       background-size: 100% auto;
       background-position: center;
      }
-
-  #instructionsPanel {
-
-  display: none;
- 
-  }
+  
 
   .dialog-base-style {
     width: 96vw; /* Ocupa 96% del ancho del viewport */
@@ -498,6 +508,8 @@
    
    
    }
+
+
 
   #textBoxContainer {
     
