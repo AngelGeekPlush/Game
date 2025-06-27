@@ -348,15 +348,14 @@
 #startScreen {
     margin: 0;
     position: fixed; /* Lo fija en la pantalla, ignorando el scroll */
-    top: 0;
-    left: 0;
+  
     width: 100vw; /* Ocupa el 100% del ancho del viewport */
     height: 100vh; /* Ocupa el 100% del alto del viewport */
     display: flex; /* Para organizar los elementos internos (título, subtítulo, botón) */
     flex-direction: column; /* Apila los elementos verticalmente */
     justify-content: flex-end; /* Centra los elementos verticalmente */
     align-items: center; /* Centra los elementos horizontalmente */
-    align-content: flex-end;
+    align-content: center;
     background-image: url('./img/Mapa Home.webp'); /* <-- ¡¡¡CAMBIA ESTA RUTA POR LA DE TU IMAGEN!!! */
     background-size: cover; /* Cubre toda el área del contenedor */
     background-position: top; /* Centra la imagen de fondo */
@@ -396,7 +395,7 @@
         /* Tamaño fijo para el botón, ajusta estos valores según el tamaño de tus imágenes de botón */
         width: 339px;   /* Ancho deseado del botón */
         height: 186px;   /* Alto deseado del botón */
-       margin: 0;
+        margin: 0;
         /* Oculta el texto original del botón, ya que usaremos una imagen */
         
 
@@ -436,31 +435,39 @@
 
     #instructionsPanel {
       
-        padding: 20px 30px;
+        padding:20px;
         border-radius: 10px; /* Bordes redondeados */
         text-align: center;
         max-width: 80%; /* Ancho máximo para que no sea demasiado largo en pantallas grandes */
         font-family: 'Press Start 2P', Arial, sans-serif;
         font-size: clamp(0.7em, 1.8vw, 1.2em); /* Tamaño de fuente responsivo */
         line-height: .1; /* Espaciado entre líneas para mejor lectura */
-        margin-bottom: 0;
+       
         user-select: none;
     }
 
     #instructionsPanel p {
-        margin-bottom: 3px; /* Espacio entre cada línea de instrucción */
+        margin-bottom: 1px; /* Espacio entre cada línea de instrucción */
         color: #E0E0E0; /* Color de texto claro */
     }
 
     #instructionsPanel p:last-child {
         margin-bottom: 0; /* Sin margen inferior en la última línea */
-    }
+     }
 
     /* Estilo para resaltar las teclas */
     .key-highlight {
         color: #FFD700; /* Color dorado para las teclas */
         font-weight: bold;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+     }
+     #instructionGame {
+            
+        max-width: 70%; /* Ancho máximo para que no sea demasiado largo en pantallas grandes */
+        font-family: 'Press Start 2P', Arial, sans-serif;
+        font-size: clamp(0.7em, 1.8vw, 1.2em); /* Tamaño de fuente responsivo */
+        margin: 0;
+        user-select: none;
     }
 
 
@@ -469,9 +476,18 @@
 
      #startScreen{ 
      background-image: url('./img/Home Image Mobile.webp');
-     
+      padding-bottom: 10vh; /* Revisa si es 5vh u otro valor */
+      width: 100vw; /* Ocupa el 100% del ancho del viewport */
+      height: 100vh; /* Ocupa el 100% del alto del viewport */
+      background-size: 100% auto;
+      background-position: center;
      }
 
+  #instructionsPanel {
+
+  display: none;
+ 
+  }
 
   .dialog-base-style {
     width: 96vw; /* Ocupa 96% del ancho del viewport */
@@ -604,8 +620,11 @@
     <div id="startScreen">
      <button id="startButton"></button>
 <!-- NUEVO: Panel de Instrucciones -->
+
+     <div id="instructionGame">
+     <p><strong>Recolecta las tarjetas y conoce las historias de las adorables criaturas del nuevo mundo</strong></p>
+     </div>
     <div id="instructionsPanel">
-        <p><strong>Recolecta las tarjetas y conoce las historias de las adorables criaturas del nuevo mundo</strong></p>
         <p><strong>Movimiento:</strong> Teclas <span class="key-highlight">W A S D</span> / <span class="key-highlight">Flechas</span></p>
         <p><strong>Inventario:</strong> Presiona <span class="key-highlight">I</span></p>
         <p><strong>Diálogo:</strong> Presiona <span class="key-highlight">Enter</span> / <span class="key-highlight">Clic</span></p>
