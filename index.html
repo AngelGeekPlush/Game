@@ -461,6 +461,14 @@
         margin-bottom: 0; /* Sin margen inferior en la última línea */
      }
 
+     .instructions-panel-hidden {
+    opacity: 0; /* Lo hace transparente */
+    pointer-events: none; /* Deshabilita clics/toques */
+    visibility: hidden; /* Lo oculta completamente del layout */
+    /* Transición para que desaparezca suavemente */
+    transition: opacity 0.5s ease-out, visibility 0s 0.5s; 
+}
+
     /* Estilo para resaltar las teclas */
     .key-highlight {
         color: #FFD700; /* Color dorado para las teclas */

@@ -102,6 +102,7 @@ const backgroundMusic = new Audio('./Audio/map.mp3'); // URL de ejemplo
 backgroundMusic.volume = 0.3; // Volumen bajo para que no opaque otros sonidos
 backgroundMusic.loop = true; // Hace que la música se repita continuamente
 const loadingScreen = document.getElementById('loadingScreen');
+const instructionsPanel = document.getElementById('instructionsPanel'); // NUEVO: Referencia al panel de instrucciones
 const itemDefinitions = {
     'Tarjeta Reaper': {
         name: 'Tarjeta Reaper',
@@ -682,6 +683,8 @@ if (startButton) {
             }
             loadGameResources();
         }
+
+
     };
 
     startButton.addEventListener('click', handleStartGame);
@@ -1359,7 +1362,13 @@ async function loadGameResources() {
         // 4. Iniciar el juego principal y la música
         // ¡IMPORTANTE! Aquí es donde llamas a tus funciones que realmente inician el juego.
         startGameLoop(); // Llama a tu función principal de inicio del juego
+       
         backgroundMusic.play().catch(e => console.warn("La música de fondo no pudo iniciarse automáticamente al cargar el juego.", e));
+if (instructionsPanel) {
+    instructionsPanel.classList.add('instructions-panel-hidden');
+}
+
+
 
     } catch (error) {
         console.error("[GAME LOAD ERROR] Error al cargar recursos:", error);
